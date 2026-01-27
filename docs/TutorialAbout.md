@@ -28,3 +28,6 @@ All of this is extremely valuable information and easily represented in the data
  - subsequent combinations (combinations between genus and species that where used after the original description but before the one that is currently used), with citation
  - identification keys
  - much more possible: DNA, morphological traits, etc...
+
+## Can I import an existing dataset instead of doing everything by hand?
+Yes, definitely! But your dataset needs to have the right format. One strength of TaxonWorks is that you can export your data in a structured format, making it easier to move it to another application.
