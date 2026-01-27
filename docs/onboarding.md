@@ -5,7 +5,10 @@ icon: lucide/rocket
 ---
 ## Introduction
 **Welcome on board!**  
-This page will provide you with everything you need to understand how you can contribute.
+This page is a guide for everyone who would like to contribute to the Curculionoidea Project on TaxonWorks.
+
+### What you could do
+TaxonWorks is an excellent tool for you to organize your taxonomic knowledge. Having everything in TaxonWorks can aid your research while also helping the broader community and building a lasting resource.
 
 ### TaxonWorks vs. TaxonPages
 [TaxonWorks](https://taxonworks.org/) is the software that we use to curate data. It lives on a server and is accessed through your internet browser.  
