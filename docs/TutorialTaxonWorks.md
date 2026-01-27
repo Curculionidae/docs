@@ -13,7 +13,7 @@ You can scroll through cards using the arrow buttons for right and left. You can
 In this video, I'm searching for the "**New Taxon Name**" Task and add it as a favorite for quick access.
 
 <video controls autoplay loop muted >
-  <source src="assets/videos/TaxonWorksInterface.webm" type="video/webm">
+  <source src="https://weevil-see.com/docs/assets/videos/TaxonWorksInterface.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
