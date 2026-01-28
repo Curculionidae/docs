@@ -36,7 +36,7 @@ What you need to remember about Taxon Names and OTUs:
 
 ## Data Structure
 Don't think about the data structure as a table, think about it as a network or graph. Keep in mind, not only valid species name have an OTU, subjective synonyms keep their own OTU but the data gets summarized for both of them. Therefore, you can add information from literature to synonymized names. Who knows, maybe the name gets resurrected in the future?  
-**When adding information, imagine attaching new nodes to the network.**
+When adding information, imagine attaching new nodes to the network. **Don't worry, this looks very complicated but in TaxonWorks it isnt!**
 
 <figure markdown="span">
 <figcaption>Information, such as distribution, can be added to the OTU of a synonymized name. This allows to retain information for synonymized names, but TaxonWork will summarize everything for you.
