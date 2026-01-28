@@ -10,7 +10,7 @@ This page is a guide for everyone who would like to contribute to the Curculiono
 ### What you could do
 TaxonWorks is an excellent tool for you to organize your taxonomic knowledge. Having everything in TaxonWorks can aid your research while also helping the broader community and building a lasting resource.
 
-If you don't want to work in TaxonWorks yourself, you can also just provide data (images, taxonomic lists, specimen/occurrence data from a collection, etc.) and we can integrate it for you. You can be cited/attributed for everything you want to share.
+If you don't want to work in TaxonWorks yourself, you can also just provide data (images, taxonomic lists, specimen/occurrence data from a collection, etc.) and we can integrate it for you. You will be cited/attributed for everything you want to share.
 
 ### TaxonWorks vs. TaxonPages
 [TaxonWorks](https://taxonworks.org/) is the software that we use to curate data. It lives on a server and is accessed through your internet browser.  
