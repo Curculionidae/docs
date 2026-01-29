@@ -19,7 +19,7 @@ A species that was described as _Cleonus obsoletefaciatus_ (_Cleonus_ is gramati
 For synonyms, the parent is always the same as for the valid name.
 
 <video controls autoplay loop muted>
-  <source src="/assets/videos/NewTaxonName.webm" type="video/webm">
+  <source src="/assets/videos/NewTaxonName.webm" >
   Your browser does not support the video tag.
 </video>
 ![Soft Validation in TaxonWorks](/assets/images/soft_validations.png){ align=right }
