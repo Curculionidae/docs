@@ -34,7 +34,7 @@ This is THE most important concept to understand about TaxonWorks: Taxon names a
 What you need to remember about Taxon Names and OTUs:  
 **Never create an OTU without a taxon name, never create a taxon name withouth an OTU.** The database can contain bare OTUs without a taxon name and vice versa, mainly from imports. An OTU without a taxon name is not placed in the taxonomic tree, and a taxon name without an OTU cannot be linked to anything biological, it will only exist as a name.
 
-## Data Structure
+### Data Structure
 Don't think about the data structure as a table, think about it as a network or graph. Keep in mind, not only valid species name have an OTU, subjective synonyms keep their own OTU but the data gets summarized for both of them. Therefore, you can add information from literature to synonymized names. Who knows, maybe the name gets resurrected in the future?  
 When adding information, imagine attaching new nodes to the network. **Don't worry, this looks very complicated but in TaxonWorks it isnt!**
 
