@@ -6,12 +6,12 @@ icon: material/information-outline
 This tutorial is following the workflow that is used to move the **[World Catalogue of the Curculionidae: Lixinae: Cleonini](https://weevil.myspecies.info/content/world-catalogue-curculionidae-lixinae-cleonini)** by Massimo Meregalli into TaxonWorks.  
 
 The Cleonini Catalogue was previously published as a website (html), but each genus was also summarized in a PDF file identical to the respective webpage.  
-Therefore, the data was arranged in a verbatim format optimized for human readability.
+It is an excellent example of a richly annotated catalog, many other catalogs contain fewer citations for the information they provide. However, it would profit from living in a database such as TaxonWorks, where the data is much more manageable, interlinked and filterable.
 <figure markdown="span">
   ![Image title](/assets/images/MeregalliCleonini.png)
-  <figcaption>Entry for a genus in the original Cleonini Catalogue. Below, not covered by the screenshot, are the full references for each citation.</figcaption>
+  <figcaption>Entry for a genus in the original Cleonini Catalogue. It also contains the full references for each citation, not included in the screenshot.</figcaption>
 </figure>
-In this image, we see a lot of information that needs to be transferred into TaxonWorks:
+We see a lot of information that needs to be transferred into TaxonWorks:
 
  - **Names** for genus, subgenus and species, including synonyms. Synonyms can have a status e.g. as homonym
  - Citation for **original description**, with page number
@@ -30,4 +30,4 @@ All of this is extremely valuable information and easily represented in the data
  - much more possible: DNA, morphological traits, etc...
 
 ## Can I import an existing dataset instead of doing everything by hand?
-Yes, definitely! But your dataset needs to have the right format. One strength of TaxonWorks is that you can export your data in a structured format, making it easier to move it to another application.
+Yes, definitely! But your dataset needs to be in a structured format. Most existing catalogs are in a verbatim format that is difficult to transform into a structure that can be imported into TaxonWorks. However, one strength of TaxonWorks is that you can export your data in a structured format, making it easier to move it to any other application. Adding data to TaxonWorks is "mobilizing" it for future use.
