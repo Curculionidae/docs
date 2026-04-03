@@ -153,7 +153,6 @@ The properties could be interlinked as part of an ontology. This would make some
 
 ```bio-rel
 Relationship name | Inverted relationship name
-[property 1] [property 2] | [property 3]
 Definition of the relationship
 ```
 
@@ -165,66 +164,18 @@ Definition: None (no information given)
 ```
 
 ```bio-rel
-dubious relationship | dubious relationship
-A relationship that seems unlikely, but has been published. Ideally, cite the source that states that the relationship is dubious, otherwise cite the original source.
-```
-
-```bio-rel
-asserted relationship | asserted relationship
-This relationship is to be used if no other information is given, e.g. for catalog entries where plants and insects are associated with each other, without any lines of evidence given. It is assumed that this kind of relationship represents some kind of "common knowledge", but it cannot be verified as no lines of evidence are given. If certainly dubious, use "dubious relationship" instead!
-```
-
-```bio-rel
-asserted oligophagous relationship with higher taxon | target of asserted oligophagous relationship
-Literature will often contain information such as "associated with Lamiaceae". Using this relationship is more accurate than using just the asserted relationship.
-```
-
-```bio-rel
 feeding observed in the wild on | fed upon in the wild by
-[imago] [consumer in a trophic relationship] | [resource in a trophic relationship]
-A specimen has been observed feeding on a host in the wild.
+Used if feeding was observed in wild by any life stage of an organism. Use this one too, if the specimen was later collected since “feeding in wild” is the more valuable information.
 ```
 
 ```bio-rel
 feeding observed in experimental setup on | fed upon in experimental setup by
-[imago] [consumer in a trophic relationship] | [resource in a trophic relationship]
-A specimen has been observed feeding on a plant in an experimental setup.
+A specimen has been observed feeding on a plant in an experimental setup (for example in a petri dish).
 ```
 
 ```bio-rel
 reared from | yielded by rearing
-[larva] [consumer in a trophic relationship] | [resource in a trophic relationship] [resource for larval feeding]
-In most cases, a more specific biological relationship can be used, also defining the plant organ.
-```
-
-```bio-rel
-agricultural pest of | host for agricultural pest
-[consumer in a trophic relationship] [agricultural pest] | [resource in a trophic relationship]
-It does make sense to have this as a separate category, because of economic importance but also because agricultural literature seems to be erroneous more often than other sources.
-```
-
-```bio-rel
-visitor of | visited by
-[imago] |
-An unclear relationship. E.g. a specimen has been collected from a plant, but it is unknown if it was feeding or not. (property imago added, as larvae that are "visiting" a plant would constitute a larval host relationship in almost any case)
-```
-
-```bio-rel
-flower visitor of | flower visited by
-[imago] | [flower]
-Separate from "visitor of", as flower visitors may have ecological properties that are distinct from general visitors. A more complex system would define various pollination relationships (e.g. brood-site pollinators). (property imago added, as larvae that are "visiting" a plant would constitute a larval host relationship in almost any case)
-```
-
-```bio-rel
-collected adults from dead plant matter of | dead plant matter yielded adults of
-[imago] [consumer in a saprophagous trophic relationship] | [resource in a saprophagous trophic relationship]
-e.g. adult specimen of a Cossonine collected beneath the bark of <em>Pinus</em> sp.
-```
-
-```bio-rel
-collected larvae from dead plant matter of | dead plant matter yielded larvae of
-[larva] [consumer in a saprophagous trophic relationship] | [resource in a saprophagous trophic relationship] [resource for larval feeding]
-e.g. larva of a Cossonine collected beneath the bark of <em>Pinus</em> sp.
+Used if the complete life cycle of a weevil was observed (either in wild or in an experimental setup)
 ```
 
 ### Second set, focus on biology
