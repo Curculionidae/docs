@@ -1,3 +1,153 @@
+/* TaxonPages color theme — sky blue links matching --tp-secondary */
+:root > * {
+  --md-primary-fg-color:        #0369a1;
+  --md-primary-fg-color--light: #0284c7;
+  --md-primary-fg-color--dark:  #075985;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #0ea5e9;
+  --md-primary-fg-color--light: #38bdf8;
+  --md-primary-fg-color--dark:  #0284c7;
+}
+
+/* ============================================================
+   Landing page
+   ============================================================ */
+
+.cw-landing {
+  margin-top: 0.25rem;
+}
+
+/* --- Hero --- */
+.cw-hero {
+  padding: 2.5rem 2rem 0;
+  margin: 0 -1.2rem 2.5rem;
+  background: var(--md-code-bg-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cw-hero__content {
+  padding-bottom: 2rem;
+}
+
+.cw-hero__title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--md-default-fg-color);
+  margin: 0 0 1rem;
+}
+
+.cw-hero__sub {
+  font-size: 0.925rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.7;
+  margin: 0 0 1.75rem;
+}
+
+.cw-hero__sub a {
+  color: var(--md-primary-fg-color);
+}
+
+.cw-hero__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.cw-btn {
+  display: inline-block;
+  padding: 0.6rem 1.3rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.cw-btn--primary {
+  background: var(--md-primary-fg-color);
+  color: #fff !important;
+  border: 1.5px solid var(--md-primary-fg-color);
+}
+
+.cw-btn--primary:hover {
+  background: var(--md-primary-fg-color--dark);
+  border-color: var(--md-primary-fg-color--dark);
+}
+
+.cw-btn--outline {
+  background: transparent;
+  color: var(--md-primary-fg-color) !important;
+  border: 1.5px solid var(--md-primary-fg-color);
+}
+
+.cw-btn--outline:hover {
+  background: var(--md-primary-fg-color);
+  color: #fff !important;
+}
+
+.cw-hero__visual img,
+.cw-hero__visual video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Feature cards (VuePress-style) --- */
+.cw-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.cw-feature {
+  display: block;
+  padding: 1.5rem 1.5rem 1.25rem;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  text-decoration: none !important;
+  color: var(--md-default-fg-color) !important;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.cw-feature:hover {
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.cw-feature__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+  margin-bottom: 0.6rem;
+}
+
+.cw-feature__desc {
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- Responsive --- */
+@media screen and (max-width: 800px) {
+  .cw-hero {
+    padding: 2rem 1.25rem 0;
+    margin: 0 0 2rem;
+  }
+  .cw-features {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Biological Relationships tables */
 
 table.bio-rel {

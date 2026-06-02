@@ -1,15 +1,44 @@
 ---
 title: Welcome
-#description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
 icon: lucide/home
 ---
-!!! tip "Looking for the Curculionoidea catalog?"
-    The weevil species catalog is at **[catalog.curculionoidea.org](https://catalog.curculionoidea.org)**. This site is documentation for contributors using TaxonWorks.
 
-**Welcome to the community documentation for the weevil project on TaxonWorks!**
+<div class="cw-landing">
 
-This documentation is not meant to replace the official [TaxonWorks Guide](https://docs.taxonworks.org/guide/).
-It is meant to make your start with the software as _smooth_ as possible, going step by step and focusing on the most important aspects first.  
-There are many other resources to find information, but we think that it could be overwhelming for a newcomer, as there are tons of features implemented in TaxonWorks.
+<div class="cw-hero">
+  <div class="cw-hero__content">
+    <h1 class="cw-hero__title">Curculionoidea on TaxonWorks</h1>
+    <p class="cw-hero__sub">Community documentation for taxonomists contributing to the world's most comprehensive weevil database.<br> This site is for contributors, the public species catalog is at <a href="https://catalog.curculionoidea.org" target="_blank" rel="noopener">catalog.curculionoidea.org</a>.</p>
+    <div class="cw-hero__actions">
+      <a href="onboarding/" class="cw-btn cw-btn--primary">Get Started As A Contributor →</a>
+      <a href="https://catalog.curculionoidea.org" class="cw-btn cw-btn--outline" target="_blank" rel="noopener">Browse the Catalog (catalog.curculionoidea.org) →</a>
+    </div>
+  </div>
+  <div class="cw-hero__visual">
+    <video autoplay loop muted playsinline>
+      <source src="assets/videos/TaxonWorksInterface.webm" type="video/webm">
+    </video>
+  </div>
+</div>
 
-**Also, we'll use this site to document our specific workflows, to make sure our data is consistent.**
+
+<div class="cw-features">
+
+  <a href="onboarding/" class="cw-feature">
+    <div class="cw-feature__title">Project Onboarding</div>
+    <p class="cw-feature__desc">New to the project? Learn who does what, how to get access to TaxonWorks, and how your contributions fit into the bigger picture.</p>
+  </a>
+
+  <a href="TutorialAbout/" class="cw-feature">
+    <div class="cw-feature__title">TaxonWorks Tutorial</div>
+    <p class="cw-feature__desc">Step-by-step walkthroughs of the TaxonWorks interface.</p>
+  </a>
+
+  <a href="BiologicalRelationships/" class="cw-feature">
+    <div class="cw-feature__title">Data Standards</div>
+    <p class="cw-feature__desc">Conventions for data entry, ensuring consistency across all contributions to the project.</p>
+  </a>
+
+</div>
+
+</div>
