@@ -246,19 +246,55 @@ If you want to use a new term, you can 1. Search for terms provided by the selec
   <img src="assets/images/create_new_AP.png" alt="how to create a new anatomical part">
 </p>
 
-## Sources
+## How to use Sources/ Citations/ Literature
 
 If the information was digitized from scientific literature, the paper or book can be cited via the “Source” panel. You are encouraged to include the exact page number, especially if the publication contains multiple pieces of information.
 
 For personal observations without a publication, leave this field blank. Your name will automatically appear on the TaxonPages as the source.
 
-## Shapes
+## How do add geographic information (shapes and gazetteers)
 
 Many host–plant relationships vary across broad geographic ranges. Therefore, it can be useful to record the location of an observation. Since the search function is not a global tool that includes all possible geographic features—such as mountains, lakes, or cities—it is often necessary to add the desired feature manually if it is not yet available. In many cases, selecting the country can serve as a first step to capture coarse geographic patterns, even if a more precise location is provided in the publication.
 
-## Doubt about a biological Association?
+## Handling Incorrect Citations and Later Corrections in Biological Associations
 
-In case you have doubt about a biological association you're digitizing, you can use "Confidences" to keep track of this (below the task in the table via radial annotator):
+When digitizing biological associations, always preserve the information as it appears in the cited publication. Do not silently correct or replace published information. The way incorrect information is handled depends on whether the publication contains an error or explicitly corrects an earlier error.
+
+### Case 1: A later publication explicitly corrects an earlier error
+
+If a later publication identifies and corrects an incorrect biological association published previously, both the original (incorrect) and the corrected information should be represented.
+
+#### Workflow
+
+1. Digitize the incorrect biological association exactly as it appears in the publication.
+2. Digitize the same incorrect biological association again, but cite the correcting publication and use the inverse relationship (e.g., instead of "collected from", select "not collected from").
+3. Use the Radial Annotator to cite both publications for:
+- the corrected biological association, and
+- the incorrect biological association.
+4. If the original correct biological association has not yet been digitized, you may digitize it either now or later.
+
+This documents both the original erroneous statement and the subsequent correction while maintaining a complete citation history.
+
+### Case 2: A publication incorrectly cites a biological association
+
+If a publication incorrectly cites a biological association (e.g., misquotes an earlier publication), digitize the association exactly as published.
+
+#### Examples
+
+- The original publication Author et a. (1991) states:
+  - *Beetle species* collected from Plant **species**.
+- A later publication incorrectly cites:
+  - *Beetle species* collected from Plant **genus** according to Author et a. (1991).
+- Or:
+  - *Beetle species* collected from an entirely different plant species.
+
+#### Workflow
+
+1. Digitize the biological association exactly as it appears in the publication.
+2. Use **Confidences** via radial annotator to flag the association as appropriate:
+   - **Doubtful**, if the correctness is uncertain to your opinion
+   - **Incorrect**, if the citation is demonstrably wrong.
+
 <p align="center">
   <img src="assets/images/doubtful_1.png" alt="select radial annotator">
 </p>
@@ -267,6 +303,8 @@ In case you have doubt about a biological association you're digitizing, you can
   <img src="assets/images/doubful_2.png" alt="select confidences to set doubtful">
 </p>
 
+
+Do **not** modify the biological relationship itself.
 
 ## Tags
 
