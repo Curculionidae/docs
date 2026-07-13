@@ -258,42 +258,9 @@ Many host–plant relationships vary across broad geographic ranges. Therefore, 
 
 ## Handling Incorrect Citations and Later Corrections in Biological Associations
 
-When digitizing biological associations, always preserve the information as it appears in the cited publication. Do not silently correct or replace published information. The way incorrect information is handled depends on whether the publication contains an error or explicitly corrects an earlier error.
+Until now, we have decided to exclude incorrect citations and corrected biological associations from this database. Our approach is to digitize only the original data, as these represent the only reliable source of information. Subsequent citations of biological associations are often simplified (e.g. only the genus of the host plant is cited, whereas the original publication identified the species) or incorrect (e.g. the wrong plant species is cited). Including such records would generate low-value data and would require new approaches for handling biological associations.
 
-### Case 1: A later publication explicitly corrects an earlier error
-
-If a later publication identifies and corrects an incorrect biological association published previously, both the original (incorrect) and the corrected information should be represented.
-
-#### Workflow
-
-1. Digitize the incorrect biological association exactly as it appears in the publication.
-2. Digitize the same incorrect biological association again, but cite the correcting publication and use the inverse relationship (e.g., instead of "collected from", select "not collected from").
-3. Use the Radial Annotator to cite both publications for:
-- the corrected biological association, and
-- the incorrect biological association.
-4. If the original correct biological association has not yet been digitized, you may digitize it either now or later.
-
-This documents both the original erroneous statement and the subsequent correction while maintaining a complete citation history.
-
-### Case 2: A publication incorrectly cites a biological association
-
-If a publication incorrectly cites a biological association (e.g., misquotes an earlier publication), digitize the association exactly as published.
-
-#### Examples
-
-- The original publication Author et a. (1991) states:
-  - *Beetle species* collected from Plant **species**.
-- A later publication incorrectly cites:
-  - *Beetle species* collected from Plant **genus** according to Author et a. (1991).
-- Or:
-  - *Beetle species* collected from an entirely different plant species.
-
-#### Workflow
-
-1. Digitize the biological association exactly as it appears in the publication.
-2. Use **Confidences** via radial annotator to flag the association as appropriate:
-   - **Doubtful**, if the correctness is uncertain to your opinion
-   - **Incorrect**, if the citation is demonstrably wrong.
+If you have doubts about the reliability of any biological association you encounter, you can use the Confidence levels to annotate the record. Simply use the radial annotator after creating the biological association or through the Filter Biological Associations task. At present, confidence levels do not affect the visibility of biological associations on taxon pages or elsewhere. They are used only for internal purposes.
 
 <p align="center">
   <img src="assets/images/doubtful_1.png" alt="select radial annotator">
@@ -303,8 +270,6 @@ If a publication incorrectly cites a biological association (e.g., misquotes an 
   <img src="assets/images/doubful_2.png" alt="select confidences to set doubtful">
 </p>
 
-
-Do **not** modify the biological relationship itself.
 
 ## Tags
 
