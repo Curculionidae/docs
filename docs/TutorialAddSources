@@ -2,7 +2,7 @@
 title: Learn to add new sources/ literature
 icon: material/database-plus
 ---
-# Add a new Source without DOI
+# Add a new Source without DOI, text only
 
 <video controls autoplay loop muted>
   <source src="assets/videos/Citationwithoutdoi2.webm" type="video/webm">
