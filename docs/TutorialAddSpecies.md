@@ -37,7 +37,7 @@ When entering species names from a list, it's good practice to check the source 
 The author of the source is not necessarily the author of the species name: In most cases, you can go to the "Person" tab and clone the author from the source. If the author is a different person, enter the name.
 
 <video controls autoplay loop muted>
-  <source src="../assets/videos/Author.webm" type="video/webm">
+  <source src="assets/videos/Author.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 Theoretically you could add author and year of the species name as text in the "**Verbatim**" tab. Don't do it: This won't link to the source for the original description, and the author name will not be linked to a person. This can also result in inconsistent spellings of the author name.
@@ -47,7 +47,7 @@ Don't mess around here if you're not familiar with the International Code of Zoo
 The **"Status" block** is for the nomenclatural status of the name (e.g. unavailable). Usually I choose the right category directly from "Show all", to be as specific as possible.  
 It's very important to cite a source for the Status you just created. To do this, click the **radial annotator (the circle with many facets, see video below)**. If you know the source was the first one that revealed the status/synonymy, tick the box for "**Is original**"
 <video controls autoplay loop muted>
-  <source src="../assets/videos/Status_Relationship.webm" type="video/webm">
+  <source src="assets/videos/Status_Relationship.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 The **"Relationship" block** is for the relationship (synonymy) with other names. Always go from the invalid name to the valid name: Enter nothing here if the name is valid. Instead, go to the invalid name, and add e.g. "junior subjective synonym".  
