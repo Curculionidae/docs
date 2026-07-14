@@ -19,57 +19,6 @@ In saproxylic species, a key challenge is that the identity of the “host” is
 
 ---
 
-<!-- #### Example
-
-Masur & Wartmann (2025) reported from Baden-Württemberg that they observed larvae of *Adosomus roridus* feeding in the roots of *Achillea millefolium*.
-
-This can be modeled as a biological association between *Adosomus roridus* and *Achillea millefolium*, where:
-
-- *Adosomus roridus* participates in the interaction as the AnatomicalPart [larva], with the BiologicalRelationship [consumer in a trophic relationship].
-- *Achillea millefolium* participates in the interaction as AnatomicalPart [root]
-- The interaction between both was observed in a locality (can be modeled as AssertedDistrution Baden-Württemberg, alternatively using CollectionObject or FieldOccurrence with a  or a more precise place)
-- The whole of the data has a citation: Masur & Wartmann (2005)
-
-All of these aspects can be represented in TaxonWorks. The properties may appear redundant in some cases, but they are important as they assure semantic meaning and allow to filter the dataset. Another relationship can be defined for adult feeding of the weevils on their host plant, which was also reported in the same paper.
-
-In TaxonWorks, the relationship (= e.g. larva feeding in roots of) cannot be composed dynamically by mixing a custom range of properties for each particular instance (= e.g. larva of *Adosomus* on *Achillea*) of the relationship. Instead, a **relationship** is defined once for reuse across many interaction instances, with fixed participant role properties.
-
-<table class="bio-rel">
-<thead>
-<tr>
-  <th colspan="3" class="subject">Partner 1</th>
-  <th colspan="3" class="object">Partner 2</th>
-</tr>
-<tr>
-  <th class="subject">Taxon</th>
-  <th class="subject">Interaction properties</th>
-  <th class="subject">Interaction name</th>
-  <th class="object">Interaction inverted name</th>
-  <th class="object">Interaction properties</th>
-  <th class="object">Taxon</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td><em>Adosomus roridus</em></td>
-  <td>[larva], [endophagous feeding], [consumer in trophic relationship]</td>
-  <td>endophagous larva feeds in roots of</td>
-  <td>roots are fed upon by endophagous larva of</td>
-  <td>[root], [resource in trophic relationship]</td>
-  <td><em>Achillea millefolium</em></td>
-</tr>
-<tr>
-  <td colspan="6" class="note"><strong>Asserted distribution:</strong> Baden-Württemberg (if the relationship is used for specimens instead of species, the locality can be exact coordinates)</td>
-</tr>
-<tr>
-  <td colspan="6" class="note"><strong>Citation:</strong> Masur &amp; Wartmann 2025</td>
-</tr>
-</tbody>
-</table>
-
-
----
--->
 ## Theory
 
 Our knowledge of weevil biology is limited and will always remain so. Therefore, any attempt to catalogue weevil–host plant interactions should focus on capturing information from published statements or direct observations. Rather than trying to represent biological reality itself, we should record *what was actually observed* (e.g., "a specimen was reared from a seed pod of plant X at location Y, according to source Z") instead of making generalized claims such as "the species develops in seed pods of plant X". Similarly, an experienced entomologist may have stated that a beetle "lives on" a plant, when in fact only adult feeding on that plant was observed. Statements like "lives on" inherently include assumptions about a species behaviour that may not have been directly observed and can lead to biased interpretations.
@@ -81,14 +30,7 @@ For this reason, such statements need to be carefully evaluated and assigned to 
 When converting data into a structured format, some information is inevitably lost. However, the database also serves as an index to the literature and other sources of evidence. Not all details are captured within TaxonWorks, but the original source can always be consulted for a more comprehensive—albeit human-readable—description (e.g., a detailed description of a feeding trace).
 
 When entering data, you should consider the following questions:
-<!--
-- We need to be able to extract the most relevant inormatiofn from the dataset.
-    - Asserted statements from literature (sometimes not directly backed by evidence). Asserted statements from literature can have a lot of detail, or they just link the taxon names of the two species.
-    - Direct observation (either from literature or from field occurrence/collection object)
-        - Observation data: needs different lines of evidence. Was the beetle sitting on the plant or was it feeding?
-- Images of interactions: feeding marks or galls can be distinctive. We would like to have a collection of images that illustrate the relationship
-**What's most important information we want to store?:**
--->
+
 
 - Was the plant merely visited, or was feeding observed? If so, was it adult or larval feeding? Was the observation made in the wild, or was the specimen collected together with plant material and examined later for feeding traces?
 - Was the species reared? This implies that larvae were collected along with their host plant and the full life cycle was observed until the adult beetle emerged. Rearing records provide the strongest evidence for host–plant relationships, as they constitute direct evidence.
@@ -102,59 +44,6 @@ Interactions between larvae and plants are generally more relevant than those in
 
 Nevertheless, observations of adult beetles remain valuable: they can indicate where species are likely to be found and may provide indirect evidence of host–plant relationships that have not yet been formally studied. For example, repeatedly collecting adults from the same plant species can suggest a consistent feeding association.
 
-<!--
-
-### Data structure
-The properties could be interlinked as part of an ontology. This would make some properties redundant for some relationships (e.g. [resource for larval feeding] is a subset of [resource in a trophic relationship]). But it's better to store all properties to make the dataset more self-contained.
-If you deal with a relationship not integrated please don't hesitate to contact us to discuss a solution for your problem.
----
-
-## List of Properties
-
-**Insect life stages:**
-
-- **imago** (insect life stage: adult)
-- **larva** (insect life stage: larva)
-
-**Plant anatomical parts:**
-
-- **roots** (plant anatomical part: referring to the root system in general)
-- **root collar** (plant anatomical part: transitional zone between roots and stem)
-- **storage organ** (general term for bulbs, tubers, rhizomes etc.)
-- **stem** (plant anatomical part: stem)
-- **leaf** (plant anatomical part: leaf)
-- **bud, unspecified** (plant anatomical part: bud, unspecified)
-- **bud, vegetative** (plant anatomical part: bud of vegetative growth, not a flower bud)
-- **bud, flower** (plant anatomical part: flower bud)
-- **flower** (plant anatomical part: flower of a plant/inflorescence)
-- **fruit** (plant anatomical part: fruit)
-- **Plant, part unspecified** (plant anatomical part: unspecified)
-
-**Feeding modes:**
-
-- **exophagous** (feeding while dwelling outside of the trophic resource)
-- **endophagous** (feeding while dwelling inside of the trophic resource)
-
-**Ecology:**
-
-- **consumer in trophic relationship** (e.g. a weevil that is feeding on something)
-- **resource in a trophic relationship** (e.g. a plant that is consumed by a weevil)
-- **consumer in saprophagous trophic relationship**
-- **resource in saprophagous trophic relationship**
-- **resource for larval feeding** (has special importance because larvae are often more specialized than adults)
-- **galler** (consumer in a trophic relationship involving a gall, always to be used together with [consumer in a trophic relationship]. This is referring to the organism found in the gall, not necessarily the one that has formed the gall)
-- **gall host** (resource in a trophic relationship involving a gall, always to be used together with [resource in trophic relationship]. This is referring to the organism that is bearing a gall.)
-- **leaf roller** (consumer in a trophic relationship involving a leaf roll, always to be used together with [consumer in a trophic relationship]. This is referring to the organism found in the leaf roll, not necessarily the one that has formed the leaf roll)
-- **leaf roller host** (resource in a trophic relationship involving a leaf roll, always to be used together with [resource in trophic relationship] and [leaf]. This is referring to the organism that is bearing a leaf roll.)
-- **inquiline** (not necessarily consumer in a trophic relationship)
-- **inquiline host** (not necessarily resource in a trophic relationship)
-
-**Economy:**
-
-- **agricultural pest** (insect that has been reported to be an agricultural pest)
-
----
--->
 
 ## List of Biological Relationships
 
@@ -182,43 +71,6 @@ Used when the complete life cycle of a weevil has been observed, either in the w
 undefined relationship with | undefined relationship with
 None (no information given)
 ```
-
-<!---
-### Second set, focus on biology
-
-```bio-rel
-inquiline of | host for inquiline
-Inquilinism without defining life stages or plant organs. Can also be used to describe a relationship between weevils and ants, or between <em>Hormops</em> and squirrels. See also "larva is inquiline of", which is more suitable for inquilines in galls.
-```
-
-### Third set, focus on larval biology
-
-```bio-rel
-larva feeds on | larval host for
-This is a relationship that can be used for unspecified larval relationships. The relationship should only be used if evidence for larval feeding is presented by the source! Otherwise, use something like "asserted relationship".
-```
-
-```bio-rel
-larva is inquiline of | host for inquiline larva
-This will often try to represent tripartite relationships, usually between two insects and a plant. TaxonWorks does not support that directly. I suggest making two entries, one between the inquiline and its insect host (using this relationship), and one with the plant (using another relationship, such as one of the larval galler relationships).
-```
-
-```bio-rel
-larva in leaf roll on | has leaf roll with larvae of
-This relationship is used for the leaf rolls of Attelabidae.
-```
-
----
-
-## Decision Chart
-
-[View decision chart (Google Drive)](https://drive.google.com/file/d/1wH2D9EwOsoI-XfKKipNpkV4TOxbqBsV-/view?usp=sharing)
-
-An attempt to sort relationships according to "asserted", "asserted or observational" and "observational":
-[View sorting chart (Google Drive)](https://drive.google.com/file/d/1zf3lQmlWib-aO218YkNnpL579aAiPRW8/view?usp=sharing)
-
----
---->
 
 ## How to add information about life stages/ the infested body parts?
 
