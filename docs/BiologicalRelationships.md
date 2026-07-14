@@ -290,7 +290,7 @@ Currently, our TaxonWorks instance is focused on beetles, not plants. As a resul
 If a plant name is missing, you can create it while entering the biological association. To do this, simply enter random letters or numbers until the “Create new OTU” function is triggered, then enter the species name in the format “Genus species”. These names will later be matched with large taxonomy databases (e.g., Catalogue of Life) to incorporate plant taxonomy into our TaxonWorks instance.
 
 <video controls autoplay loop muted width="400" height="421">
-  <source src="../assets/videos/Create_Otu.webm" type="video/webm">
+  <source src="../assets/videos/Create_Otu.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
