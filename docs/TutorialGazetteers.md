@@ -10,14 +10,14 @@ There are many ways to add or edit Gazetteers (from Leaflet, WKT coordinates, si
 Your Gazetteer can be a point, line or polygon and can consist of several shapes (e. g. multiple polygons of islands to summarize the island group).
 Here, we provide videos demonstrating the two most common ways to quickly create a Gazetteer.
 
-# Create a simple Gazetteers
+## Create a simple Gazetteers
 
 <video controls autoplay loop muted>
   <source src="assets/videos/simpleGazetteer.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
-# Create a Gazetteer from your shape file in QGIS as WKT coordinates
+## Create a Gazetteer from your shape file in QGIS as WKT coordinates
 
 <video controls autoplay loop muted>
   <source src="assets/videos/wktGazetteer.webm" type="video/webm">
