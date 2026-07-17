@@ -55,7 +55,7 @@ nav = [
   "TutorialTaxonWorks.md",
   "TutorialAddSpecies.md",
   "TutorialAddSources.md",
-  "TurorailAddGazetteers.md"
+  "TurorailGazetteers.md"
   ]},
   {"Data Standards" = [
   "BiologicalRelationships.md"
