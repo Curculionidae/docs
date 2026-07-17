@@ -1,6 +1,6 @@
 ---
 title: Learn to create new Gazetteers
-icon: material/database-plus
+icon: material/globe
 ---
 # Introduction
 
