@@ -48,13 +48,14 @@ Nevertheless, observations of adult beetles remain valuable: they can indicate w
 ## List of Biological Relationships
 
 ```bio-rel
-collected from | Yielded from
-Used for any life stage of an organism that was simply collected from a plant (e.g., “on milkweed”). It is also applied to collection specimens whose locality labels include a plant name.
+collected from | yielded
+Used for any life stage of an organism that was simply collected from a plant (e.g., “on milkweed”). It is also applied to collection specimens whose locality labels include a plant name.<br>  
+<b>When applicable, use one of the more specific relationships below!</b>
 ```
 
 ```bio-rel
 feeding observed in the wild on | fed upon in the wild by
-Used when feeding by any life stage of an organism has been observed in the wild. This term should also be used if the specimen was subsequently collected, as “feeding in the wild” represents the more informative observation.
+Used when feeding by any life stage of an organism has been observed in the wild.
 ```
 
 ```bio-rel
