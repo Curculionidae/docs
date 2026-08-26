@@ -88,15 +88,11 @@ When you observe a larva feeding on a plant leaf, you are dealing with Anatomica
 
 Although it is obvious that a plant has leaves, stems, flower buds, and roots, these are not preconfigured in TaxonWorks by default. Therefore, whenever you want to use AnatomicalParts for a plant or beetle in a biological association, you must create them first. To make this easier, you can create new terms or reuse/select existing anatomical parts simultaneously while entering the biological association. To stabilize our dictionary and avoid duplicates caused by misspellings, you can use the “In project” tab. This tab shows all terms that have already been used within the project.
 
-<p align="center">
-  <img src="assets/images/select_project_AP.png" alt="select anatomical parts from project">
-</p>
+![select anatomical parts from project](assets/images/select_project_AP.png){ style="display:block;margin:0 auto" }
 
 If you want to use a new term, you can 1. Search for terms provided by the selected ontologies or 2. create a new term if an appropriate one cannot be found:
 
-<p align="center">
-  <img src="assets/images/create_new_AP.png" alt="how to create a new anatomical part">
-</p>
+![how to create a new anatomical part](assets/images/create_new_AP.png){ style="display:block;margin:0 auto" }
 
 ## Microhabitats
 It is preferable to describe a microhabitat with an anatomical part only (see above). In some cases, this is not sufficient: Imagine collecting a Cossonine from the dry stem of a dead Agave plant. Using the anatomicalPart `stem of Agave sp.` would be inaccurate, the most defining feature of this habitat is that the plant is dead. In this case, add a Biological Association with *Agave* sp., and add the **data attribute "Microhabitat"** to describe it. Adding a citation to the data attribute should not be necessary, as it refers to the Biological Association that should have its own citation.
@@ -116,13 +112,9 @@ It is feasible to add published records even if you know they are incorrect. Cit
 Very important: **Add the source for the correction TO THE DATA ATTRIBUTE**, not the Biological Association. If there is no published source, but you as an expert know that a published record is incorrect or doubtful, create a source with you as author, optionally a year, and a title like "Personal Opinion".
 
 
-<p align="center">
-  <img src="assets/images/doubtful_1.png" alt="select radial annotator">
-</p>
+![select radial annotator](assets/images/doubtful_1.png){ style="display:block;margin:0 auto" }
 
-<p align="center">
-  <img src="assets/images/doubful_2.png" alt="select confidences to set doubtful">
-</p>
+![select confidences to set doubtful](assets/images/doubful_2.png){ style="display:block;margin:0 auto" }
 
 
 ## Tags
@@ -144,7 +136,7 @@ Currently, our TaxonWorks instance is focused on beetles, not plants. As a resul
 If a plant name is missing, you can create it while entering the biological association. To do this, simply enter random letters or numbers until the “Create new OTU” function is triggered, then enter the species name in the format “Genus species”. These names will later be matched with large taxonomy databases (e.g., Catalogue of Life) to incorporate plant taxonomy into our TaxonWorks instance.
 
 <video controls autoplay loop muted width="400" height="421">
-  <source src="assets/videos/create_otu.mp4" type="video/mp4">
+  <source src="/docs/assets/videos/create_otu.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

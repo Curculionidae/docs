@@ -16,7 +16,7 @@ icon: lucide/home
   </div>
   <div class="cw-hero__visual">
     <video autoplay loop muted playsinline>
-      <source src="assets/videos/TaxonWorksInterface.webm" type="video/webm">
+      <source src="/docs/assets/videos/TaxonWorksInterface.webm" type="video/webm">
     </video>
   </div>
 </div>

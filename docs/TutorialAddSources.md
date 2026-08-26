@@ -6,7 +6,7 @@ icon: material/database-plus
 # Add a new Source without DOI, text only
 
 <video controls loop muted>
-  <source src="assets/videos/Citationwithoutdoi2.webm" type="video/webm">
+  <source src="/docs/assets/videos/Citationwithoutdoi2.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
@@ -15,6 +15,6 @@ icon: material/database-plus
 # Add a new Source automatically with DOI via CrossRef
 
 <video controls loop muted>
-  <source src="assets/videos/citationwithdoi.webm" type="video/webm">
+  <source src="/docs/assets/videos/citationwithdoi.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>

@@ -13,13 +13,13 @@ Here, we provide videos demonstrating the two most common ways to quickly create
 ## Create a simple Gazetteers
 
 <video controls loop muted>
-  <source src="assets/videos/simpleGazetteer.webm" type="video/webm">
+  <source src="/docs/assets/videos/simpleGazetteer.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
 
 ## Create a Gazetteer from your shape file in QGIS as WKT coordinates
 
 <video controls loop muted>
-  <source src="assets/videos/wktGazetteer.webm" type="video/webm">
+  <source src="/docs/assets/videos/wktGazetteer.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
