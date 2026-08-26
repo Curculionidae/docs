@@ -30,7 +30,21 @@ If you import something like *Populus tremula*, its parent names like genus *Pop
 </video>
 
 ## Why do I need to remove the OTU name?
-![Soft Validation in TaxonWorks](assets/images/TutorialCuratePlants/ChenopodiumWrong.png){ align=right }
+If both the "Name" field and the "Taxon name" field are filled out for an OTU, this will exclude it from the Search Bar results on TaxonPages.  
+![Don't do it like this!](assets/images/TutorialCuratePlants/ChenopodiumWrong.png)
+![Do it like this!](assets/images/TutorialCuratePlants/ChenopodiumRight.png)
+
+
+
+### When do I use an OTU name?
+Sometimes you may need a name for a taxon that is not its scientific name. Think "Chenopodium sp." or "Chenopodium spp." or "Thin-leaved species of Salix", all of which could be useful for biological associations.  
+You can create as many OTU as you like for the same taxon name. Just make sure only one of them has the name field empty.  
+Avoid OTU without taxon name or taxon name without OTU, those do make problems!
+![Do it like this!](assets/images/TutorialCuratePlants/ChenopodiumSP.png)
+![Do it like this!](assets/images/TutorialCuratePlants/OTUNames.png)
+
+
+
 
 
 
