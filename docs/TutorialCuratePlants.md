@@ -37,9 +37,10 @@ If both the "Name" field and the "Taxon name" field are filled out for an OTU, t
 
 
 ### When do I use an OTU name?
-Sometimes you may need a name for a taxon that is not its scientific name. Think "Chenopodium sp." or "Chenopodium spp." or "Thin-leaved species of Salix", all of which could be useful for biological associations.  
-You can create as many OTU as you like for the same taxon name. Just make sure only one of them has the name field empty.  
-Avoid OTU without taxon name or taxon name without OTU, those do make problems!
+Sometimes you may need a name for a taxon that is not its scientific name. Think "Chenopodium sp." or "Chenopodium spp." or "Thin-leaved species of Salix", all of which could be useful for biological associations.
+You can create as many OTU as you like for the same taxon name. Just make sure that exactly one of them has the name field empty. This is your primary OTU, the others are additional OTU for specific purposes.  
+**Avoid OTU without taxon name!**  
+**Don't forget that all taxon names should have an OTU!**  
 ![Do it like this!](assets/images/TutorialCuratePlants/ChenopodiumSP.png)
 ![Do it like this!](assets/images/TutorialCuratePlants/OTUNames.png)
 
