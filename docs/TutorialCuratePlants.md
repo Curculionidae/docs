@@ -4,12 +4,12 @@ description:
 icon: material/database-plus
 ---
 # About
-Our database contains thousands of plants as OTU without a taxon name associated. Thus, they have no taxonomical hierarchy and no TaxonPage.  
-OTUs need to fullfill the following requirements:
+Our database contains thousands of plant taxa as bare OTU, without a taxon name associated. Without a taxon name, those OTU have no taxonomical hierarchy and cannot have their own page on TaxonPages.  
+A healthy entry for a taxon should fullfill the following requirements:
 
-- **Taxon name assigned** (otherwise they will not have TaxonPages and no taxonomical hierarchy that is used to search, filter and summarize data)
-- **OTU assigned**
-- **OTU name needs to be empty** or the search bar at TaxonPages will not find the plant
+- **Taxon name** (OTU without taxon name are invisible on TaxonPages and lack taxonomical hierarchy, that is used to search, filter and summarize data)
+- **At least one OTU per taxon name**
+- **At least one OTU per taxon name without OTU name** or the search bar at TaxonPages will not find the name
 
 ## How to assign a taxon name
 You can do it as usual using the "**New taxon name**" task, but it is probably quicker to use "**Assign taxon name to OTU**". This task can import taxon names from Catalogue of Life, importing them together with their parent taxonomical hierarchy. Very convenient!  
