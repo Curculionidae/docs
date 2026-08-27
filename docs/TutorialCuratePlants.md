@@ -20,7 +20,7 @@ The name will be imported along with names that are part of parent hierarchy.
   <source src="/docs/assets/videos/TutorialCuratePlants/AssignTaxonNameToOTU.webm" type="video/webm">
   Your browser does not support the video tag.
 </video>
-(In the video, I am opening the "Browse OTU" page for Populus tremula by clicking the OTU name with my mouse wheel)
+(In the video, I am opening the "Browse OTU" page for Populus tremula by clicking the OTU name with my mouse wheel)  
 If no data is associated with a plant OTU, I delete it to keep the database clean.
 
 ## Adding OTU to the batch-imported parent taxon names
