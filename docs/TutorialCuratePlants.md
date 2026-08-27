@@ -21,6 +21,7 @@ The name will be imported along with names that are part of parent hierarchy.
   Your browser does not support the video tag.
 </video>
 (In the video, I am opening the "Browse OTU" page for Populus tremula by clicking the OTU name with my mouse wheel)
+If no data is associated with a plant OTU, I delete it to keep the database clean.
 
 ## Adding OTU to the batch-imported parent taxon names
 If you import something like *Populus tremula*, its parent names like genus *Populus* etc will also be imported if not already present. Those will be **Taxon names without OTU**. Damn! Luckily it is only a few clicks to add OTUs to all valid taxon names without an OTU. They will be fine right away, no need to remove an OTU name.
