@@ -43,16 +43,15 @@ In the depiction editor (radial annotator → **Depiction**, or the image task) 
 
 In theory, you can add depictions to many more data objects. Usually, we haven't implemented a way to display those on TaxonPages. 
 
-### ⚠️ No need to attach specimen photos to the Collection Object *and* the OTU
-
-If you attach **only** to the Collection Object, the image still reaches the taxon page — TaxonPages walks *specimen → current identification → OTU*
+!!! info "No need to attach specimen photos to the Collection Object *and* the OTU"
+    - If you attach **only** to the Collection Object, the image still reaches the taxon page: TaxonPages walks *specimen → current identification → OTU*
 
 ---
 
 ## Quick checklist for a specimen photo
 
-- [ ] Attach the depiction to the most specific instance (ideally a collection object or an event)
-- [ ] Depiction: tick "is data depiction" if applicable
+- [ ] Attach the depiction to the most specific object (ideally a collection object or an event)
+- [ ] Depiction: tick "is data depiction" if applicable (see above)
 - [ ] Add an **Attribution** (creator + licence) or at least a source
 - [ ] Add a **Caption** if the image needs explaining. A specimen image usually carries its own explanation via the collection object (e.g. type status is attached to it already, no need to write text)
 - [ ] If it comes from a publication: add a **Citation** to that Source ("Depicted in").

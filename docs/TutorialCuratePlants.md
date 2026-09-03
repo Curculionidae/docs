@@ -46,6 +46,18 @@ You can create as many OTU as you like for the same taxon name. **OTU with ident
 ![Do it like this!](assets/images/TutorialCuratePlants/ChenopodiumSP.png)
 ![Do it like this!](assets/images/TutorialCuratePlants/OTUNames.png)
 
+---
+
+**Work list:** the tool below fetches every OTU in the project that currently has *both* an OTU name and a taxon name that are the same name bar authorship (*Acer platanoides* vs *Acer platanoides* L.) — the ones that need the OTU name cleared. Click **Refresh from TaxonWorks** to load it; each row links straight to its edit page. A fixed OTU drops off on the next refresh. The intentional `sp.` / `spp.` cases are left out.
+
+<iframe src="/docs/assets/datacuration_helpers/otus_name_equals_taxon_name.html"
+        title="OTUs whose name duplicates the taxon name"
+        data-theme-sync
+        loading="lazy"
+        style="width:100%;min-height:640px;border:1px solid var(--md-default-fg-color--lightest);border-radius:.4rem;"></iframe>
+
+Prefer a standalone version, or need it for other checks? The script lives in [Curculionidae/Datacuration_helpers](https://github.com/Curculionidae/Datacuration_helpers).
+
 
 
 

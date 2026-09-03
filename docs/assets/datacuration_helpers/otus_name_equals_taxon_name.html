@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<!-- Curation helper: OTUs whose OTU name duplicates their taxon name (bar
+     authorship). Standalone — open directly, or embed via
+     <iframe data-theme-sync> (see docs/TutorialCuratePlants.md), which makes it
+     follow the host page's light/dark and grow to fit with no inner scroll. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTU name = taxon name</title>
+<style>
+  /* Palette copied once from TaxonPages taxa/config/style/theme.css
+     (--tp-* tokens). Light is the default; `.dark` on <html> is the same
+     opt-in mechanism TaxonPages uses. Not a live import — edit here if the
+     TaxonPages theme changes. */
+  :root {
+    color-scheme: light;
+    --pp-ground:      rgb(245, 247, 251);  /* tp-base-background — page ground */
+    --pp-surface:     rgb(255, 255, 255);  /* tp-base-foreground — card / raised surface */
+    --pp-content:     rgb(0, 0, 0);        /* tp-base-content — body text */
+    --pp-dim:         rgb(55, 65, 81);     /* tp-base-lighter — readable secondary text */
+    --pp-soft:        rgb(156, 163, 175);  /* tp-base-soft — small muted labels */
+    --pp-border:      rgb(203, 213, 225);  /* tp-base-border */
+    --pp-border-soft: rgb(226, 232, 240);  /* tp-base-muted — row rules / fills */
+    --pp-accent:      rgb(3, 105, 161);    /* tp-secondary — links / accent */
+    --pp-error:       rgb(200, 30, 45);
+  }
+  :root.dark {
+    color-scheme: dark;
+    --pp-ground:      rgb(23, 23, 23);
+    --pp-surface:     rgb(38, 38, 38);
+    --pp-content:     rgb(255, 255, 255);
+    --pp-dim:         rgb(220, 220, 220);
+    --pp-soft:        rgb(200, 200, 200);
+    --pp-border:      rgb(64, 64, 64);     /* tp uses 38,38,38 = invisible; bumped for separation */
+    --pp-border-soft: rgb(48, 48, 48);     /* tp-base-muted (dark) */
+    --pp-accent:      rgb(14, 165, 233);   /* tp-secondary (dark) */
+    --pp-error:       rgb(248, 113, 113);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 5.5rem; }
+  body { font: 15px/1.5 system-ui, sans-serif; margin: 0; padding: 1.5rem;
+         background: var(--pp-ground); color: var(--pp-content); }
+  .card { max-width: 1100px; margin: 0 auto; background: var(--pp-surface);
+          border: 1px solid var(--pp-border); border-radius: 8px;
+          padding: 1.25rem 1.5rem 2.5rem; }
+  h1 { font-size: 1.3rem; margin: 0 0 .25rem; }
+  .intro { color: var(--pp-dim); font-size: .9rem; margin: 0 0 1rem; }
+  .bar { position: sticky; top: 0; background: var(--pp-surface); padding: .7rem 0;
+         border-bottom: 1px solid var(--pp-border); display: flex; gap: .7rem 1.2rem;
+         align-items: center; flex-wrap: wrap; z-index: 2; }
+  button { font: inherit; padding: .35rem .8rem; border-radius: 6px;
+           border: 1px solid var(--pp-border); background: var(--pp-surface);
+           color: var(--pp-content); cursor: pointer; }
+  button:hover:not(:disabled) { border-color: var(--pp-accent); }
+  button:disabled { opacity: .5; cursor: default; }
+  #refresh { font-weight: 600; border-color: var(--pp-accent); color: var(--pp-accent); }
+  #theme { margin-left: auto; }
+  progress { width: 200px; height: 14px; accent-color: var(--pp-accent); }
+  #count { font-variant-numeric: tabular-nums; font-weight: 600; }
+  #status { font-size: .85rem; color: var(--pp-dim); margin: .6rem 0 0; min-height: 1.2em; }
+  #status.error { color: var(--pp-error); }
+  .table-wrap { overflow-x: auto; margin-top: .5rem; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: .45rem .6rem;
+           border-bottom: 1px solid var(--pp-border-soft); vertical-align: top; }
+  th { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--pp-soft); }
+  .sci { font-style: italic; }
+  .auth { font-style: normal; color: var(--pp-soft); }
+  .tag { font: .75rem/1 ui-monospace, monospace; color: var(--pp-soft);
+         border: 1px solid var(--pp-border); border-radius: 4px; padding: .1rem .3rem; }
+  a { color: var(--pp-accent); }
+  a.edit { white-space: nowrap; }
+  .empty { color: var(--pp-dim); padding: 2rem .6rem; }
+  footer { margin-top: 2rem; padding-top: 1rem; border-top: 2px solid var(--pp-border);
+           color: var(--pp-soft); font-size: .85rem; display: flex; gap: 1rem;
+           justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+  footer a { white-space: nowrap; }
+</style>
+</head>
+<body>
+<main class="card">
+<h1 id="top">OTUs whose name duplicates the taxon name</h1>
+<p class="intro">
+  Each row is an OTU that has <em>both</em> a Name and a Taxon name that are the
+  same name bar authorship (OTU name <i>Acer platanoides</i>, taxon name
+  <i>Acer platanoides</i> L.). Such OTUs are hidden from the TaxonPages search
+  bar &mdash; open the edit page and clear the OTU <strong>Name</strong> field
+  (keep the taxon name), or delete the OTU if it carries no data. A fixed OTU
+  drops off the list on the next refresh. Not limited to plants.
+</p>
+
+<div class="bar">
+  <button id="refresh" type="button">Refresh from TaxonWorks</button>
+  <progress id="prog" value="0" max="1" hidden></progress>
+  <span id="count">&mdash;</span>
+  <button id="theme" type="button" title="Switch light / dark / auto">Theme: Light</button>
+</div>
+<p id="status"></p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>OTU id</th><th>OTU name</th><th>Taxon name</th><th>Rank</th><th></th></tr>
+</thead>
+<tbody id="rows">
+<tr><td class="empty" colspan="5">No data yet &mdash; click <strong>Refresh from TaxonWorks</strong>.</td></tr>
+</tbody>
+</table>
+</div>
+
+<footer>
+  <span id="foot-summary">not yet refreshed</span>
+  <a href="#top">&uarr; back to top</a>
+</footer>
+</main>
+
+<script>
+"use strict";
+
+/* --- config (public read-only project_token, same one the TaxonPages repo
+       ships in taxa/config/api.yml) --- */
+var API_URL = "https://sfg.taxonworks.org/api/v1";
+var PROJECT_TOKEN = "Ots0-yen4dVefn0Etyxvgw";
+
+var WEB_BASE = API_URL.replace(/\/api\/v\d+\/?$/, "");
+var PER = 500;
+var BATCH = 5;            // pages fetched concurrently
+var LS_SNAPSHOT = "otu-redundant-name-todo:snapshot";
+var LS_THEME    = "otu-redundant-name-todo:theme";
+
+/* --- tiny helpers --- */
+function $(id) { return document.getElementById(id); }
+function lsGet(k, fallback) {
+  try { var v = localStorage.getItem(k); return v == null ? fallback : v; }
+  catch (e) { return fallback; }
+}
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+/* --- theme: light (default) / dark / auto, via a `.dark` class on <html>,
+       the same mechanism TaxonPages uses --- */
+var THEMES = ["light", "dark", "auto"];
+var THEME_LABEL = { light: "Light", dark: "Dark", auto: "Auto" };
+var theme = lsGet(LS_THEME, "light");
+if (THEMES.indexOf(theme) === -1) theme = "light";
+var prefersDark = window.matchMedia
+  ? window.matchMedia("(prefers-color-scheme: dark)") : { matches: false };
+function applyTheme() {
+  var dark = theme === "dark" || (theme === "auto" && prefersDark.matches);
+  document.documentElement.classList.toggle("dark", dark);
+  var btn = $("theme");
+  if (btn) btn.textContent = "Theme: " + THEME_LABEL[theme];
+}
+function cycleTheme() {
+  theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+  lsSet(LS_THEME, theme);
+  applyTheme();
+}
+if (prefersDark.addEventListener) {
+  prefersDark.addEventListener("change", function () {
+    if (theme === "auto") applyTheme();
+  });
+}
+
+/* When embedded in an <iframe> (e.g. the TaxonPages docs tutorial):
+   - the host page owns light/dark: hide the Theme button and follow the host's
+     Material palette (data-md-color-scheme "default" = light, "slate" = dark),
+     pushed in via postMessage by assets/js/iframe-theme-bridge.js (same-origin
+     read as a fallback);
+   - report our content height to the host so the iframe can grow to fit and
+     never scrolls internally.
+   All inert when the file is opened directly. */
+var embedded = false;
+try { embedded = window.parent && window.parent !== window; } catch (e) { embedded = true; }
+var lastSentHeight = 0;
+function measureHeight() {
+  var d = document, b = d.body, e = d.documentElement;
+  return Math.ceil(Math.max(
+    b ? b.scrollHeight : 0, b ? b.offsetHeight : 0,
+    e.scrollHeight, e.offsetHeight, e.getBoundingClientRect().height
+  ));
+}
+function syncHeight() {
+  if (!embedded) return;
+  var h = measureHeight();
+  if (Math.abs(h - lastSentHeight) < 2) return;
+  lastSentHeight = h;
+  try { window.parent.postMessage({ type: "dc-height", px: h }, "*"); } catch (e) {}
+}
+function syncHeightSoon() {
+  if (!embedded) return;
+  requestAnimationFrame(function () { requestAnimationFrame(syncHeight); });
+}
+if (embedded) {
+  var themeBtn = document.getElementById("theme");
+  if (themeBtn) themeBtn.hidden = true;
+  var adoptScheme = function (scheme) {
+    theme = (scheme === "slate" || scheme === "dark") ? "dark" : "light";
+    applyTheme();
+    syncHeightSoon();
+  };
+  window.addEventListener("message", function (e) {
+    if (e.data && e.data.type === "dc-theme") adoptScheme(e.data.scheme);
+  });
+  try {
+    var hostScheme = window.parent.document.body.getAttribute("data-md-color-scheme");
+    if (hostScheme) adoptScheme(hostScheme);
+  } catch (e) {}
+  try { window.parent.postMessage({ type: "dc-theme-request" }, "*"); } catch (e) {}
+  window.addEventListener("resize", syncHeight);
+  window.addEventListener("load", syncHeightSoon);
+  if (window.ResizeObserver) new ResizeObserver(syncHeight).observe(document.documentElement);
+  // safety net: a slow poll in case a layout change slips past the observers
+  setInterval(syncHeight, 1000);
+  syncHeightSoon();
+}
+
+applyTheme();   // paint before first render to avoid a flash
+
+/* --- matching -----------------------------------------------------------------
+   An OTU is flagged when it has BOTH a Name and a taxon name and, after folding
+   case / whitespace / trailing punctuation, the OTU name equals the taxon name's
+   `cached` string (which never carries the author). Also catches OTU names that
+   include the authorship themselves. Intentional "sp." / "spp." OTUs fall out
+   naturally ("chenopodium sp" != "chenopodium"). */
+function normalize(s) {
+  s = (s == null ? "" : String(s)).normalize("NFC");
+  s = s.replace(/\s+/g, " ").trim();
+  s = s.replace(/^[.,;:\s]+/, "").replace(/[.,;:\s]+$/, "");
+  return s.toLowerCase();
+}
+function isRedundant(otu) {
+  var otuName = (otu.name || "").trim();
+  var tn = otu.taxon_name || {};
+  var cached = (tn.cached || "").trim();
+  if (!otuName || !cached) return false;
+
+  var nOtu = normalize(otuName), nCached = normalize(cached);
+  if (nOtu === nCached) return true;
+
+  var authors = [tn.cached_author_year, tn.cached_author, tn.verbatim_author]
+    .filter(function (a) { return !!a; });
+  for (var i = 0; i < authors.length; i++) {
+    var a = authors[i];
+    if (normalize(otuName.split(a).join("")) === nCached) return true;
+    if (nOtu === normalize(cached + " " + a)) return true;
+  }
+  return false;
+}
+function toHit(otu) {
+  var tn = otu.taxon_name || {};
+  return {
+    id: otu.id,
+    otu_name: (otu.name || "").trim(),
+    taxon_name: (tn.cached || "").trim(),
+    author: (tn.cached_author_year || tn.cached_author || "").trim(),
+    rank: tn.rank || ""
+  };
+}
+function collect(otus) {
+  var hits = [];
+  for (var i = 0; i < otus.length; i++) {
+    var o = otus[i];
+    if (o && o.id != null && isRedundant(o)) hits.push(toHit(o));
+  }
+  hits.sort(function (a, b) {
+    var x = a.taxon_name.toLowerCase(), y = b.taxon_name.toLowerCase();
+    return x < y ? -1 : x > y ? 1 : a.id - b.id;
+  });
+  return hits;
+}
+
+/* --- API fetch --- */
+function pageUrl(page) {
+  // with_name=true: only OTUs that have a Name — the ~3k that could possibly
+  // match, vs ~37k total. Cuts the crawl from ~74 pages to ~6.
+  return API_URL + "/otus.json?project_token=" + encodeURIComponent(PROJECT_TOKEN) +
+         "&per=" + PER + "&page=" + page + "&with_name=true&extend[]=taxon_name";
+}
+function fetchPage(page, attempt) {
+  attempt = attempt || 1;
+  return fetch(pageUrl(page), { headers: { "Accept": "application/json" } })
+    .then(function (resp) {
+      if (!resp.ok) throw new Error("HTTP " + resp.status + " on page " + page);
+      return resp.json().then(function (data) {
+        if (!Array.isArray(data)) {
+          throw new Error("unexpected response on page " + page +
+            " (not a JSON array) — " + JSON.stringify(data).slice(0, 200));
+        }
+        return { data: data, headers: resp.headers };
+      });
+    })
+    .catch(function (err) {
+      if (attempt >= 3) throw err;
+      return new Promise(function (res) { setTimeout(res, 500 * attempt); })
+        .then(function () { return fetchPage(page, attempt + 1); });
+    });
+}
+function fetchAllOtus(onProgress, onBatch) {
+  return fetchPage(1).then(function (first) {
+    var totalPages = parseInt(first.headers.get("pagination-total-pages") || "1", 10) || 1;
+    var all = first.data.slice();
+    onProgress(1, totalPages, all.length);
+    onBatch(all);
+
+    var queue = [];
+    for (var p = 2; p <= totalPages; p++) queue.push(p);
+    var doneCount = 1;
+
+    function step(i) {
+      if (i >= queue.length) return Promise.resolve(all);
+      var slice = queue.slice(i, i + BATCH);
+      return Promise.all(slice.map(function (pg) { return fetchPage(pg); }))
+        .then(function (results) {
+          results.forEach(function (r) { all = all.concat(r.data); doneCount++; });
+          onProgress(doneCount, totalPages, all.length);
+          onBatch(all);
+          return step(i + BATCH);
+        });
+    }
+    return step(0);
+  });
+}
+
+/* --- rendering --- */
+var rawOtus = null;   // kept in memory after a refresh
+var currentHits = [];
+var lastRenderKey = null;
+var fetching = false;
+
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+  });
+}
+function updateCount() {
+  $("count").textContent = currentHits.length
+    ? currentHits.length + (currentHits.length === 1 ? " OTU" : " OTUs")
+    : "—";
+}
+function renderHits(hits) {
+  currentHits = hits;
+  updateCount();
+  // during an incremental fetch most batches add no new hit — skip the rebuild
+  var key = hits.map(function (h) { return h.id; }).join(",");
+  if (key === lastRenderKey) { syncHeight(); return; }
+  lastRenderKey = key;
+
+  var tbody = $("rows");
+  if (!hits.length) {
+    tbody.innerHTML = '<tr><td class="empty" colspan="5">' +
+      (fetching ? "Scanning… no matches yet."
+                : "Nothing flagged — every named OTU looks clean.") +
+      "</td></tr>";
+  } else {
+    var html = "";
+    for (var i = 0; i < hits.length; i++) {
+      var h = hits[i];
+      var author = h.author ? ' <span class="auth">' + esc(h.author) + "</span>" : "";
+      html +=
+        "<tr>" +
+          "<td>" + h.id + "</td>" +
+          '<td class="sci">' + esc(h.otu_name) + "</td>" +
+          '<td class="sci">' + esc(h.taxon_name) + author + "</td>" +
+          '<td><span class="tag">' + esc(h.rank || "—") + "</span></td>" +
+          '<td><a class="edit" target="_blank" rel="noopener" href="' +
+            WEB_BASE + "/otus/" + h.id + '/edit">open edit page ↗</a></td>' +
+        "</tr>";
+    }
+    tbody.innerHTML = html;
+  }
+  syncHeight();
+}
+function setFooter(generatedISO) {
+  var when = generatedISO ? new Date(generatedISO).toLocaleString() : "—";
+  $("foot-summary").textContent =
+    currentHits.length + " OTU" + (currentHits.length === 1 ? "" : "s") +
+    " · last refreshed " + when +
+    " · source: " + API_URL;
+}
+
+/* --- snapshot cache (small: only the hit list) --- */
+function saveSnapshot() {
+  var snap = { generated: new Date().toISOString(), hits: currentHits };
+  lsSet(LS_SNAPSHOT, JSON.stringify(snap));
+  return snap;
+}
+function loadSnapshot() {
+  try { return JSON.parse(lsGet(LS_SNAPSHOT, "null")); } catch (e) { return null; }
+}
+
+/* --- actions --- */
+var busy = false;
+function doRefresh() {
+  if (busy) return;
+  busy = true;
+  fetching = true;
+  lastRenderKey = null;
+  $("refresh").disabled = true;
+  $("prog").hidden = false;
+  $("prog").value = 0; $("prog").max = 1;
+  var status = $("status");
+  status.className = "";
+  status.textContent = "Contacting TaxonWorks…";
+  renderHits([]);   // drop any stale snapshot rows; show "Scanning…"
+
+  fetchAllOtus(function (donePages, totalPages, otuCount) {
+    $("prog").max = totalPages;
+    $("prog").value = donePages;
+    status.textContent = "Fetching page " + donePages + " / " + totalPages +
+      "  ·  " + otuCount.toLocaleString() + " named OTUs  ·  " +
+      currentHits.length + " flagged so far";
+  }, function (otusSoFar) {
+    rawOtus = otusSoFar;
+    renderHits(collect(otusSoFar));
+  }).then(function (otus) {
+    rawOtus = otus;
+    renderHits(collect(otus));
+    var snap = saveSnapshot();
+    setFooter(snap.generated);
+    status.textContent = "Done. " + otus.length.toLocaleString() +
+      " named OTUs scanned (OTUs without a Name can't match), " +
+      currentHits.length + " flagged.";
+  }).catch(function (err) {
+    status.className = "error";
+    status.textContent = "Refresh failed: " + err.message +
+      "  (the page must be able to reach " + API_URL + ")";
+  }).then(function () {
+    busy = false;
+    fetching = false;
+    $("refresh").disabled = false;
+    $("prog").hidden = true;
+    lastRenderKey = null;
+    renderHits(currentHits);   // repaint so an empty result shows the final message
+  });
+}
+
+/* --- wire up --- */
+$("refresh").addEventListener("click", doRefresh);
+$("theme").addEventListener("click", cycleTheme);
+
+/* --- initial paint from the last snapshot in this browser, if any --- */
+(function init() {
+  var snap = loadSnapshot();
+  if (snap && Array.isArray(snap.hits)) {
+    renderHits(snap.hits);
+    setFooter(snap.generated);
+    $("status").textContent =
+      "Showing the last refresh from this browser. Click Refresh for live data.";
+  }
+})();
+</script>
+</body>
+</html>

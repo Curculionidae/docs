@@ -56,6 +56,7 @@ nav = [
   "TutorialAddSpecies.md",
   "TutorialAddSources.md",
   "TutorialAddImages.md",
+  "TutorialAddSpecimens.md",
   "TutorialGazetteers.md",
   "BiologicalRelationships.md",
   "TutorialCuratePlants.md"
@@ -78,7 +79,7 @@ extra_css = ["stylesheets/extra.css"]
 # The path provided should be relative to the "docs_dir".
 #
 # Read more: https://zensical.org/docs/customization/#additional-javascript
-extra_javascript = ["assets/js/externalURL.js", "assets/js/bio-rel.js"]
+extra_javascript = ["assets/js/externalURL.js", "assets/js/bio-rel.js", "assets/js/iframe-theme-bridge.js"]
 
 # ----------------------------------------------------------------------------
 # Section for configuring theme options

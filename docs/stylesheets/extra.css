@@ -1,27 +1,122 @@
-/* TaxonPages color theme — sky blue links matching --tp-secondary */
-[data-md-color-scheme="default"] {
-  --md-primary-fg-color:        #0369a1;
-  --md-primary-fg-color--light: #0284c7;
-  --md-primary-fg-color--dark:  #075985;
-  --md-default-bg-color:        #f5f7fb;
-  --md-code-bg-color:           #ffffff;
-  --md-default-fg-color:        #000000;
-  --md-default-fg-color--light: #6b7280;
+/* =============================================================================
+   Docs theme — experimental mirror of the TaxonPages colour philosophy
+   (source: taxa/config/style/theme.css  +  taxa/CLAUDE.md "every colour is a
+   token / dark mode must stay legible / content on a surface, chrome on the
+   ground"). Maps Material for MkDocs' --md-* onto the TaxonPages --tp-* palette.
+   Copied once, not a live import — re-sync if the TaxonPages theme changes.
+   ========================================================================== */
+
+/* --- 1. TaxonPages palette, copied from taxa/config/style/theme.css --------- */
+:root {
+  --tp-primary:          rgb(0, 0, 0);          /* header / footer / nav chrome */
+  --tp-primary-content:  rgb(255, 255, 255);    /* text on chrome */
+  --tp-secondary:        rgb(3, 105, 161);      /* links / accent / CTAs */
+  --tp-secondary-hover:  rgb(2, 132, 199);
+
+  --tp-base-background:  rgb(245, 247, 251);    /* page ground */
+  --tp-base-foreground:  rgb(255, 255, 255);    /* raised surface (content lives here) */
+  --tp-base-content:     rgb(0, 0, 0);          /* body text — full contrast */
+  --tp-base-lighter:     rgb(55, 65, 81);       /* readable secondary text */
+  --tp-base-soft:        rgb(156, 163, 175);    /* muted labels only, never values */
+  --tp-base-muted:       rgb(226, 232, 240);    /* subtle fill (table head, chips) */
+  --tp-base-border:      rgb(203, 213, 225);    /* hairline between surfaces */
+
+  --tp-scrollbar-thumb:  rgb(156, 163, 175);
+  --tp-scrollbar-track:  rgb(229, 231, 235);
+
+  /* doc-only accents with no TaxonPages token — the CLAUDE.md carve-out:
+     define here in :root AND the dark block, consume as var(). */
+  --doc-rel-object:      rgb(125, 184, 125);    /* bio-rel "object" side */
+  --doc-code-tint:       rgb(241, 245, 249);    /* code / recessed cell fill */
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color:        #0da1e4;
-  --md-primary-fg-color--light: #38bdf8;
-  --md-primary-fg-color--dark:  #0284c7;
-  --md-default-bg-color:        #171717;
-  --md-code-bg-color:           #262626;
-  --md-default-fg-color:        #c8c8c8;
-  --md-default-fg-color--light: #909090;
+  --tp-primary:          rgb(23, 23, 23);
+  --tp-primary-content:  rgb(255, 255, 255);
+  --tp-secondary:        rgb(14, 165, 233);
+  --tp-secondary-hover:  rgb(56, 189, 248);
+
+  --tp-base-background:  rgb(23, 23, 23);
+  --tp-base-foreground:  rgb(38, 38, 38);
+  --tp-base-content:     rgb(255, 255, 255);
+  --tp-base-lighter:     rgb(220, 220, 220);
+  --tp-base-soft:        rgb(200, 200, 200);
+  --tp-base-muted:       rgb(48, 48, 48);
+  --tp-base-border:      rgb(64, 64, 64);       /* theme.css uses 38,38,38 = invisible; bumped */
+
+  --tp-scrollbar-thumb:  rgb(90, 90, 90);
+  --tp-scrollbar-track:  rgb(38, 38, 38);
+
+  --doc-rel-object:      rgb(58, 107, 58);
+  --doc-code-tint:       rgb(48, 48, 48);
 }
 
-[data-md-color-scheme="slate"] .cw-hero__title {
-  color: #f8f8fb;
+/* --- 2. Map Material's design tokens onto the palette --------------------- */
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-default-fg-color:           var(--tp-base-content);
+  --md-default-fg-color--light:    var(--tp-base-lighter);
+  --md-default-fg-color--lighter:  var(--tp-base-soft);
+  --md-default-fg-color--lightest: var(--tp-base-border);
+  --md-default-bg-color:           var(--tp-base-foreground);   /* the content surface */
+
+  --md-primary-fg-color:          var(--tp-primary);            /* header / tabs / footer */
+  --md-primary-fg-color--light:   var(--tp-primary);
+  --md-primary-fg-color--dark:    var(--tp-primary);
+  --md-primary-bg-color:          var(--tp-primary-content);
+  --md-primary-bg-color--light:   rgba(255, 255, 255, 0.7);
+  --md-footer-bg-color:           var(--tp-primary);
+  --md-footer-bg-color--dark:     var(--tp-primary);
+
+  --md-accent-fg-color:           var(--tp-secondary-hover);
+  --md-typeset-a-color:           var(--tp-secondary);
+
+  --md-code-bg-color:             var(--doc-code-tint);
+  --md-code-fg-color:             var(--tp-base-content);
 }
+
+/* --- 3. Ground vs. surface -------------------------------------------------
+   Chrome and the nav rails sit on the ground; the article sits on a surface,
+   separated by a hairline. Mirrors "never put content on bg-base-background". */
+.md-container,
+.md-main,
+.md-sidebar {
+  background-color: var(--tp-base-background);
+}
+.md-content {
+  background-color: var(--tp-base-foreground);
+}
+@media screen and (min-width: 76.25em) {
+  /* experimental: give the content column a card edge on wide screens
+     (skipped on the landing page — its hero is full-bleed) */
+  .md-content:not(:has(.cw-landing)) {
+    border: 1px solid var(--tp-base-border);
+    border-radius: 8px;
+    margin-block: 0.8rem;
+  }
+}
+
+/* raised blocks inside the article: separate with a border, not a fill */
+.md-typeset .highlight,
+.md-typeset .admonition,
+.md-typeset details,
+.md-typeset pre,
+.md-typeset table:not([class]) {
+  border: 1px solid var(--tp-base-border);
+}
+.md-typeset table:not([class]) th {
+  background-color: var(--tp-base-muted);
+  color: var(--tp-base-content);
+}
+
+/* links */
+.md-typeset a { color: var(--tp-secondary); }
+.md-typeset a:hover,
+.md-typeset a:focus { color: var(--tp-secondary-hover); }
+
+/* chrome details */
+* { scrollbar-color: var(--tp-scrollbar-thumb) var(--tp-scrollbar-track); }
+::selection { background: var(--tp-secondary); color: var(--tp-primary-content); }
 
 /* ============================================================
    Landing page
@@ -35,7 +130,7 @@
 .cw-hero {
   padding: 2.5rem 2rem 0;
   margin: 0 -1.2rem 2.5rem;
-  background: var(--md-code-bg-color);
+  background: var(--doc-code-tint);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -48,19 +143,19 @@
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--md-default-fg-color);
+  color: var(--tp-base-content);
   margin: 0 0 1rem;
 }
 
 .cw-hero__sub {
   font-size: 0.925rem;
-  color: var(--md-default-fg-color--light);
+  color: var(--tp-base-lighter);
   line-height: 1.7;
   margin: 0 0 1.75rem;
 }
 
 .cw-hero__sub a {
-  color: var(--md-primary-fg-color);
+  color: var(--tp-secondary);
 }
 
 .cw-hero__actions {
@@ -82,25 +177,25 @@
 }
 
 .cw-btn--primary {
-  background: var(--md-primary-fg-color);
-  color: #fff !important;
-  border: 1.5px solid var(--md-primary-fg-color);
+  background: var(--tp-secondary);
+  color: var(--tp-primary-content) !important;
+  border: 1.5px solid var(--tp-secondary);
 }
 
 .cw-btn--primary:hover {
-  background: var(--md-primary-fg-color--dark);
-  border-color: var(--md-primary-fg-color--dark);
+  background: var(--tp-secondary-hover);
+  border-color: var(--tp-secondary-hover);
 }
 
 .cw-btn--outline {
   background: transparent;
-  color: var(--md-primary-fg-color) !important;
-  border: 1.5px solid var(--md-primary-fg-color);
+  color: var(--tp-secondary) !important;
+  border: 1.5px solid var(--tp-secondary);
 }
 
 .cw-btn--outline:hover {
-  background: var(--md-primary-fg-color);
-  color: #fff !important;
+  background: var(--tp-secondary);
+  color: var(--tp-primary-content) !important;
 }
 
 .cw-hero__visual img,
@@ -112,7 +207,7 @@
   box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Feature cards (VuePress-style) --- */
+/* --- Feature cards --- */
 .cw-features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -122,29 +217,29 @@
 .cw-feature {
   display: block;
   padding: 1.5rem 1.5rem 1.25rem;
-  background: var(--md-default-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--tp-base-foreground);
+  border: 1px solid var(--tp-base-border);
   border-radius: 4px;
   text-decoration: none !important;
-  color: var(--md-default-fg-color) !important;
+  color: var(--tp-base-content) !important;
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .cw-feature:hover {
-  border-color: var(--md-primary-fg-color);
+  border-color: var(--tp-secondary);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .cw-feature__title {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--md-primary-fg-color);
+  color: var(--tp-secondary);
   margin-bottom: 0.6rem;
 }
 
 .cw-feature__desc {
   font-size: 0.85rem;
-  color: var(--md-default-fg-color--light);
+  color: var(--tp-base-lighter);
   line-height: 1.6;
   margin: 0;
 }
@@ -160,7 +255,9 @@
   }
 }
 
-/* Biological Relationships tables */
+/* ============================================================
+   Biological Relationships tables
+   ============================================================ */
 
 table.bio-rel {
   width: 100%;
@@ -168,78 +265,48 @@ table.bio-rel {
   margin-bottom: 1.5em;
 }
 
-/* Equal column widths for all header cells */
 table.bio-rel th {
   width: 50%;
 }
 
 /* Subject side (relationship name) */
 table.bio-rel th.subject {
-  background-color: #c8c8c8;
-  color: #1a1a1a;
+  background-color: var(--tp-base-muted);
+  color: var(--tp-base-content);
   text-align: left;
   font-weight: bold;
   padding: 0.5em 0.75em;
-  border: 1px solid #aaaaaa;
+  border: 1px solid var(--tp-base-border);
 }
 
 /* Object side (inverted relationship name) */
 table.bio-rel th.object {
-  background-color: #7db87d;
-  color: #1a1a1a;
+  background-color: var(--doc-rel-object);
+  color: var(--tp-base-content);
   text-align: left;
   font-weight: bold;
   padding: 0.5em 0.75em;
-  border: 1px solid #aaaaaa;
+  border: 1px solid var(--tp-base-border);
 }
 
 /* Property cells */
 table.bio-rel td.props {
-  background-color: #f0f0f0;
-  color: #1a1a1a;
+  background-color: var(--doc-code-tint);
+  color: var(--tp-base-content);
   padding: 0.4em 0.75em;
-  border: 1px solid #aaaaaa;
+  border: 1px solid var(--tp-base-border);
 }
 
 /* Definition rows */
 table.bio-rel td:not(.props):not(.note) {
   padding: 0.5em 0.75em;
-  border: 1px solid #aaaaaa;
+  border: 1px solid var(--tp-base-border);
 }
 
 /* Annotation rows (asserted distribution, citation, etc.) */
 table.bio-rel td.note {
-  background-color: #f5f5f5;
-  color: #1a1a1a;
+  background-color: var(--tp-base-muted);
+  color: var(--tp-base-content);
   padding: 0.4em 0.75em;
-  border: 1px solid #aaaaaa;
-}
-
-/* Dark mode */
-[data-md-color-scheme="slate"] table.bio-rel th.subject {
-  background-color: #4a4a4a;
-  color: #e0e0e0;
-  border-color: #666666;
-}
-
-[data-md-color-scheme="slate"] table.bio-rel th.object {
-  background-color: #3a6b3a;
-  color: #e0e0e0;
-  border-color: #666666;
-}
-
-[data-md-color-scheme="slate"] table.bio-rel td.props {
-  background-color: #2a2a2a;
-  color: #d0d0d0;
-  border-color: #666666;
-}
-
-[data-md-color-scheme="slate"] table.bio-rel td:not(.props):not(.note) {
-  border-color: #666666;
-}
-
-[data-md-color-scheme="slate"] table.bio-rel td.note {
-  background-color: #323232;
-  color: #d0d0d0;
-  border-color: #666666;
+  border: 1px solid var(--tp-base-border);
 }
