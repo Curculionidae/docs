@@ -82,6 +82,5 @@ flowchart TB
 
 ## Tips & Tricks
  - You can have several tabs of TaxonWorks open in the browser at the same time. E.g. if you notice you need a source that is missing, open "New Source" in a new tab, create the source, then proceed in the other tab where you left.
- - Use the pinboard (right side of the screen) when you find youself citing the same few sources over and over.
- - If the scroll bar of your browser is interfering with the pinboard and similar features, edit the settings of your browser to have the scroll bar on the left side of the screen instead.
+ - Use the pinboard when you find youself citing the same few sources over and over.
 

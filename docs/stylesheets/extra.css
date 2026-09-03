@@ -118,6 +118,10 @@
 * { scrollbar-color: var(--tp-scrollbar-thumb) var(--tp-scrollbar-track); }
 ::selection { background: var(--tp-secondary); color: var(--tp-primary-content); }
 
+/* centre mermaid diagrams */
+.md-typeset .mermaid { text-align: center; }
+.md-typeset .mermaid svg { margin-inline: auto; }
+
 /* ============================================================
    Landing page
    ============================================================ */

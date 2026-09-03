@@ -46,7 +46,11 @@
           border: 1px solid var(--pp-border); border-radius: 8px;
           padding: 1.25rem 1.5rem 2.5rem; }
   h1 { font-size: 1.3rem; margin: 0 0 .25rem; }
-  .intro { color: var(--pp-dim); font-size: .9rem; margin: 0 0 1rem; }
+  .intro { color: var(--pp-dim); font-size: .9rem; margin: 0 0 .8rem; }
+  .example { margin: 0 0 1rem; }
+  .example img { display: block; width: 100%; max-width: 470px;
+                 border: 1px solid var(--pp-border); border-radius: 6px; }
+  .example figcaption { color: var(--pp-soft); font-size: .8rem; margin-top: .3rem; }
   .bar { position: sticky; top: 0; background: var(--pp-surface); padding: .7rem 0;
          border-bottom: 1px solid var(--pp-border); display: flex; gap: .7rem 1.2rem;
          align-items: center; flex-wrap: wrap; z-index: 2; }
@@ -84,12 +88,18 @@
 <h1 id="top">OTUs whose name duplicates the taxon name</h1>
 <p class="intro">
   Each row is an OTU that has <em>both</em> a Name and a Taxon name that are the
-  same name bar authorship (OTU name <i>Acer platanoides</i>, taxon name
-  <i>Acer platanoides</i> L.). Such OTUs are hidden from the TaxonPages search
-  bar &mdash; open the edit page and clear the OTU <strong>Name</strong> field
-  (keep the taxon name), or delete the OTU if it carries no data. A fixed OTU
-  drops off the list on the next refresh. Not limited to plants.
+  same name, except for authorship. Such OTUs are hidden from the TaxonPages search
+  bar.<br>
+  The URL will lead directly to the "Edit OTU" task, where you can clear the OTU <strong>Name</strong> field
+  (keep the taxon name), or delete the OTU if it carries no data. A fixed OTU drops off the list on the next refresh.<br>
+  <b>DO NOT DELETE THE TAXON NAME!!!</b><br>
+  <b>DO NOT DELETE THE OTU NAME IF IT DIFFERS FROM THE TAXON NAME (e.g. "*Salix* sp.")!!!</b>
 </p>
+<figure class="example">
+  <img src="../images/TutorialCuratePlants/ChenopodiumRight.png"
+       alt="Editing OTU form: the Name field is empty and the Taxon name is set to Chenopodium L. — a healthy OTU">
+  <figcaption>A healthy OTU: Taxon name set, no OTU name.</figcaption>
+</figure>
 
 <div class="bar">
   <button id="refresh" type="button">Refresh from TaxonWorks</button>

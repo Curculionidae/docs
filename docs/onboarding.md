@@ -16,16 +16,29 @@ If you don't want to work in TaxonWorks yourself, you can also just provide data
 [TaxonWorks](https://taxonworks.org/) is the software that we use to curate data. It lives on a server and is accessed through your internet browser.  
 For our project, the instance of TaxonWorks is hosted at [https://sfg.taxonworks.org/](https://sfg.taxonworks.org/)
 
-[TaxonPages](https://github.com/SpeciesFileGroup/taxonpages) is a tool that draws data from TaxonWorks' API. It is facilitating easy access to the data for the public. It's designed to be simple and intuitive, but it doesn't provide the advanced features that TaxonWorks has to access and filter data.  
+[TaxonPages](https://github.com/SpeciesFileGroup/taxonpages) is a website that draws data from TaxonWorks' API. It makes data easy to access.  
 You don't need to care about TaxonPages at all: As you curate data in TaxonWorks, TaxonPages will display everything you add automatically.  
 For our project, the instance of TaxonPages is hosted at [https://catalog.curculionoidea.org](https://catalog.curculionoidea.org).
 
 ```mermaid
-flowchart LR
-    TW[**TaxonWorks**<br/>Database on a server,<br> access requires account and some training]
-    TP[**TaxonPages**<br/>Static website,<br> access is easy]
-    TW -->|providing data via an API| TP
+flowchart TD
+    U["`**The weevil project community**`"]
+    TW[("`**TaxonWorks**
+    Web application with tools to curate biodiversity data`")]
+    API{{"`**Open REST API**
+    Other software can access data from TaxonWorks via the API`"}}
+    TP["`**TaxonPages**
+    catalog.curculionoidea.org`"]
+    ANY["`**Get creative:**
+    You can use the API for your own workflows and projects`"]
+
+    U ==>|enter/curate data| TW
+    TW ==>|served openly| API
+    API ==> TP
+    API --> ANY
 ```
+Through the API, you can use data from TaxonWorks for your own projects and workflows. For example, you could make a script for your collection database that notifies you when the valid name for a species in your collection changes.
+
 
 ### Who is Who
 #### Contact to the weevil project members
