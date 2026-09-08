@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<!-- Curation helper: OTUs that carry biological associations but have no taxon
+     name, sorted by how many associations they carry. Standalone — open
+     directly, or embed via <iframe data-theme-sync> (see
+     docs/TutorialCuratePlants.md), which makes it follow the host page's
+     light/dark and grow to fit with no inner scroll. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bare OTUs with biological associations</title>
+<style>
+  /* Palette copied once from TaxonPages taxa/config/style/theme.css
+     (--tp-* tokens). Light is the default; `.dark` on <html> is the same
+     opt-in mechanism TaxonPages uses. Not a live import — edit here if the
+     TaxonPages theme changes. */
+  :root {
+    color-scheme: light;
+    --pp-ground:      rgb(245, 247, 251);  /* tp-base-background — page ground */
+    --pp-surface:     rgb(255, 255, 255);  /* tp-base-foreground — card / raised surface */
+    --pp-content:     rgb(0, 0, 0);        /* tp-base-content — body text */
+    --pp-dim:         rgb(55, 65, 81);     /* tp-base-lighter — readable secondary text */
+    --pp-soft:        rgb(156, 163, 175);  /* tp-base-soft — small muted labels */
+    --pp-border:      rgb(203, 213, 225);  /* tp-base-border */
+    --pp-border-soft: rgb(226, 232, 240);  /* tp-base-muted — row rules / fills */
+    --pp-accent:      rgb(3, 105, 161);    /* tp-secondary — links / accent */
+    --pp-error:       rgb(200, 30, 45);
+  }
+  :root.dark {
+    color-scheme: dark;
+    --pp-ground:      rgb(23, 23, 23);
+    --pp-surface:     rgb(38, 38, 38);
+    --pp-content:     rgb(255, 255, 255);
+    --pp-dim:         rgb(220, 220, 220);
+    --pp-soft:        rgb(200, 200, 200);
+    --pp-border:      rgb(64, 64, 64);     /* tp uses 38,38,38 = invisible; bumped for separation */
+    --pp-border-soft: rgb(48, 48, 48);     /* tp-base-muted (dark) */
+    --pp-accent:      rgb(14, 165, 233);   /* tp-secondary (dark) */
+    --pp-error:       rgb(248, 113, 113);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 5.5rem; }
+  body { font: 15px/1.5 system-ui, sans-serif; margin: 0; padding: 1.5rem;
+         background: var(--pp-ground); color: var(--pp-content); }
+  .card { max-width: 1100px; margin: 0 auto; background: var(--pp-surface);
+          border: 1px solid var(--pp-border); border-radius: 8px;
+          padding: 1.25rem 1.5rem 2.5rem; }
+  h1 { font-size: 1.3rem; margin: 0 0 .25rem; }
+  .intro { color: var(--pp-dim); font-size: .9rem; margin: 0 0 .8rem; }
+  .example { margin: 0 0 1rem; }
+  .example img { display: block; width: 100%; max-width: 470px;
+                 border: 1px solid var(--pp-border); border-radius: 6px; }
+  .example figcaption { color: var(--pp-soft); font-size: .8rem; margin-top: .3rem; }
+  .bar { position: sticky; top: 0; background: var(--pp-surface); padding: .7rem 0;
+         border-bottom: 1px solid var(--pp-border); display: flex; gap: .7rem 1.2rem;
+         align-items: center; flex-wrap: wrap; z-index: 2; }
+  button { font: inherit; padding: .35rem .8rem; border-radius: 6px;
+           border: 1px solid var(--pp-border); background: var(--pp-surface);
+           color: var(--pp-content); cursor: pointer; }
+  button:hover:not(:disabled) { border-color: var(--pp-accent); }
+  button:disabled { opacity: .5; cursor: default; }
+  #refresh { font-weight: 600; border-color: var(--pp-accent); color: var(--pp-accent); }
+  #theme { margin-left: auto; }
+  progress { width: 200px; height: 14px; accent-color: var(--pp-accent); }
+  #count { font-variant-numeric: tabular-nums; font-weight: 600; }
+  #status { font-size: .85rem; color: var(--pp-dim); margin: .6rem 0 0; min-height: 1.2em; }
+  #status.error { color: var(--pp-error); }
+  .table-wrap { overflow-x: auto; margin-top: .5rem; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: .45rem .6rem;
+           border-bottom: 1px solid var(--pp-border-soft); vertical-align: top; }
+  th { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--pp-soft); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  th.num { text-align: right; }
+  .sci { font-style: italic; }
+  .tag { font: .75rem/1 ui-monospace, monospace; color: var(--pp-soft);
+         border: 1px solid var(--pp-border); border-radius: 4px; padding: .1rem .3rem; }
+  a { color: var(--pp-accent); }
+  a.edit { white-space: nowrap; }
+  .empty { color: var(--pp-dim); padding: 2rem .6rem; }
+  footer { margin-top: 2rem; padding-top: 1rem; border-top: 2px solid var(--pp-border);
+           color: var(--pp-soft); font-size: .85rem; display: flex; gap: 1rem;
+           justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+  footer a { white-space: nowrap; }
+</style>
+</head>
+<body>
+<main class="card">
+<h1 id="top">Bare OTUs with biological associations</h1>
+<p class="intro">
+  Each row is an OTU that carries one or more <em>biological associations</em> but
+  has <strong>no taxon name</strong>.
+  The link opens the <strong>Edit OTU</strong> task and <strong>copies the OTU name to your
+  clipboard</strong>, ready to paste into the taxon-name search. A fixed OTU drops off the list
+  on the next refresh.<br>
+  <b>"<i>Rosa</i> sp." / "<i>Quercus</i> spp." style OTUs should keep the OTU name but the taxon name should get another OTU without OTU name!</b>
+</p>
+
+<div class="bar">
+  <button id="refresh" type="button">Refresh from TaxonWorks</button>
+  <progress id="prog" value="0" max="1" hidden></progress>
+  <span id="count">&mdash;</span>
+  <button id="theme" type="button" title="Switch light / dark / auto">Theme: Light</button>
+</div>
+<p id="status"></p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th class="num"># assoc.</th><th>OTU id</th><th>OTU name</th><th></th></tr>
+</thead>
+<tbody id="rows">
+<tr><td class="empty" colspan="4">No data yet &mdash; click <strong>Refresh from TaxonWorks</strong>.</td></tr>
+</tbody>
+</table>
+</div>
+
+<footer>
+  <span id="foot-summary">not yet refreshed</span>
+  <a href="#top">&uarr; back to top</a>
+</footer>
+</main>
+
+<script>
+"use strict";
+
+/* --- config (public read-only project_token, same one the TaxonPages repo
+       ships in taxa/config/api.yml) --- */
+var API_URL = "https://sfg.taxonworks.org/api/v1";
+var PROJECT_TOKEN = "Ots0-yen4dVefn0Etyxvgw";
+
+var WEB_BASE = API_URL.replace(/\/api\/v\d+\/?$/, "");
+var PER = 500;
+var BATCH = 5;            // pages fetched concurrently
+var OTU_CHUNK = 200;      // otu ids per /otus lookup request
+var LS_SNAPSHOT = "otu-bio-assoc-no-taxon-todo:snapshot";
+var LS_THEME    = "otu-bio-assoc-no-taxon-todo:theme";
+
+/* --- tiny helpers --- */
+function $(id) { return document.getElementById(id); }
+function lsGet(k, fallback) {
+  try { var v = localStorage.getItem(k); return v == null ? fallback : v; }
+  catch (e) { return fallback; }
+}
+function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+/* --- theme: light (default) / dark / auto, via a `.dark` class on <html>,
+       the same mechanism TaxonPages uses --- */
+var THEMES = ["light", "dark", "auto"];
+var THEME_LABEL = { light: "Light", dark: "Dark", auto: "Auto" };
+var theme = lsGet(LS_THEME, "light");
+if (THEMES.indexOf(theme) === -1) theme = "light";
+var prefersDark = window.matchMedia
+  ? window.matchMedia("(prefers-color-scheme: dark)") : { matches: false };
+function applyTheme() {
+  var dark = theme === "dark" || (theme === "auto" && prefersDark.matches);
+  document.documentElement.classList.toggle("dark", dark);
+  var btn = $("theme");
+  if (btn) btn.textContent = "Theme: " + THEME_LABEL[theme];
+}
+function cycleTheme() {
+  theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+  lsSet(LS_THEME, theme);
+  applyTheme();
+}
+if (prefersDark.addEventListener) {
+  prefersDark.addEventListener("change", function () {
+    if (theme === "auto") applyTheme();
+  });
+}
+
+/* When embedded in an <iframe> (e.g. the TaxonPages docs tutorial):
+   - the host page owns light/dark: hide the Theme button and follow the host's
+     Material palette (data-md-color-scheme "default" = light, "slate" = dark),
+     pushed in via postMessage by assets/js/iframe-theme-bridge.js (same-origin
+     read as a fallback);
+   - report our content height to the host so the iframe can grow to fit and
+     never scrolls internally.
+   All inert when the file is opened directly. */
+var embedded = false;
+try { embedded = window.parent && window.parent !== window; } catch (e) { embedded = true; }
+var lastSentHeight = 0;
+function measureHeight() {
+  var d = document, b = d.body, e = d.documentElement;
+  return Math.ceil(Math.max(
+    b ? b.scrollHeight : 0, b ? b.offsetHeight : 0,
+    e.scrollHeight, e.offsetHeight, e.getBoundingClientRect().height
+  ));
+}
+function syncHeight() {
+  if (!embedded) return;
+  var h = measureHeight();
+  if (Math.abs(h - lastSentHeight) < 2) return;
+  lastSentHeight = h;
+  try { window.parent.postMessage({ type: "dc-height", px: h }, "*"); } catch (e) {}
+}
+function syncHeightSoon() {
+  if (!embedded) return;
+  requestAnimationFrame(function () { requestAnimationFrame(syncHeight); });
+}
+if (embedded) {
+  var themeBtn = document.getElementById("theme");
+  if (themeBtn) themeBtn.hidden = true;
+  var adoptScheme = function (scheme) {
+    theme = (scheme === "slate" || scheme === "dark") ? "dark" : "light";
+    applyTheme();
+    syncHeightSoon();
+  };
+  window.addEventListener("message", function (e) {
+    if (e.data && e.data.type === "dc-theme") adoptScheme(e.data.scheme);
+  });
+  try {
+    var hostScheme = window.parent.document.body.getAttribute("data-md-color-scheme");
+    if (hostScheme) adoptScheme(hostScheme);
+  } catch (e) {}
+  try { window.parent.postMessage({ type: "dc-theme-request" }, "*"); } catch (e) {}
+  window.addEventListener("resize", syncHeight);
+  window.addEventListener("load", syncHeightSoon);
+  if (window.ResizeObserver) new ResizeObserver(syncHeight).observe(document.documentElement);
+  // safety net: a slow poll in case a layout change slips past the observers
+  setInterval(syncHeight, 1000);
+  syncHeightSoon();
+}
+
+applyTheme();   // paint before first render to avoid a flash
+
+/* --- API fetch --------------------------------------------------------------
+   /biological_associations/basic is backed by the pre-computed
+   biological_association_indices table: every row already carries
+   subject_otu_id / object_otu_id, resolved even when the endpoint is a
+   CollectionObject, FieldOccurrence or AnatomicalPart determined as that OTU.
+   So one cheap crawl gives us every OTU that participates in an association,
+   with no per-endpoint lookups. */
+function baPageUrl(page) {
+  return API_URL + "/biological_associations/basic.json?project_token=" +
+         encodeURIComponent(PROJECT_TOKEN) + "&per=" + PER + "&page=" + page;
+}
+function fetchJson(url, attempt) {
+  attempt = attempt || 1;
+  return fetch(url, { headers: { "Accept": "application/json" } })
+    .then(function (resp) {
+      if (!resp.ok) throw new Error("HTTP " + resp.status + " on " + url);
+      return resp.json().then(function (data) { return { data: data, headers: resp.headers }; });
+    })
+    .catch(function (err) {
+      if (attempt >= 3) throw err;
+      return new Promise(function (res) { setTimeout(res, 500 * attempt); })
+        .then(function () { return fetchJson(url, attempt + 1); });
+    });
+}
+function fetchAllAssociations(onProgress, onBatch) {
+  return fetchJson(baPageUrl(1)).then(function (first) {
+    if (!Array.isArray(first.data)) {
+      throw new Error("unexpected response (not a JSON array) — " +
+        JSON.stringify(first.data).slice(0, 200));
+    }
+    var totalPages = parseInt(first.headers.get("pagination-total-pages") || "1", 10) || 1;
+    var all = first.data.slice();
+    onProgress(1, totalPages, all.length);
+    onBatch(all);
+
+    var queue = [];
+    for (var p = 2; p <= totalPages; p++) queue.push(p);
+    var doneCount = 1;
+
+    function step(i) {
+      if (i >= queue.length) return Promise.resolve(all);
+      var slice = queue.slice(i, i + BATCH);
+      return Promise.all(slice.map(function (pg) { return fetchJson(baPageUrl(pg)); }))
+        .then(function (results) {
+          results.forEach(function (r) {
+            if (Array.isArray(r.data)) all = all.concat(r.data);
+            doneCount++;
+          });
+          onProgress(doneCount, totalPages, all.length);
+          onBatch(all);
+          return step(i + BATCH);
+        });
+    }
+    return step(0);
+  });
+}
+
+/* Look up taxon_name_id + name for a set of OTU ids, in chunks. */
+function otuChunkUrl(ids) {
+  var q = ids.map(function (i) { return "otu_id[]=" + i; }).join("&");
+  return API_URL + "/otus.json?project_token=" + encodeURIComponent(PROJECT_TOKEN) +
+         "&per=" + (OTU_CHUNK + 50) + "&" + q + "&extend[]=taxon_name";
+}
+function fetchOtus(ids, onProgress) {
+  var chunks = [];
+  for (var i = 0; i < ids.length; i += OTU_CHUNK) chunks.push(ids.slice(i, i + OTU_CHUNK));
+  var byId = {};
+  var done = 0;
+  function step(i) {
+    if (i >= chunks.length) return Promise.resolve(byId);
+    var slice = chunks.slice(i, i + BATCH);
+    return Promise.all(slice.map(function (c) { return fetchJson(otuChunkUrl(c)); }))
+      .then(function (results) {
+        results.forEach(function (r) {
+          if (Array.isArray(r.data)) {
+            r.data.forEach(function (o) { if (o && o.id != null) byId[o.id] = o; });
+          }
+          done++;
+        });
+        onProgress(done, chunks.length);
+        return step(i + BATCH);
+      });
+  }
+  return step(0);
+}
+
+/* --- aggregation ----------------------------------------------------------- */
+function cleanLabel(s) {
+  // basic's .label carries the display string; for a bare OTU it is just the
+  // OTU name, but strip a trailing author/year if one slipped in.
+  s = (s == null ? "" : String(s)).replace(/\s+/g, " ").trim();
+  return s;
+}
+/* Walk the basic rows → { otuId: { count, label } } for every participating OTU. */
+function tallyAssociations(rows) {
+  var tally = {};
+  for (var i = 0; i < rows.length; i++) {
+    var b = rows[i];
+    if (!b) continue;
+    var pairs = [
+      { id: b.subject_otu_id, label: b.subject && b.subject.label },
+      { id: b.object_otu_id,  label: b.object  && b.object.label }
+    ];
+    var seen = {};
+    for (var j = 0; j < pairs.length; j++) {
+      var id = pairs[j].id;
+      if (id == null || seen[id]) continue;   // count a row once per OTU
+      seen[id] = true;
+      if (!tally[id]) tally[id] = { count: 0, label: cleanLabel(pairs[j].label) };
+      tally[id].count++;
+      if (!tally[id].label) tally[id].label = cleanLabel(pairs[j].label);
+    }
+  }
+  return tally;
+}
+
+/* --- rendering --- */
+var currentHits = [];
+var lastRenderKey = null;
+var fetching = false;
+
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+  });
+}
+function updateCount() {
+  $("count").textContent = currentHits.length
+    ? currentHits.length + (currentHits.length === 1 ? " OTU" : " OTUs")
+    : "—";
+}
+function renderHits(hits) {
+  currentHits = hits;
+  updateCount();
+  var key = hits.map(function (h) { return h.id + ":" + h.count; }).join(",");
+  if (key === lastRenderKey) { syncHeight(); return; }
+  lastRenderKey = key;
+
+  var tbody = $("rows");
+  if (!hits.length) {
+    tbody.innerHTML = '<tr><td class="empty" colspan="4">' +
+      (fetching ? "Scanning… no matches yet."
+                : "Nothing flagged — every OTU with a biological association has a taxon name.") +
+      "</td></tr>";
+  } else {
+    var html = "";
+    for (var i = 0; i < hits.length; i++) {
+      var h = hits[i];
+      html +=
+        "<tr>" +
+          '<td class="num">' + h.count + "</td>" +
+          "<td>" + h.id + "</td>" +
+          '<td class="sci">' + esc(h.name || "—") + "</td>" +
+          '<td><a class="edit" target="_blank" rel="noopener" data-name="' +
+            esc(h.name || "") + '" href="' +
+            WEB_BASE + "/otus/" + h.id + '/edit">open edit page ↗</a></td>' +
+        "</tr>";
+    }
+    tbody.innerHTML = html;
+  }
+  syncHeight();
+}
+function setFooter(generatedISO) {
+  var when = generatedISO ? new Date(generatedISO).toLocaleString() : "—";
+  $("foot-summary").textContent =
+    currentHits.length + " OTU" + (currentHits.length === 1 ? "" : "s") +
+    " · last refreshed " + when +
+    " · source: " + API_URL;
+}
+
+/* --- snapshot cache (small: only the hit list) --- */
+function saveSnapshot() {
+  var snap = { generated: new Date().toISOString(), hits: currentHits };
+  lsSet(LS_SNAPSHOT, JSON.stringify(snap));
+  return snap;
+}
+function loadSnapshot() {
+  try { return JSON.parse(lsGet(LS_SNAPSHOT, "null")); } catch (e) { return null; }
+}
+
+/* --- actions --- */
+var busy = false;
+function doRefresh() {
+  if (busy) return;
+  busy = true;
+  fetching = true;
+  lastRenderKey = null;
+  $("refresh").disabled = true;
+  $("prog").hidden = false;
+  $("prog").value = 0; $("prog").max = 1;
+  var status = $("status");
+  status.className = "";
+  status.textContent = "Contacting TaxonWorks…";
+  renderHits([]);   // drop any stale snapshot rows; show "Scanning…"
+
+  var latestTally = {};
+
+  fetchAllAssociations(function (donePages, totalPages, rowCount) {
+    $("prog").max = totalPages;
+    $("prog").value = donePages;
+    status.textContent = "Fetching associations, page " + donePages + " / " + totalPages +
+      "  ·  " + rowCount.toLocaleString() + " rows";
+  }, function (rowsSoFar) {
+    latestTally = tallyAssociations(rowsSoFar);
+  }).then(function (rows) {
+    latestTally = tallyAssociations(rows);
+    var ids = Object.keys(latestTally).map(Number);
+    status.textContent = "Resolving " + ids.length.toLocaleString() +
+      " OTUs (dropping those that already have a taxon name)…";
+    $("prog").value = 0; $("prog").max = 1;
+    return fetchOtus(ids, function (doneChunks, totalChunks) {
+      $("prog").max = totalChunks;
+      $("prog").value = doneChunks;
+      status.textContent = "Resolving OTUs, batch " + doneChunks + " / " + totalChunks;
+    }).then(function (otuById) {
+      var hits = [];
+      Object.keys(latestTally).forEach(function (idStr) {
+        var id = Number(idStr);
+        var otu = otuById[id];
+        if (!otu) return;                       // not returned by the lookup
+        if (otu.taxon_name_id != null) return;  // has a taxon name — not our concern
+        hits.push({
+          id: id,
+          count: latestTally[id].count,
+          name: (otu.name || latestTally[id].label || "").trim()
+        });
+      });
+      hits.sort(function (a, b) {
+        if (b.count !== a.count) return b.count - a.count;
+        var x = (a.name || "").toLowerCase(), y = (b.name || "").toLowerCase();
+        return x < y ? -1 : x > y ? 1 : a.id - b.id;
+      });
+      renderHits(hits);
+      var snap = saveSnapshot();
+      setFooter(snap.generated);
+      status.textContent = "Done. " + rows.length.toLocaleString() +
+        " associations scanned · " + ids.length.toLocaleString() +
+        " OTUs involved · " + hits.length.toLocaleString() + " without a taxon name.";
+    });
+  }).catch(function (err) {
+    status.className = "error";
+    status.textContent = "Refresh failed: " + err.message +
+      "  (the page must be able to reach " + API_URL + ")";
+  }).then(function () {
+    busy = false;
+    fetching = false;
+    $("refresh").disabled = false;
+    $("prog").hidden = true;
+    lastRenderKey = null;
+    renderHits(currentHits);   // repaint so an empty result shows the final message
+  });
+}
+
+/* --- wire up --- */
+$("refresh").addEventListener("click", doRefresh);
+$("theme").addEventListener("click", cycleTheme);
+
+/* Clicking an edit link also drops the OTU name on the clipboard, ready to
+   paste into the "Assign taxon name to OTU" search. Best-effort: the link
+   still opens either way. */
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+  }
+  return legacyCopy(text);
+}
+function legacyCopy(text) {
+  try {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "absolute";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    return Promise.resolve();
+  } catch (e) { return Promise.reject(e); }
+}
+$("rows").addEventListener("click", function (e) {
+  var a = e.target.closest ? e.target.closest("a.edit") : null;
+  if (!a) return;
+  var name = a.getAttribute("data-name") || "";
+  if (!name) return;
+  copyText(name).then(function () {
+    var original = a.textContent;
+    a.textContent = "name copied ✓";
+    setTimeout(function () { a.textContent = original; }, 1200);
+  }).catch(function () {});
+});
+
+/* --- initial paint from the last snapshot in this browser, if any --- */
+(function init() {
+  var snap = loadSnapshot();
+  if (snap && Array.isArray(snap.hits)) {
+    renderHits(snap.hits);
+    setFooter(snap.generated);
+    $("status").textContent =
+      "Showing the last refresh from this browser. Click Refresh for live data.";
+  }
+})();
+</script>
+</body>
+</html>

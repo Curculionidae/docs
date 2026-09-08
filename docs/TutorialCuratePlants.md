@@ -47,9 +47,19 @@ You can create as many OTU as you like for the same taxon name. **OTU with ident
 ![Do it like this!](assets/images/TutorialCuratePlants/OTUNames.png)
 
 ---
-## Data curation helper
-The tool below fetches every OTU in the project that currently has *both* an OTU name and a taxon name that are the same name bar authorship. Click **Refresh from TaxonWorks** to load it; each row links straight to "Edit OTU" where you can remove the OTU name!  
-A fixed OTU drops off on the next refresh. The intentional `sp.` / `spp.` cases are left out.
+## Data curation helper: OTUs with biological associations but no taxon name
+
+<iframe src="/docs/assets/datacuration_helpers/otus_bio_assoc_no_taxon_name.html"
+        title="OTUs with biological associations but no taxon name"
+        data-theme-sync
+        loading="lazy"
+        allow="clipboard-write"
+        style="width:100%;min-height:640px;border:1px solid var(--md-default-fg-color--lightest);border-radius:.4rem;"></iframe>
+
+Prefer a standalone version? [Open the tool ↗](assets/datacuration_helpers/otus_bio_assoc_no_taxon_name.html){target="_blank" rel="noopener"}
+
+---
+## Data curation helper: OTUs with OTU name AND taxon name
 
 <iframe src="/docs/assets/datacuration_helpers/otus_name_equals_taxon_name.html"
         title="OTUs whose name duplicates the taxon name"

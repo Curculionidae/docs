@@ -1,0 +1,7 @@
+---
+# TaxonWorks API endpoint used by assets/js/tw-chips.js (the {keyword:…} /
+# {topic:…} / {predicate:…} chips). Edit here if the server or the public
+# read-only project token ever changes — no need to touch the JavaScript.
+# Same values as the TaxonPages front-end's taxa/config/api.yml.
+url: https://sfg.taxonworks.org/api/v1
+project_token: Ots0-yen4dVefn0Etyxvgw
