@@ -42,6 +42,15 @@ Git clone the repository to your computer. To run the site locally, you need to 
 
 When you're done with your edits, git add them, git commit and git push.
 
+# Tags, Keywords and Data Attributes
+Can be displayed as:  
+
+{keyword:Name}      →  tag / keyword  
+{topic:Name}        →  topic  
+{predicate:Name}    →  data-attribute predicate  
+
+They will be rendered with the color that is currently used for them in TaxonWorks. It's a shorthand notation that is automatically expanded to HTML at build time, color is live-read from Taxonworks whenever the page is visited.
+
 # bio-rel table syntax
 
 Biological relationship tables use a shorthand notation that is automatically expanded to HTML at build time (via `docs/hooks.py`).
