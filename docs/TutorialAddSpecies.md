@@ -33,7 +33,7 @@ Once the OTU has been added, all subsequent changes will be live-updated on [Tax
 
 ## Authorship
 Start by adding the source for the original description. You can search for the source using parts of the author names, the year, but also parts of the title. If you can't find the source, [add it using the "New Source" task](https://docs.taxonworks.org/guide/Manual/Sources/#adding-a-source). After adding the source, add the page number(s).
-When entering species names from a list, it's good practice to check the source to verify the original spelling of the name as well as the page number. If the source is lacking a DOI or Biodiversity Heritage Library (BHL) link, you should add it. To edit the source, you can quickly open it in the "New Source" task from the **radial navigator (the circle with the pointer, see video)**. Open the link in a new tab for convenience.  
+When entering species names from a list, it's good practice to check the source to verify the original spelling of the name as well as the page number. If the source is lacking a DOI or Biodiversity Heritage Library (BHL) link, you should add it. To edit the source, you can quickly open it in the "New Source" task from the **radial navigator (the circle with the pointer {radial-navigator})**. Open the link in a new tab for convenience.  
 The author of the source is not necessarily the author of the species name: In most cases, you can go to the "Person" tab and clone the author from the source. If the author is a different person, enter the name.
 
 <video controls autoplay loop muted>
@@ -45,7 +45,7 @@ Theoretically you could add author and year of the species name as text in the "
 ## Status and Relationships
 Don't mess around here if you're not familiar with the International Code of Zoological Nomenclature!  
 The **"Status" block** is for the nomenclatural status of the name (e.g. unavailable). Usually I choose the right category directly from "Show all", to be as specific as possible.  
-It's very important to cite a source for the Status you just created. To do this, click the **radial annotator (the circle with many facets, see video below)**. If you know the source was the first one that revealed the status/synonymy, tick the box for "**Is original**"
+It's very important to cite a source for the Status you just created. To do this, click the **radial annotator (the circle with many facets, {radial-annotator})**. If you know the source was the first one that revealed the status/synonymy, tick the box for "**Is original**"
 <video controls autoplay loop muted>
   <source src="/docs/assets/videos/Status_Relationship.webm" type="video/webm">
   Your browser does not support the video tag.

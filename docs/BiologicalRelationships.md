@@ -108,7 +108,7 @@ For personal observations without a publication, leave this field blank. Your na
 Many host–plant relationships vary across broad geographic ranges. Therefore, it can be useful to record the location of an observation. Since the search function is not a global tool that includes all possible geographic features—such as mountains, lakes, or cities—it is often necessary to add the desired feature manually if it is not yet available. In many cases, selecting the country can serve as a first step to capture coarse geographic patterns, even if a more precise location is provided in the publication.
 
 ## Handling incorrect records
-It is feasible to add published records even if you know they are incorrect. Cite the incorrect Biological Association with its orginal source. Then, via radial annotator, add a **data attribute "Reassessment"** to the Biological Association. In the "value" field, you can provide an explanation, e.g. "Refuted: based on misidentified specimens that are actually *Bagous elegans*". Try to state clearly if the record is refuted or just considered doubtful.  
+It is feasible to add published records even if you know they are incorrect. Cite the incorrect Biological Association with its orginal source. Then, via radial annotator {radial-annotator}, add a **data attribute "Reassessment"** to the Biological Association. In the "value" field, you can provide an explanation, e.g. "Refuted: based on misidentified specimens that are actually *Bagous elegans*". Try to state clearly if the record is refuted or just considered doubtful.  
 Very important: **Add the source for the correction TO THE DATA ATTRIBUTE**, not the Biological Association. If there is no published source, but you as an expert know that a published record is incorrect or doubtful, create a source with you as author, optionally a year, and a title like "Personal Opinion".
 
 
@@ -119,13 +119,13 @@ Very important: **Add the source for the correction TO THE DATA ATTRIBUTE**, not
 
 ## Tags
 
-Similar to marking doubts, it is possible to tag specific biological information to a biological association using the radial annotator in the table below the task.
+Similar to marking doubts, it is possible to tag specific biological information to a biological association using the radial annotator {radial-annotator} in the table below the task.
 
-- Endophagous: larvae feed inside tissues
-- Exophagous: larvae feed outside tissues
-- Monophagous: according to the cited literature, this species feeds exclusively on a single plant species
-- Oligophagous: according to the cited literature, this species feeds on a few closely related plant species
-- Polyphagous: according to the cited literature, this species feeds on many plant species
+- {keyword:Endophagous}: larvae feed inside tissues
+- {keyword:Exophagous}: larvae feed outside tissues
+- {keyword:Monophagous}: according to the cited literature, this species feeds exclusively on a single plant species
+- {keyword:Oligophagous}: according to the cited literature, this species feeds on a few closely related plant species
+- {keyword:Polyphagous}: according to the cited literature, this species feeds on many plant species
 
 Classifiers such as mono-, oligo-, and polyphagy cannot be automatically derived from filters when host–plant associations are strictly stored in a database, as is the case in TaxonWorks. Since this information can be very useful - for filtering data or predicting where a beetle might be found — it needs to be explicitly implemented.
 

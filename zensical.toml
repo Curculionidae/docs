@@ -58,7 +58,9 @@ nav = [
   "TutorialAddImages.md",
   "TutorialAddSpecimens.md",
   "TutorialGazetteers.md",
+  "TutorialAssertedDistributions.md",
   "BiologicalRelationships.md",
+  "Annotations.md",
   "TutorialCuratePlants.md"
   ]}
   ]
@@ -71,7 +73,7 @@ nav = [
 #
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
-extra_css = ["stylesheets/extra.css"]
+extra_css = ["stylesheets/extra.css", "stylesheets/tw-chips.css", "stylesheets/tw-radials.css"]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
 # project to customize the behavior according to your needs.
@@ -79,7 +81,7 @@ extra_css = ["stylesheets/extra.css"]
 # The path provided should be relative to the "docs_dir".
 #
 # Read more: https://zensical.org/docs/customization/#additional-javascript
-extra_javascript = ["assets/js/externalURL.js", "assets/js/bio-rel.js", "assets/js/iframe-theme-bridge.js"]
+extra_javascript = ["assets/js/externalURL.js", "assets/js/bio-rel.js", "assets/js/iframe-theme-bridge.js", "assets/js/tw-chips.js", "assets/js/tw-radials.js"]
 
 # ----------------------------------------------------------------------------
 # Section for configuring theme options

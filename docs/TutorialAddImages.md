@@ -8,7 +8,7 @@ icon: material/image-plus
 **Where you attach the image decides where it shows up on [TaxonPages](https://catalog.curculionoidea.org/#/)**, and some attachment points are never shown there at all (see table below).
 
 ## Image metadata
-It is extremely important that all images are correctly licensed or cited. Use the radial annotator to **add at least one of these two**:  
+It is extremely important that all images are correctly licensed or cited. Use the radial annotator {radial-annotator} to **add at least one of these two**:  
 
 - Attribution (needs to carry a license, year and either Creator, Editor, Owner or Copyright holder)
 - Citation (add a source)
@@ -24,7 +24,7 @@ If in doubt: save the record and check TaxonPages to see if everything is lookin
 
 ### Dealing with label images for specimens: "is data depiction"
 Images of collection objects are used on TaxonPages to illustrate the taxon. A label image shouldnt illustrate a taxon. If an image shows **information about** the object rather than the object itself, mark it as "is data depiction". The depiction will be displayed on TaxonPages for the collection object, but not in the OTU gallery:  
-In the depiction editor (radial annotator → **Depiction**, or the image task) there is a checkbox **"Is data depiction"** (`is_metadata_depiction`). Use it for:  
+In the depiction editor (radial annotator {radial-annotator} → **Depiction**, or the image task) there is a checkbox **"Is data depiction"** (`is_metadata_depiction`). Use it for:  
 
 - photographs of **specimen labels**, determination labels, unit trays
 - a photo of the **collection site** (alternatively, add those depictions to the event of the specimen. In that case DONT mark them as "is data depiction", as the event itself is depicted)

@@ -1,0 +1,44 @@
+/* =============================================================================
+   TaxonWorks radial-menu icons  —  behaviour in assets/js/tw-radials.js
+   {radial-annotator}  {radial-navigator}  {quick-forms}
+       ->  an inline copy of the round TaxonWorks radial button.
+
+   This is a TaxonWorks tutorial, so the token is drawn to match the real
+   control the reader clicks in the app: a white disc, a blue ring, and the
+   blue slice / hexagon / arrow glyph (paths lifted verbatim from TaxonWorks'
+   Vue VIcon).
+
+   Colours are hard-coded from the TaxonWorks source
+   (app/javascript/vue/assets/styles/{components/buttons.scss,variables/_palette.scss}):
+       disc  = --btn-radial-background = --white     = #ffffff
+       ring  = --color-primary                      = #3676ab   (TaxonWorks uses 2px on a 24px
+                                                                 button; 1.5px keeps that ratio here)
+       glyph = --btn-radial-color = --color-primary  = #3676ab   (via fill: currentColor)
+   The same white-disc / blue-ring look TaxonWorks uses in both its light and
+   dark themes, so one fixed style works on either Zensical background.
+   ========================================================================== */
+
+.tw-radial {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15em;
+  height: 1.15em;
+  padding: 0.13em;
+  border: 1.5px solid #3676ab;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #3676ab;                 /* the glyph paints this colour (fill: currentColor) */
+  line-height: 1;
+  vertical-align: -0.1em;         /* centre the disc on the text line */
+  cursor: help;
+}
+
+.tw-radial svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  flex: none;
+  fill: currentColor;
+}

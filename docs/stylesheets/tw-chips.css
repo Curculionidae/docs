@@ -1,0 +1,129 @@
+/* =============================================================================
+   TaxonWorks vocabulary chips  —  behaviour in assets/js/tw-chips.js
+   {keyword:Name} {topic:Name} {predicate:Name}  ->  inline reference tag.
+
+   The term's TaxonWorks label colour is treated as an *accent*, never a full
+   fill: a faint wash, a tinted hairline border, and a coloured icon. Curators
+   pick those colours for spreadsheet-cell contrast, so a line of solid pills
+   would shout; as an accent the colour still codes the term while the prose
+   stays readable, and coloured / uncoloured terms keep the same weight.
+   Uses --tp-* tokens from extra.css so light and dark both hold up.
+   ========================================================================== */
+
+.tw-chip {
+  /* JS sets --tw-mark to the term's css_color and adds .tw-chip--colored */
+  --tw-mark: var(--tp-base-soft);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.03em 0.44em 0.09em;
+  border: 1px solid var(--tp-base-border);
+  border-radius: 3px;
+  background: var(--tp-base-muted);
+  color: var(--tp-base-content);
+  font-size: 0.86em;
+  font-weight: 560;
+  line-height: 1.35;
+  white-space: nowrap;
+  vertical-align: baseline;
+  cursor: help;
+}
+
+.tw-chip--colored {
+  background: color-mix(in srgb, var(--tw-mark) 14%, var(--tp-base-foreground));
+  border-color: color-mix(in srgb, var(--tw-mark) 55%, var(--tp-base-border));
+}
+
+/* browsers without color-mix() just get the neutral tint — still legible */
+@supports not (background: color-mix(in srgb, red, blue)) {
+  .tw-chip--colored { background: var(--tp-base-muted); border-color: var(--tp-base-border); }
+}
+
+.tw-chip:focus-visible {
+  outline: 2px solid var(--tp-secondary);
+  outline-offset: 2px;
+}
+
+.tw-chip svg {
+  width: 0.9em;
+  height: 0.9em;
+  flex: none;
+  fill: var(--tp-base-soft);
+}
+.tw-chip--colored svg {
+  fill: color-mix(in srgb, var(--tw-mark) 80%, var(--tp-base-content));
+}
+
+.tw-chip__name { white-space: nowrap; }
+
+.tw-chip--pending { opacity: 0.45; }
+
+/* unresolved reference: a quiet dotted outline, not an error box */
+.tw-chip--missing,
+.tw-chip--offline {
+  background: transparent;
+  border-style: dotted;
+  border-color: var(--tp-base-soft);
+  color: var(--tp-base-lighter);
+  font-weight: 500;
+}
+.tw-chip--missing svg,
+.tw-chip--offline svg { fill: var(--tp-base-soft); }
+
+/* --- hover / focus card ---------------------------------------------------- */
+.tw-chip__card {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 0.5em);
+  z-index: 30;
+  width: max-content;
+  max-width: 17rem;
+  padding: 0.55rem 0.7rem 0.6rem;
+  border-radius: 4px;
+  background: var(--tp-base-foreground);
+  color: var(--tp-base-content);
+  border: 1px solid var(--tp-base-border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.10);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: normal;
+  text-align: left;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.12s ease, transform 0.12s ease, visibility 0.12s;
+}
+
+.tw-chip:hover .tw-chip__card,
+.tw-chip:focus .tw-chip__card,
+.tw-chip:focus-within .tw-chip__card {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+.tw-chip__kind {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-weight: 650;
+  color: var(--tp-base-lighter);
+}
+
+.tw-chip__uri {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--tp-secondary);
+  word-break: break-all;
+}
+
+@media screen and (max-width: 46rem) {
+  .tw-chip__card { max-width: min(17rem, 78vw); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tw-chip__card { transition: opacity 0.12s ease, visibility 0.12s; transform: none; }
+}

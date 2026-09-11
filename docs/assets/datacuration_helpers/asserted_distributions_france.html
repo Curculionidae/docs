@@ -138,6 +138,10 @@ var API_URL = "https://sfg.taxonworks.org/api/v1";
 var PROJECT_TOKEN = "Ots0-yen4dVefn0Etyxvgw";
 
 var WEB_BASE = API_URL.replace(/\/api\/v\d+\/?$/, "");
+/* This project's TaxonPages site (taxa/config/project.yml → project_url).
+   Taxon pages are addressed by OTU id under hash routing:
+   <TAXONPAGES_URL>/#/otus/<otu_id>/overview */
+var TAXONPAGES_URL = "https://catalog.curculionoidea.org";
 var PER = 1000;
 var BATCH = 5;            // pages fetched concurrently
 var LS_SNAPSHOT = "ad-france-unspecified-todo:snapshot";
@@ -267,7 +271,8 @@ function toHit(ad) {
   // API's own rendering of "whatever this object is" and cover every case.
   return {
     id: ad.id,
-    object_type: obj.type || "",
+    object_type: obj.type || ad.asserted_distribution_object_type || "",
+    object_id: obj.id || ad.asserted_distribution_object_id || null,
     object_tag: obj.object_tag || "",
     object_label: obj.object_label || obj.taxon_name || obj.name || ("#" + obj.id),
     area_type: (shape.geographic_area_type && shape.geographic_area_type.name) || "",
@@ -376,7 +381,13 @@ function renderHits(hits) {
       var h = hits[i];
       // object_tag is TaxonWorks' own pre-built HTML label for the record
       // (an Otu, a BiologicalAssociation, ...) — trusted, same-origin markup.
-      var recordCell = h.object_tag || esc(h.object_label);
+      var recordLabel = h.object_tag || esc(h.object_label);
+      // an Otu record links to its TaxonPages page; a BiologicalAssociation
+      // has no taxon page of its own, so it stays unlinked.
+      var recordCell = (h.object_type === "Otu" && h.object_id)
+        ? '<a class="tp" target="_blank" rel="noopener" href="' +
+            TAXONPAGES_URL + "/#/otus/" + h.object_id + '/overview">' + recordLabel + "</a>"
+        : recordLabel;
       var absentTag = h.is_absent
         ? ' <span class="tag absent" title="Asserted as absent from France">absent</span>' : "";
       var src = h.sources.length
