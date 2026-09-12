@@ -1,6 +1,6 @@
 ---
 title: Learn to add new sources/ literature
-icon: material/database-plus
+icon: material/book-plus
 ---
 
 ## Add a new Source without DOI, text only
