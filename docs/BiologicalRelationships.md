@@ -103,6 +103,9 @@ If the information was digitized from scientific literature, the paper or book c
 
 For personal observations without a publication, leave this field blank. Your name will automatically appear on the TaxonPages as the source.
 
+!!! info "Conventions"
+    - When adding specimens with biological associations from literature, add the citation to the biological association, not (only) the specimen. This ensures that the citation is read by the biological associations panel on TaxonPages.
+
 ## How do add geographic information (shapes and gazetteers)
 
 Many host–plant relationships vary across broad geographic ranges. Therefore, it can be useful to record the location of an observation. Since the search function is not a global tool that includes all possible geographic features—such as mountains, lakes, or cities—it is often necessary to add the desired feature manually if it is not yet available. In many cases, selecting the country can serve as a first step to capture coarse geographic patterns, even if a more precise location is provided in the publication.
