@@ -1,7 +1,7 @@
 ---
 title: Learn to add specimens (and type material)
 description: Where specimen data goes in TaxonWorks, how to add type specimens, and how to record types known only from literature.
-icon: material/database-plus
+icon: material/bug
 ---
 
 Comprehensive Guide: [TaxonWorks Docs | Collection Objects](https://docs.taxonworks.org/guide/Manual/collectionobject.html)  
