@@ -1,5 +1,5 @@
 ---
-title: Tutorial: Adding a new Species
+title: "Tutorial: Adding a new Species"
 description: 
 icon: material/database-plus
 ---
