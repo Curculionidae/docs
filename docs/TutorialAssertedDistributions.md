@@ -8,10 +8,12 @@ icon: material/database-plus
 
 ## Adventive/Introduced populations
 Tag the Asserted Distribution with {keyword:adventive}  
-We can't add tags to individual citations, but it is sufficient if at least one of the cited sources for the species-area pair is making a statement on adventiveness
+We can't add tags to individual citations, but it is sufficient if at least one of the cited sources for the species-area pair is making a statement on 
 
 ## Endemic species
-
+Adding statements on endemisms are a bit problematic: What if the species is being discovered later to occur elsewhere?  
+However, it can be useful to add information on endemism. A viewer does not know if all asserted distributions were added. Tagging the asserted distribution with {keyword:endemic} will communicate "All known distributions for this species have been added, it does not occur elsewhere".  
+Use only in well-documented cases (only found on an very isolated island, only found in one mountain range in a well-surveyed region).
 
 ## Absence
 From the perspective of logic, it is not possible to prove the absence of a species in an area. The most likely reason to record a species as absent in an area would be:  
