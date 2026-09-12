@@ -1,7 +1,7 @@
 ---
 title: Asserted Distributions
 description:
-icon: material/database-plus
+icon: material/earth
 ---
 !!! info "Conventions"
     - **We avoid adding asserted distributions to anything other than species/subspecies**. Asserted distributions on higher-level taxa are difficult to curate in case the taxon gets split.
