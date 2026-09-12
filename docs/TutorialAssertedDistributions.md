@@ -32,7 +32,7 @@ We shouldn't ignore **Source A**, to ensure that no other curator will add it ag
 **Example:** *[Bagous lunatus](https://catalog.curculionoidea.org/#/otus/1385470/overview)*
 
 !!! info "Conventions"
-    - In case the presence of a species in an area is doubted, but not refuted, you use {predicate:reassessment} as well.
+    - {predicate:reassessment} can also be used if a source is just expressing doubt instead of refuting the claim.
 <!--
 TODO (Jakob): write this section. Remember to add a note about the France
 problem — asserted distributions must always name either a specific French
