@@ -26,7 +26,8 @@ We shouldn't ignore **Source A**, to ensure that no other curator will add it ag
 
 - The asserted distribution of **Source A** is getting a data attribute {predicate:reassessment}. In the "value" field, explain the situation and state the source that is refuted. This is important since an asserted distribution can carry multiple sources. Add the citation for on the data attribute.
 - Add a second asserted distribution for the same species-area pair with the "is absent" box ticked and a citation for **Source B**.
-Example: *[Bagous lunatus](https://catalog.curculionoidea.org/#/otus/1385470/overview)*
+
+**Example:** *[Bagous lunatus](https://catalog.curculionoidea.org/#/otus/1385470/overview)*
 
 <!--
 TODO (Jakob): write this section. Remember to add a note about the France
