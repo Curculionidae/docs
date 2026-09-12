@@ -41,10 +41,11 @@ Note: the path prefix is different from images (`../assets/videos/` vs `assets/i
 ```markdown
 [Learn to add sources](TutorialAddSources.md)
 ```
+Find the name of the .md file in this GitHub Repository. Generally, if the URL of the page is "https://curculionidae.github.io/docs/TutorialAddSpecies/", the name of the .md file is "TutorialAddSpecies.  
 Text in square brackets [] can be anything.
 ## Linking to chapters on other pages
 ```markdown
-[Status and Relationships](TutorialAddSpecies.md/#status-and-relationships)
+[Status and Relationships](TutorialAddSpecies.md#status-and-relationships)
 ```
 Text in square brackets [] can be anything.
 
