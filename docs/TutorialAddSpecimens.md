@@ -19,7 +19,7 @@ Adding specimen is tedious. Often, there are faster/easier alternatives: A distr
 
 ## Citations
 !!! info "Conventions"
-    - When adding specimen from literature for biological associations, add the citation to the biological association, not the specimen
+    - When entering specimen from literature for biological associations, add the citation to the biological association, not the specimen
 
 ## Collection Object vs Field Occurrence
 Use Field Occurrence if no physical specimen exists. It's basically the same as a collection object, but without catalog number and repository. There is a dedicated task to import Field Occurrences from iNaturalist.
