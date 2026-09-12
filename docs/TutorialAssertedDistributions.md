@@ -24,7 +24,7 @@ From the perspective of logic, it is not possible to prove the absence of a spec
 - **Source A** claims an asserted distribution
 - **Source B** shows that the specimen cited in Source A were misidentified. Thus, the presence of the species in the area is refuted
 
-We shouldn't ignore **Source A**, to ensure that no other curator will add it again, oblivious to the mistake. Instead:
+We shouldn't ignore **Source A**, to ensure that no other curator will add it again, oblivious to the correction. Instead:
 
 - The asserted distribution of **Source A** is getting a data attribute {predicate:reassessment}. In the "value" field, explain the situation and clearly state the source that is refuted: `Asserted distribution by Tanner (1943) is based on misidentified specimen of B. lunatoides`. This is important since an asserted distribution can carry multiple sources. Add the citation for on the data attribute.
 - Add a second asserted distribution for the same species-area pair with the "is absent" box ticked and a citation for **Source B**.
