@@ -1,9 +1,19 @@
 ---
-title: Curating Asserted Distributions
+title: Asserted Distributions
 description:
 icon: material/database-plus
 ---
-# About
+!!! info "Conventions"
+    - We avoid adding asserted distributions to anything other than species/subspecies. Asserted distributions on higher-level taxa are difficult to curate in case the taxon gets split.
+
+## Adventive/Introduces populations
+Tag the Asserted Distribution with {keyword:adventive}
+
+## Absence
+From the perspective of logic, it is not possible to prove the absence of a species in an area. The most likely reason to record a species as absent in an area would be:
+
+- Source A claims an asserted distribution
+- Source B shows that the specimen cited in Source A were misidentified. Thus, the presence of the species in the area
 
 <!--
 TODO (Jakob): write this section. Remember to add a note about the France
