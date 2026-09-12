@@ -57,8 +57,8 @@ nav = [
   "TutorialAddSources.md",
   "TutorialAddImages.md",
   "TutorialAddSpecimens.md",
-  "TutorialGazetteers.md",
   "TutorialAssertedDistributions.md",
+  "TutorialGazetteers.md",
   "BiologicalRelationships.md",
   "Annotations.md",
   "TutorialCuratePlants.md"
