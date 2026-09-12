@@ -11,8 +11,9 @@ Tag the Asserted Distribution with {keyword:adventive}
 We can't add tags to individual citations, but it is sufficient if at least one of the cited sources for the species-area pair is making a statement on 
 
 ## Endemism
-Adding statements on endemisms are a bit problematic: What if the species is being discovered later to occur elsewhere?  
-However, it can be useful to add information on endemism. A viewer does not know if all asserted distributions were added. Tagging the asserted distribution with {keyword:endemic} will communicate "All known distributions for this species have been added, it does not occur elsewhere".  
+Adding statements on endemisms are a bit problematic: What if the species is later being discovered to occur elsewhere?  
+However, it can be useful to add information on endemism. A viewer does not know if all asserted distributions were added. Is it only found on that island, or are there records from other areas not entered on TaxonWorks?  
+Tagging the asserted distribution with {keyword:endemic} will communicate "All known distributions for this species have been added, it does not occur elsewhere".  
 Use only in well-documented cases (only found on an very isolated island, only found in one mountain range in a well-surveyed region).
 
 ## Absence
