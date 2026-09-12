@@ -1,5 +1,5 @@
 ---
-title: Learn to add specimens (and type material)
+title: Specimens and type material
 description: Where specimen data goes in TaxonWorks, how to add type specimens, and how to record types known only from literature.
 icon: material/bug
 ---
