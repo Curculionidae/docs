@@ -19,13 +19,13 @@ Use only in well-documented cases (only found on an very isolated island, only f
 ## Absence
 From the perspective of logic, it is not possible to prove the absence of a species in an area. The most likely reason to record a species as absent in an area would be: 
 
-- Source A claims an asserted distribution
-- Source B shows that the specimen cited in Source A were misidentified. Thus, the presence of the species in the area is refuted
+- **Source A** claims an asserted distribution
+- **Source B** shows that the specimen cited in Source A were misidentified. Thus, the presence of the species in the area is refuted
 
-We shouldn't ignore Source A, to ensure that no other curator will add it again, oblivious to the mistake. Instead:
+We shouldn't ignore **Source A**, to ensure that no other curator will add it again, oblivious to the mistake. Instead:
 
-- The asserted distribution of Source A is getting a data attribute {predicate:reassessment}. In the "value" field, explain the situation and state the source that is refuted. This is important since an asserted distribution can carry multiple sources. Add the citation for on the data attribute.
-- Add a second asserted distribution for the same species-area pair with the "is absent" box ticked and a citation for Source B.
+- The asserted distribution of **Source A** is getting a data attribute {predicate:reassessment}. In the "value" field, explain the situation and state the source that is refuted. This is important since an asserted distribution can carry multiple sources. Add the citation for on the data attribute.
+- Add a second asserted distribution for the same species-area pair with the "is absent" box ticked and a citation for **Source B**.
 Example: *[Bagous lunatus](https://catalog.curculionoidea.org/#/otus/1385470/overview)*
 
 <!--
