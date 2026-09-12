@@ -10,16 +10,16 @@ Comprehensive Guide: [TaxonWorks Docs | Collection Objects](https://docs.taxonwo
 - [Learn to add sources / literature](TutorialAddSources.md): creating the Source you will cite
 - [Learn to add a new species](TutorialAddSpecies.md): its "Type" section covers type material entered from the **taxon name** side
 
-## When to add specimen
-Adding specimen is tedious. Often, there are faster/easier alternatives: A distribution record could be added as an asserted distribution, a biological association can be linked to the [OTU](./TutorialTaxonWorks.md#the-otu) instead of a **specimen**.
+## When to add specimens
+Adding specimens is tedious. Often, there are faster/easier alternatives: A distribution record could be added as an asserted distribution, a biological association can be linked to the [OTU](./TutorialTaxonWorks.md#the-otu) instead of a **specimen**.
 
-!!! info "It is always preferable to add specimen"
-    - Specimen make a claim falsifiable: Someone can visit the collection and check if the specimen was correctly identified. A bare asserted distribution or host plant record cannot be falsified.
-    - Specimen add credibility to a claim
+!!! info "It is always preferable to add specimens"
+    - Specimens make a claim falsifiable: Someone can visit the collection and check if the specimen was correctly identified. A bare asserted distribution or host plant record cannot be falsified.
+    - Specimens add credibility to a claim
 
 ## Citations
 !!! info "Conventions"
-    - When entering specimen from literature for biological associations, add the citation to the biological association, not the specimen
+    - When entering specimens from literature for biological associations, add the citation to the biological association, not the specimen
 
 ## Collection Object vs Field Occurrence
 Use Field Occurrence if no physical specimen exists. It's basically the same as a collection object, but without catalog number and repository. There is a dedicated task to import Field Occurrences from iNaturalist.
