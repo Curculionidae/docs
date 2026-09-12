@@ -6,7 +6,11 @@ icon: material/database-plus
 
 Comprehensive Guide: [TaxonWorks Docs | Collection Objects](https://docs.taxonworks.org/guide/Manual/collectionobject.html)
 
-Often, adding a specimen is optional: A distribution record could be added as an asserted distribution, a biological association can be linked to the [OTU](./TutorialTaxonWorks.md#the-otu) instead of A **specimen** in TaxonWorks is a **Collection Object**. This page covers where specimen data goes and how to add **type specimens**, including those known only from a publication.
+## When to add specimen
+Adding specimen is tedious. Often, there are faster/easier alternatives: A distribution record could be added as an asserted distribution, a biological association can be linked to the [OTU](./TutorialTaxonWorks.md#the-otu) instead of a **specimen**.  
+
+
+## Collection Object vs Field Occurrence
 
 **Related tutorials**
 
