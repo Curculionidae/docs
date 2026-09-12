@@ -37,7 +37,18 @@ Place `.webm` video files in `/docs/assets/videos/`. Embed them using a raw HTML
 
 Note: the path prefix is different from images (`../assets/videos/` vs `assets/images/`) because raw HTML tags are passed through unchanged by Zensical, while markdown image links get their path adjusted automatically.
 
-# Editing locally on your computer
+## Linking to other pages
+```markdown
+[Learn to add sources](TutorialAddSources.md)
+```
+Text in square brackets [] can be anything.
+## Linking to chapters on other pages
+```markdown
+[Status and Relationships](TutorialAddSpecies.md/#status-and-relationships)
+```
+Text in square brackets [] can be anything.
+
+# Editing locally on your computer (for a live preview of changes)
 Git clone the repository to your computer. To run the site locally, you need to have the python package Zensical installed. It's recommended to install it in its own environment (use e.g. conda). Open a terminal in the directory that you cloned, activate your environment that has zensical installed, and type "zensical serve" in the terminal. The website will be built from source and served via localhost, you'll get an URL that you can open in your browser. **Now you have a live preview of every edit you make to the raw files!**
 
 When you're done with your edits, git add them, git commit and git push.
