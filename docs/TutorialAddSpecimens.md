@@ -34,6 +34,10 @@ Use Field Occurrence if no physical specimen exists. It's basically the same as 
 
 ## Images
 
-See [Learn to add images](TutorialAddImages.md). In short: attach photos to the **Collection Object** (not the OTU); tick **"is data depiction"** for label images; if the image is from a publication, add a **Citation** ("Depicted in"). 
+See [Learn to add images](TutorialAddImages.md). In short: attach photos to the **Collection Object** (not the OTU); tick **"is data depiction"** for label images; if the image is from a publication, add a **Citation** ("Depicted in").
+
+!!! info "Conventions"
+    - When label images, tick the "is data depiction" box for those
+
 
 **To be expanded.**
