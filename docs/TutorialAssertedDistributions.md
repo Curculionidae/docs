@@ -25,7 +25,7 @@ heydeni) alongside the single real Country-level case.
 
 ---
 ## Data curation helper
-The tool below fetches every asserted distribution in the project whose geographic area is the bare, unspecified Country-level "France" (not the TDWG "France" region, which is precise by design). Click **Refresh from TaxonWorks** to load it; each row links straight to the "New/Edit Asserted Distribution" task where you can correct the geographic area.
+The tool below fetches every asserted distribution in the project whose geographic area is the bare, unspecified Country-level "France" (not the TDWG "France" region, which is precise by design). **That is problematic, as "France" includes overseas territories such as French Guiana**. Click **Refresh from TaxonWorks** to load it; each row links straight to the "New/Edit Asserted Distribution" task where you can correct the geographic area.
 A fixed record drops off on the next refresh.
 
 <iframe src="/docs/assets/datacuration_helpers/asserted_distributions_france.html"
