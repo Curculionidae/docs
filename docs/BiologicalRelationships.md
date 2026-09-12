@@ -100,7 +100,7 @@ It is preferable to describe a microhabitat with an anatomical part only (see ab
 ## How to use Sources/ Citations/ Literature
 
 If the information was digitized from scientific literature, the paper or book can be cited via the “Source” panel. You are encouraged to include the exact page number, especially if the publication contains multiple pieces of information.  
-For biological associations on specimen, a citation is optional. If there is no citation, the name of the collector of the specimen will automatically appear on the TaxonPages as the source (see e.g. *[Lixus fasciculatus](https://catalog.curculionoidea.org/#/otus/733335/overview)*.
+For biological associations on specimen, a citation is optional. If there is no citation, the name of the collector of the specimen will automatically appear on the TaxonPages as the source (see e.g. *[Lixus fasciculatus](https://catalog.curculionoidea.org/#/otus/733335/overview)*).
 
 !!! info "Conventions"
     - When adding specimens with biological associations from literature, add the citation to the biological association, not (only) the specimen. This ensures that the citation is read by the biological associations panel on TaxonPages.
