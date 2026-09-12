@@ -6,12 +6,15 @@ icon: material/database-plus
 !!! info "Conventions"
     - We avoid adding asserted distributions to anything other than species/subspecies. Asserted distributions on higher-level taxa are difficult to curate in case the taxon gets split.
 
-## Adventive/Introduces populations
-Tag the Asserted Distribution with {keyword:adventive}
+## Adventive/Introduced populations
+Tag the Asserted Distribution with {keyword:adventive}  
+We can't add tags to individual citations, but it is sufficient if at least one of the cited sources for the species-area pair is making a statement on adventiveness
+
+## Endemic species
+
 
 ## Absence
-From the perspective of logic, it is not possible to prove the absence of a species in an area. The most likely reason to record a species as absent in an area would be:
-
+From the perspective of logic, it is not possible to prove the absence of a species in an area. The most likely reason to record a species as absent in an area would be:  
 - Source A claims an asserted distribution
 - Source B shows that the specimen cited in Source A were misidentified. Thus, the presence of the species in the area
 
