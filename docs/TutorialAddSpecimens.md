@@ -6,7 +6,6 @@ icon: material/database-plus
 
 Comprehensive Guide: [TaxonWorks Docs | Collection Objects](https://docs.taxonworks.org/guide/Manual/collectionobject.html)  
 **Related tutorials**
-
 - [Learn to add images](TutorialAddImages.md): attaching specimen photos and label images
 - [Learn to add sources / literature](TutorialAddSources.md): creating the Source you will cite
 - [Learn to add a new species](TutorialAddSpecies.md): its "Type" section covers type material entered from the **taxon name** side
