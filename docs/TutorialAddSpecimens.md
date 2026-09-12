@@ -32,9 +32,6 @@ Use Field Occurrence if no physical specimen exists. It's basically the same as 
 - **New Collection Object**: minimal / skeletal stub records for fast batch digitization, parsed later. Not encouraged to use
 - **New Type Specimen** — shortcut for recording type material without the full CSD form. Not encouraged, there are less fields and as there is no "Event" form, you can't add a georeference.
 
-!!! question "Project decision — to clarify"
-    - Which task is our default?
-    - Do we digitize full specimens, or mainly type material plus selected vouchers?
 ## Images
 
 See [Learn to add images](TutorialAddImages.md). In short: attach photos to the **Collection Object** (not the OTU); tick **"is data depiction"** for label images; if the image is from a publication, add a **Citation** ("Depicted in"). 
