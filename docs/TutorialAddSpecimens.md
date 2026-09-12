@@ -4,7 +4,12 @@ description: Where specimen data goes in TaxonWorks, how to add type specimens, 
 icon: material/database-plus
 ---
 
-Comprehensive Guide: [TaxonWorks Docs | Collection Objects](https://docs.taxonworks.org/guide/Manual/collectionobject.html)
+Comprehensive Guide: [TaxonWorks Docs | Collection Objects](https://docs.taxonworks.org/guide/Manual/collectionobject.html)  
+**Related tutorials**
+
+- [Learn to add images](TutorialAddImages.md): attaching specimen photos and label images
+- [Learn to add sources / literature](TutorialAddSources.md): creating the Source you will cite
+- [Learn to add a new species](TutorialAddSpecies.md): its "Type" section covers type material entered from the **taxon name** side
 
 ## When to add specimen
 Adding specimen is tedious. Often, there are faster/easier alternatives: A distribution record could be added as an asserted distribution, a biological association can be linked to the [OTU](./TutorialTaxonWorks.md#the-otu) instead of a **specimen**.
@@ -18,12 +23,6 @@ Adding specimen is tedious. Often, there are faster/easier alternatives: A distr
     - When adding specimen from literature for biological associations, add the citation to the biological association, not the specimen
 
 ## Collection Object vs Field Occurrence
-
-**Related tutorials**
-
-- [Learn to add images](TutorialAddImages.md): attaching specimen photos and label images
-- [Learn to add sources / literature](TutorialAddSources.md): creating the Source you will cite
-- [Learn to add a new species](TutorialAddSpecies.md): its "Type" section covers type material entered from the **taxon name** side
 
 ---
 
