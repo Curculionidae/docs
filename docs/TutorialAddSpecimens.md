@@ -13,6 +13,10 @@ Adding specimen is tedious. Often, there are faster/easier alternatives: A distr
     - Specimen make a claim falsifiable: Someone can check if the specimen was correctly identified. A bare asserted distribution or host plant record cannot be falsified.
     - Specimen add credibility to a claim
 
+## Citations
+!!! info "Conventions"
+    - When adding specimen from literature for biological associations, add the citation to the biological association, not the specimen
+
 ## Collection Object vs Field Occurrence
 
 **Related tutorials**
