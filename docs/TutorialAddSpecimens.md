@@ -30,7 +30,7 @@ Use Field Occurrence if no physical specimen exists. It's basically the same as 
 
 - **Comprehensive Specimen Digitization (CSD)**: the all-in-one form: Collection Object, Determinations, Collecting Event, Type Material and Biological Associations on one screen.
 - **New Collection Object**: minimal / skeletal stub records for fast batch digitization, parsed later. Not encouraged to use
-- **New Type Specimen** — shortcut for recording type material without the full CSD form. Not encouraged, there are less fields and as there is no "Event" form, you can't add a georeference.
+- **New Type Specimen**: shortcut for recording type material without the full CSD form. Not encouraged, there are less fields and as there is no "Event" form, you can't add a georeference.
 
 ## Images
 
