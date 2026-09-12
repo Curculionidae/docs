@@ -1,6 +1,6 @@
 ---
-title: Learn to add a new species
-description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
+title: Tutorial: Adding a new Species
+description: 
 icon: material/database-plus
 ---
 Comprehensive Guide: [TaxonWorks Docs | Nomenclature](https://docs.taxonworks.org/guide/Manual/nomenclature.html)
