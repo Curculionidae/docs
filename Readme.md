@@ -41,12 +41,13 @@ Note: the path prefix is different from images (`../assets/videos/` vs `assets/i
 ```markdown
 [Learn to add sources](TutorialAddSources.md)
 ```
-Find the name of the .md file in this GitHub Repository. Generally, if the URL of the page is "https://curculionidae.github.io/docs/TutorialAddSpecies/", the name of the .md file is "TutorialAddSpecies.  
+Find the name of the .md file in this GitHub Repository. Generally, if the URL of the page is `https://curculionidae.github.io/docs/TutorialAddSpecies/`, the name of the .md file is `TutorialAddSpecies.md`.  
 Text in square brackets [] can be anything.
 ## Linking to chapters on other pages
 ```markdown
 [Status and Relationships](TutorialAddSpecies.md#status-and-relationships)
 ```
+Make sure there is no `/` between the `.md` and `#`. 
 Text in square brackets [] can be anything.
 
 # Editing locally on your computer (for a live preview of changes)
