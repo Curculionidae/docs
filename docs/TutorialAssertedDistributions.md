@@ -4,7 +4,7 @@ description:
 icon: material/database-plus
 ---
 !!! info "Conventions"
-    - We avoid adding asserted distributions to anything other than species/subspecies. Asserted distributions on higher-level taxa are difficult to curate in case the taxon gets split.
+    - **We avoid adding asserted distributions to anything other than species/subspecies**. Asserted distributions on higher-level taxa are difficult to curate in case the taxon gets split.
 
 ## Adventive/Introduced populations
 Tag the Asserted Distribution with {keyword:adventive}  
