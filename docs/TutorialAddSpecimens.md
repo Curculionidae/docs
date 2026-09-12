@@ -7,7 +7,10 @@ icon: material/database-plus
 Comprehensive Guide: [TaxonWorks Docs | Collection Objects](https://docs.taxonworks.org/guide/Manual/collectionobject.html)
 
 ## When to add specimen
-Adding specimen is tedious. Often, there are faster/easier alternatives: A distribution record could be added as an asserted distribution, a biological association can be linked to the [OTU](./TutorialTaxonWorks.md#the-otu) instead of a **specimen**.  
+Adding specimen is tedious. Often, there are faster/easier alternatives: A distribution record could be added as an asserted distribution, a biological association can be linked to the [OTU](./TutorialTaxonWorks.md#the-otu) instead of a **specimen**.
+
+!!! info "It is always preferable to add specimen"
+- Specimen make a claim falsifiable: Someone can check if the specimen was correctly identified. A bare asserted distribution or host plant record cannot be falsified.
 
 
 ## Collection Object vs Field Occurrence
