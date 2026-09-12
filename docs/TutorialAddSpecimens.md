@@ -11,7 +11,7 @@ Adding specimen is tedious. Often, there are faster/easier alternatives: A distr
 
 !!! info "It is always preferable to add specimen"
 - Specimen make a claim falsifiable: Someone can check if the specimen was correctly identified. A bare asserted distribution or host plant record cannot be falsified.
-
+- Specimen add credibility
 
 ## Collection Object vs Field Occurrence
 
