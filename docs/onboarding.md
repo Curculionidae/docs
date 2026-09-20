@@ -30,7 +30,7 @@ flowchart TD
     TP["`**TaxonPages**
     catalog.curculionoidea.org`"]
     ANY["`**Get creative:**
-    You can use the API for your own workflows and projects`"]
+    You can use the API to access data for your own workflows and projects`"]
 
     U ==>|enter/curate data| TW
     TW ==>|served openly| API
