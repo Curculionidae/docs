@@ -3,7 +3,7 @@ title: Biological Relationships
 icon: material/leaf
 ---
 # Biological Relationships
-
+Use the task [New biological associations II](https://sfg.taxonworks.org/tasks/biological_associations/new_ba) to have access to all features.
 ## Preface 
 ### Theory
 Rather than trying to represent biological reality itself, **we should record direct evidence**: For example, we use "collected from" rather than "associated with", since "collected from" states exactly what happened, without implying an evolutionary fixed relationship that can't be directly observed.  
@@ -17,7 +17,8 @@ For this reason, such statements need to be carefully evaluated and assigned to 
 
 We have given considerable thought to what can actually be observed and have developed a set of terms that we believe covers most situations.
 
-- Aggregating many observations to make generalized statements about the biology of a species is a step further down the road, so far we are only recording data.
+!!! info
+    Aggregating many observations to make generalized statements about the biology of a species is a step further down the road, so far we are only recording direct evidence.
 
 ### Biological Relationship vs Biological Association
 In TaxonWorks, **Biological Relationships are definitions for interactions** that can take place between two objects (e.g., "feeds on"). **Biological associations** are concrete observations: They combine two objects by a Biological Relationship. For the objects, you can choose from:
@@ -27,19 +28,10 @@ In TaxonWorks, **Biological Relationships are definitions for interactions** tha
 - FieldOccurrence (field observation)
 - AnatomicalPart (body part or life stage of a given species).
 
-An example **Biological association** could be `Adosomus roridus` (= OTU) was `reared from` (= relationship) the `stem of Achillea millefolium` (= AnatomicalPart). Those statements can be further annotated e.g. with a citation, an asserted distribution (in France), images (of feeding marks) and many more.
+An example **Biological association** could be `Adosomus roridus` (= OTU) was `reared from` (= relationship) the `stem of Achillea millefolium` (= AnatomicalPart). Those statements can be further annotated e.g. with a citation, an asserted distribution (in France), images (of feeding marks) etc.
 
 ### Scope: What kind of information do we want to store?
-When converting data into a structured format, some information is inevitably lost. However, the database also serves as an index to the literature and other sources of evidence. Not all details are captured within TaxonWorks, but the original source can always be consulted. When entering data, you should consider the following questions:
-
-- Was the plant merely visited, or was feeding observed? If so, was it adult or larval feeding? Was the observation made in the wild, or was the specimen collected together with plant material and examined later for feeding traces?
-- Was the specimen reared? This implies that larvae were collected along with their host plant and observed until the adult beetle emerged. Rearing records provide the strongest evidence for host–plant relationships, as they constitute direct evidence for reproduction.
-- Which plant part is used by the larvae or adult beetles for feeding?
-- Was the specimen endophagous or exophagous?
-- Is the interaction characterized by specific structures such as galls or leaf rolls?
-- Where did the observation happen? (Add an asserted distribution to the biological association, or use a specimen with locality as object of the association)
-- On which plant part were the adults observed sitting (optional)?
-- Does the source provide general information about feeding specificity, such as mono-, oligo-, or polyphagy (optional)?
+When converting data into a structured format, some information is inevitably lost. However, the database also serves as an index to the literature and other sources of evidence. Not all details are captured within TaxonWorks, but the original source can always be consulted. When entering data, try to cover as much of the data model below as possible.
 
 ---
 
@@ -56,7 +48,7 @@ When converting data into a structured format, some information is inevitably lo
   </svg>
   <div class="ba-model__side ba-model__side--in">
     <div class="ba-model__box ba-model__box--note">
-      <strong class="ba-model__title">Tags</strong>
+      <strong class="ba-model__title">{radial-annotator} Tags</strong>
       <span class="ba-model__item">{keyword:Endophagous}</span>
       <span class="ba-model__item">{keyword:Exophagous}</span>
       <span class="ba-model__item">{keyword:Monophagous}</span>
@@ -74,7 +66,7 @@ When converting data into a structured format, some information is inevitably lo
       <span class="ba-model__link ba-model__link--arrow">exactly 1</span>
     </div>
     <div class="ba-model__box ba-model__box--note">
-      <strong class="ba-model__title">Data attributes</strong>
+      <strong class="ba-model__title">{radial-annotator} Data attributes</strong>
       <span class="ba-model__item">{predicate:Activity pattern}</span>
       <span class="ba-model__item">{predicate:Microhabitat}</span>
       <span class="ba-model__item">{predicate:Reassessment}</span>
@@ -111,7 +103,7 @@ When converting data into a structured format, some information is inevitably lo
       <span class="ba-model__link ba-model__link--arrow">exactly 1</span>
     </div>
     <div class="ba-model__box ba-model__box--pill">
-      <strong class="ba-model__title">Depiction</strong>
+      <strong class="ba-model__title">{radial-annotator} Depiction</strong>
       <span class="ba-model__item">image, e.g. of feeding marks</span>
       <span class="ba-model__link">0 to many</span>
     </div>
@@ -156,19 +148,12 @@ Used if larva/weevil was found within a gall, or was reared from a gall. Use an 
 
 ## Life stages and plant parts
 
-If you've observed a larvae eating on the leaf of any plant you are dealing with "anatomicalParts" in Taxonworks. Depending on if you we're talking about the beetle or the plant there are two classes:
+If you've observed a larva eating on the leaf of any plant you are dealing with "anatomicalParts" in Taxonworks. Depending on if you we're talking about the beetle or the plant there are two classes:
 
-1. lifeStage: can be larvae, egg or puppae of a beetle. Adult is considered to be default und has not be selected
-2. real anatomical parts: body parts of the plant life leaf, flower bud, roots...
+1. real anatomical parts: body parts of the plants like leaf, flower bud, roots...
+2. lifeStage: On weevils, we use anatomicalParts to model life stages. They can be larvae, egg or puppae of a beetle. Adult is considered to be default and does not need to be specified.
 
-Even though it's clear for us, that a herb has a leaf, steam, flower bud and roots this it's not configured in Taxonworks by default. Thus everytime we want to use AnatomicalParts of a plant or beetle in a biological association, we have to create it first seperately. To do that in an easy way, you can create our reuse/ select existing anatomicalParts simultaneously with the complete biological association. To stabilize our dictionary and to avoid duplicates produced by misspelling you can use in most cases the "In project" tab. Here you find all terms which have been used within this project by now.
-
-When you observe a larva feeding on a plant leaf, you are dealing with AnatomicalParts in TaxonWorks. Depending on whether you are referring to the beetle or the plant, there are two classes:
-
-1. LifeStage – refers to the stage of the beetle: larva, egg, or pupa. The adult is considered the default and does not need to be selected.
-2. Real anatomical parts – refers to parts of the plant, such as leaf, flower bud, or roots.
-
-Although it is obvious that a plant has leaves, stems, flower buds, and roots, these are not preconfigured in TaxonWorks by default. Therefore, whenever you want to use AnatomicalParts for a plant or beetle in a biological association, you must create them first. To make this easier, you can create new terms or reuse/select existing anatomical parts simultaneously while entering the biological association. To stabilize our dictionary and avoid duplicates caused by misspellings, you can use the “In project” tab. This tab shows all terms that have already been used within the project.
+Everytime we want to use AnatomicalParts of a plant or beetle in a biological association, we have to create it first seperately. To do that in an easy way, you can create our reuse/ select existing anatomicalParts simultaneously with the complete biological association. To stabilize our dictionary and to avoid duplicates produced by misspelling you can use in most cases the "In project" tab. Here you find all terms which have been used within this project by now.
 
 ![select anatomical parts from project](assets/images/select_project_AP.png){ style="display:block;margin:0 auto" }
 
@@ -178,6 +163,9 @@ If you want to use a new term, you can 1. Search for terms provided by the selec
 
 ## Microhabitats
 Most microhabitats (like plant stem, flower etc) can be covered with anatomical parts. In some cases, this is not sufficient: Imagine collecting a Cossonine from the dry stem of a dead Agave plant. Using the anatomicalPart `stem of Agave sp.` would be inaccurate, the most defining feature of this habitat is that the plant is dead. In this case, add a Biological Association with *Agave* sp., and add the **data attribute** {predicate:Microhabitat} from the {radial-annotator} to describe it. Adding a citation to the data attribute should not be necessary, as it refers to the Biological Association that should have its own citation.
+
+!!! info "Conventions"
+    You can use this also to describe where a weevil was found, like "sitting in leaf axil". This may help others during fieldwork.
 
 ## Diel Activity/Circadian Rhythm
 You can use the data attribute (from {radial-annotator}) {predicate:Activity pattern} to write something like "at daytime"
@@ -210,18 +198,6 @@ Similar to marking doubts, it is possible to tag specific biological information
 - {keyword:Polyphagous}: according to the cited literature, this species feeds on many plant species
 
 Classifiers such as mono-, oligo-, and polyphagy cannot be automatically derived from filters when host–plant associations are strictly stored in a database, as is the case in TaxonWorks. Since this information can be very useful - for filtering data or predicting where a beetle might be found — it needs to be explicitly implemented.
-
-## Practical limitations
-
-Currently, our TaxonWorks instance is focused on beetles, not plants. As a result, plant species names are mostly stored as OTUs without an assigned taxon name and therefore without plant taxonomy. Many plant names have already been integrated, but many are still missing.
-
-If a plant name is missing, you can create it while entering the biological association. To do this, simply enter random letters or numbers until the “Create new OTU” function is triggered, then enter the species name in the format “Genus species”. These names will later be matched with large taxonomy databases (e.g., Catalogue of Life) to incorporate plant taxonomy into our TaxonWorks instance.
-
-<video controls autoplay loop muted width="400" height="421">
-  <source src="/docs/assets/videos/create_otu.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
 
 ## Preview: TaxonPages
 
