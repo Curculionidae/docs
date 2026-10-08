@@ -43,6 +43,81 @@ When converting data into a structured format, some information is inevitably lo
 
 ---
 
+## Data Model
+<div class="ba-model">
+  <svg class="ba-model__edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M13.9 16.67 L31 16.67 C38 16.67 39 36 46 46"/>
+    <path d="M13.9 83.33 L31 83.33 C38 83.33 39 64 46 54"/>
+    <path d="M86.1 12.5 L66 12.5 C60 12.5 59 34 54 46"/>
+    <path d="M86.1 37.5 L66 37.5 C62 37.5 61 44 57 48"/>
+    <path d="M86.1 87.5 L66 87.5 C60 87.5 59 66 54 54"/>
+    <path class="ba-model__edge--main" d="M13.9 50 L40 50"/>
+    <path class="ba-model__edge--main" d="M58 51 C65 51 63 62.5 69 62.5 L86.1 62.5"/>
+  </svg>
+  <div class="ba-model__side ba-model__side--in">
+    <div class="ba-model__box ba-model__box--note">
+      <strong class="ba-model__title">Tags</strong>
+      <span class="ba-model__item">{keyword:Endophagous}</span>
+      <span class="ba-model__item">{keyword:Exophagous}</span>
+      <span class="ba-model__item">{keyword:Monophagous}</span>
+      <span class="ba-model__item">{keyword:Oligophagous}</span>
+      <span class="ba-model__item">{keyword:Polyphagous}</span>
+      <span class="ba-model__link">0 to many</span>
+    </div>
+    <div class="ba-model__box ba-model__box--subject">
+      <strong class="ba-model__title">Subject (Weevil)</strong>
+      <span class="ba-model__hint">one of:</span>
+      <span class="ba-model__item">OTU</span>
+      <span class="ba-model__item">CollectionObject</span>
+      <span class="ba-model__item">FieldOccurrence</span>
+      <span class="ba-model__item">AnatomicalPart</span>
+      <span class="ba-model__link ba-model__link--arrow">exactly 1</span>
+    </div>
+    <div class="ba-model__box ba-model__box--note">
+      <strong class="ba-model__title">Data attributes</strong>
+      <span class="ba-model__item">{predicate:Activity pattern}</span>
+      <span class="ba-model__item">{predicate:Microhabitat}</span>
+      <span class="ba-model__item">{predicate:Reassessment}</span>
+      <span class="ba-model__link">0 to many</span>
+    </div>
+  </div>
+  <div class="ba-model__core">
+    <div class="ba-model__hex">
+      <div class="ba-model__hex-in">
+        <strong class="ba-model__title">Biological Relationship</strong>
+        <span class="ba-model__hint">one of:</span>
+        <span class="ba-model__item">see <a href="#list-of-biological-relationships">List of Biological Relationships</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="ba-model__side ba-model__side--out">
+    <div class="ba-model__box ba-model__box--pill">
+      <strong class="ba-model__title">Citation</strong>
+      <span class="ba-model__item">source, ideally with page number</span>
+      <span class="ba-model__link">0 to many</span>
+    </div>
+    <div class="ba-model__box ba-model__box--pill">
+      <strong class="ba-model__title">Asserted distribution</strong>
+      <span class="ba-model__item">where the association was observed</span>
+      <span class="ba-model__link">0 to many</span>
+    </div>
+    <div class="ba-model__box ba-model__box--object">
+      <strong class="ba-model__title">Object (Plant)</strong>
+      <span class="ba-model__hint">one of:</span>
+      <span class="ba-model__item">OTU</span>
+      <span class="ba-model__item">CollectionObject</span>
+      <span class="ba-model__item">FieldOccurrence</span>
+      <span class="ba-model__item">AnatomicalPart</span>
+      <span class="ba-model__link ba-model__link--arrow">exactly 1</span>
+    </div>
+    <div class="ba-model__box ba-model__box--pill">
+      <strong class="ba-model__title">Depiction</strong>
+      <span class="ba-model__item">image, e.g. of feeding marks</span>
+      <span class="ba-model__link">0 to many</span>
+    </div>
+  </div>
+</div>
+
 ## List of Biological Relationships
 
 ```bio-rel
@@ -72,6 +147,13 @@ reared from | yielded by rearing
 Used when the complete life cycle of a weevil has been observed, either in the wild or in an experimental setting.
 ```
 
+```bio-rel
+present within gall on | gall yielded
+Used if larva/weevil was found within a gall, or was reared from a gall. Use an anatomical part to specify where on the plant the gall is located. Example: <b><a href="https://catalog.curculionoidea.org/#/otus/1446231/overview" target="_blank" rel="noopener"><i>Philonis inermis</i></a></b>
+```
+
+
+
 ## Life stages and plant parts
 
 If you've observed a larvae eating on the leaf of any plant you are dealing with "anatomicalParts" in Taxonworks. Depending on if you we're talking about the beetle or the plant there are two classes:
@@ -95,29 +177,27 @@ If you want to use a new term, you can 1. Search for terms provided by the selec
 ![how to create a new anatomical part](assets/images/create_new_AP.png){ style="display:block;margin:0 auto" }
 
 ## Microhabitats
-It is preferable to describe a microhabitat with an anatomical part only (see above). In some cases, this is not sufficient: Imagine collecting a Cossonine from the dry stem of a dead Agave plant. Using the anatomicalPart `stem of Agave sp.` would be inaccurate, the most defining feature of this habitat is that the plant is dead. In this case, add a Biological Association with *Agave* sp., and add the **data attribute "Microhabitat"** to describe it. Adding a citation to the data attribute should not be necessary, as it refers to the Biological Association that should have its own citation.
+Most microhabitats (like plant stem, flower etc) can be covered with anatomical parts. In some cases, this is not sufficient: Imagine collecting a Cossonine from the dry stem of a dead Agave plant. Using the anatomicalPart `stem of Agave sp.` would be inaccurate, the most defining feature of this habitat is that the plant is dead. In this case, add a Biological Association with *Agave* sp., and add the **data attribute** {predicate:Microhabitat} from the {radial-annotator} to describe it. Adding a citation to the data attribute should not be necessary, as it refers to the Biological Association that should have its own citation.
+
+## Diel Activity/Circadian Rhythm
+You can use the data attribute (from {radial-annotator}) {predicate:Activity pattern} to write something like "at daytime"
 
 ## How to use Sources/ Citations/ Literature
 
 If the information was digitized from scientific literature, the paper or book can be cited via the “Source” panel. You are encouraged to include the exact page number, especially if the publication contains multiple pieces of information.  
 If you add specimen data and there is no citation, the name of the collector of the specimen will automatically appear on the TaxonPages as the source (see e.g. *[Lixus fasciculatus](https://catalog.curculionoidea.org/#/otus/733335/overview)*).
 
-!!! info "Conventions"
-    - When adding specimens with biological associations from literature, add the citation to the biological association, not (only) the specimen. This ensures that the citation is read by the biological associations panel on TaxonPages.
-
 ## How do add geographic information (shapes and gazetteers)
 
-Many host–plant relationships vary across broad geographic ranges. Therefore, it can be useful to record the location of an observation. Since the search function is not a global tool that includes all possible geographic features—such as mountains, lakes, or cities—it is often necessary to add the desired feature manually if it is not yet available. In many cases, selecting the country can serve as a first step to capture coarse geographic patterns, even if a more precise location is provided in the publication.
+Many host–plant relationships vary across broad geographic ranges. Therefore, the location of the observation should be recorded with an asserted distribution, or even bettere the record should be added via a specimen with exact locality, instead of the OTU. See also [Learn to create new Gazetteers](TutorialGazetteers.md)
+
+
+!!! info "Conventions"
+    - Be as specific as possible
 
 ## Handling incorrect records
-It is feasible to add published records even if you know they are incorrect. Cite the incorrect Biological Association with its orginal source. Then, via radial annotator {radial-annotator}, add a **data attribute "Reassessment"** to the Biological Association. In the "value" field, you can provide an explanation, e.g. "Refuted: based on misidentified specimens that are actually *Bagous elegans*". Try to state clearly if the record is refuted or just considered doubtful.  
+It is feasible to add published records even if you know they are incorrect. Cite the incorrect Biological Association with its orginal source. Then, via radial annotator {radial-annotator}, add a **data attribute** {predicate:Reassessment} to the Biological Association. In the "value" field, you can provide an explanation, e.g. "Refuted: based on misidentified specimens that are actually *Bagous elegans*". Try to state clearly if the record is refuted or just considered doubtful.  
 Very important: **Add the source for the correction TO THE DATA ATTRIBUTE**, not the Biological Association. If there is no published source, but you as an expert know that a published record is incorrect or doubtful, create a source with you as author, optionally a year, and a title like "Personal Opinion".
-
-
-![select radial annotator](assets/images/doubtful_1.png){ style="display:block;margin:0 auto" }
-
-![select confidences to set doubtful](assets/images/doubful_2.png){ style="display:block;margin:0 auto" }
-
 
 ## Tags
 

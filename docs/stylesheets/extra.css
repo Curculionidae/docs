@@ -260,6 +260,137 @@
 }
 
 /* ============================================================
+   Biological association data model diagram (.ba-model)
+   Plain HTML rather than Mermaid so {keyword:…} / {predicate:…}
+   chips work inside it, but drawn to look like the site's Mermaid
+   diagrams (same --md-mermaid-* colours, same node shapes).
+
+   Three columns: what goes in, the relationship, what hangs off
+   it. The side columns have equal-height rows, so each box centre
+   sits at a fixed fraction of the diagram; the connector curves in
+   the stretched SVG (.ba-model__edges, coordinates in %) rely on
+   that. Curves start under a box and end under the hexagon.
+   Adding or removing a box means re-spacing that column's paths.
+   ============================================================ */
+
+.ba-model {
+  --ba-node-bg: linear-gradient(var(--md-mermaid-node-bg-color), var(--md-mermaid-node-bg-color)), var(--md-default-bg-color);
+  /* subject + relationship + object = the association itself: green, like
+     the object side of the bio-rel tables */
+  --ba-core-bg: color-mix(in srgb, var(--doc-rel-object) 40%, var(--md-default-bg-color));
+  --ba-core-line: color-mix(in srgb, var(--doc-rel-object) 65%, var(--md-default-fg-color));
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr;   /* column centres: 13.9% / 50% / 86.1% */
+  margin: 1.5em 0;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--md-mermaid-label-fg-color);
+  font-family: var(--md-mermaid-font-family);
+}
+
+/* .md-typeset prefix: the theme sets `.md-typeset svg { height: auto }` */
+.md-typeset .ba-model__edges {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  overflow: visible;
+}
+.ba-model__edges path {
+  fill: none;
+  stroke: var(--md-mermaid-edge-color);
+  stroke-width: 1.5px;
+  stroke-dasharray: 2 3;
+  vector-effect: non-scaling-stroke;
+}
+.ba-model__edges path.ba-model__edge--main {
+  stroke-width: 3px;
+  stroke-dasharray: none;
+}
+
+.ba-model__side {
+  display: grid;
+  grid-auto-rows: 1fr;
+}
+
+.ba-model__box {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  margin: 0.5rem 0;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--md-mermaid-node-fg-color);
+  background: var(--ba-node-bg);
+}
+.ba-model__box--note { border-radius: 5px; }
+.ba-model__box--subject,
+.ba-model__box--object { border-color: var(--ba-core-line); background: var(--ba-core-bg); }
+.ba-model__box--pill { border-radius: 999px; padding-inline: 1.4rem; max-width: 13rem; }
+
+/* hexagon: a clipped border-coloured layer with a clipped fill inside it */
+.ba-model__core {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  width: 62%;
+}
+.ba-model__hex,
+.ba-model__hex-in {
+  clip-path: polygon(13% 0, 87% 0, 100% 50%, 87% 100%, 13% 100%, 0 50%);
+}
+.ba-model__hex { padding: 1.5px; background: var(--ba-core-line); }
+.ba-model__hex-in { padding: 1rem 15%; background: var(--ba-core-bg); }
+
+.ba-model__title { display: block; }
+.ba-model__item  { display: block; }
+/* "one of:" above a list where exactly one entry is picked */
+.ba-model__hint  { display: block; font-size: 0.85em; font-style: italic; color: var(--md-default-fg-color--light); }
+.ba-model__item .tw-chip { margin: 0.12rem 0; }
+
+/* arrowheads: subject -> relationship -> object */
+.ba-model__core::before,
+.ba-model__box--object::before {
+  content: "";
+  position: absolute;
+  right: calc(100% - 1px);
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right: 0;
+  border-left: 9px solid var(--md-mermaid-edge-color);
+}
+
+/* cardinality label, sitting on the connector where it leaves the box */
+.ba-model__link {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 0.25em;
+  background: var(--md-mermaid-label-bg-color);
+  font-size: 0.85em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.ba-model__side--in  .ba-model__link { left: calc(100% + 0.5rem); }
+.ba-model__side--out .ba-model__link { right: calc(100% + 0.5rem); }
+.ba-model__box--object .ba-model__link { right: calc(100% + 1.1rem); }   /* clear the arrowhead */
+
+/* narrow screens: stack the boxes, connectors become a small count */
+@media screen and (max-width: 46rem) {
+  .ba-model { display: block; }
+  .ba-model__edges,
+  .ba-model__core::before,
+  .ba-model__box--object::before { display: none; }
+  .ba-model__side { display: block; }
+  .ba-model__box,
+  .ba-model__core { margin: 0.6rem auto; width: fit-content; max-width: 100%; }
+  .ba-model__link { position: static; display: block; transform: none; background: none; }
+  .ba-model__link::before { content: "\00d7\00a0"; }
+}
+
+/* ============================================================
    Biological Relationships tables
    ============================================================ */
 
