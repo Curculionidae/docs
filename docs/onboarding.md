@@ -1,5 +1,5 @@
 ---
-title: Project Onboarding
+title: Joining the Project
 #description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
 icon: lucide/rocket
 ---
