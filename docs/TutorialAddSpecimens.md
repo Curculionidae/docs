@@ -10,6 +10,9 @@ Comprehensive Guide: [TaxonWorks Docs | Collection Objects](https://docs.taxonwo
 - [Learn to add sources / literature](TutorialAddSources.md): creating the Source you will cite
 - [Learn to add a new species](TutorialAddSpecies.md): its "Type" section covers type material entered from the **taxon name** side
 
+!!! warning "Taxon Determinations"
+    Intuitively, you wouldn't add a taxon determination to a specimen that already has a type status. However, this can lead to problems on TaxonPages (specimen not showing up on the map). I tried to make the map as flexible as possible about this, but specimen without determination and geographicArea instead of geogreference are still invisible for the map. Clicking the "fix" button in soft validation is sufficient to add a determation automatically.
+
 ## When to add specimens
 Adding specimens is tedious. Often, there are faster/easier alternatives: A distribution record could be added as an asserted distribution, a biological association can be linked to the [OTU](./TutorialTaxonWorks.md#the-otu) instead of a **specimen**.
 
@@ -37,7 +40,7 @@ Use Field Occurrence if no physical specimen exists. It's basically the same as 
 See [Learn to add images](TutorialAddImages.md). In short: attach photos to the **Collection Object** (not the OTU); tick **"is data depiction"** for label images; if the image is from a publication, add a **Citation** ("Depicted in").
 
 !!! info "Conventions"
-    - When label images, tick the "is data depiction" box for those
+    - For label images, tick the "is data depiction" box. This will prevent them from showing up for higher taxa on TaxonPages
 
 
 **To be expanded.**
