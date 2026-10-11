@@ -37,76 +37,82 @@ When converting data into a structured format, some information is inevitably lo
 
 ## Data Model
 <div class="ba-model">
-  <svg class="ba-model__edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M13.9 16.67 L31 16.67 C38 16.67 39 36 46 46"/>
-    <path d="M13.9 83.33 L31 83.33 C38 83.33 39 64 46 54"/>
-    <path d="M86.1 12.5 L66 12.5 C60 12.5 59 34 54 46"/>
-    <path d="M86.1 37.5 L66 37.5 C62 37.5 61 44 57 48"/>
-    <path d="M86.1 87.5 L66 87.5 C60 87.5 59 66 54 54"/>
-    <path class="ba-model__edge--main" d="M13.9 50 L40 50"/>
-    <path class="ba-model__edge--main" d="M58 51 C65 51 63 62.5 69 62.5 L86.1 62.5"/>
-  </svg>
-  <div class="ba-model__side ba-model__side--in">
-    <div class="ba-model__box ba-model__box--note">
+  <div class="ba-model__stage">
+    <svg class="ba-model__edges" viewBox="0 0 1920 1080" aria-hidden="true">
+      <defs>
+        <marker id="ba-model-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z"/>
+        </marker>
+      </defs>
+      <path d="M760 230 C760 300 860 300 860 370"/>
+      <path d="M1160 230 C1160 300 1060 300 1060 370"/>
+      <path d="M480 830 C480 760 840 760 840 690"/>
+      <path d="M960 830 L960 690"/>
+      <path d="M1440 830 C1440 760 1080 760 1080 690"/>
+      <path class="ba-model__edge--main" d="M470 530 L597 530" marker-end="url(#ba-model-arrow)"/>
+      <path class="ba-model__edge--main" d="M1320 530 L1447 530" marker-end="url(#ba-model-arrow)"/>
+    </svg>
+    <div class="ba-model__box ba-model__box--note ba-model__box--tags">
       <strong class="ba-model__title">{radial-annotator} Tags</strong>
-      <span class="ba-model__item">{keyword:Endophagous}</span>
-      <span class="ba-model__item">{keyword:Exophagous}</span>
-      <span class="ba-model__item">{keyword:Monophagous}</span>
-      <span class="ba-model__item">{keyword:Oligophagous}</span>
-      <span class="ba-model__item">{keyword:Polyphagous}</span>
-      <span class="ba-model__link">0 to many</span>
+      <div class="ba-model__chips">
+        <span>{keyword:Endophagous}</span>
+        <span>{keyword:Exophagous}</span>
+        <span>{keyword:Monophagous}</span>
+        <span>{keyword:Oligophagous}</span>
+        <span>{keyword:Polyphagous}</span>
+      </div>
     </div>
-    <div class="ba-model__box ba-model__box--subject">
+    <div class="ba-model__box ba-model__box--note ba-model__box--attributes">
+      <strong class="ba-model__title">{radial-annotator} Data attributes</strong>
+      <div class="ba-model__chips">
+        <span>{predicate:Activity pattern}</span>
+        <span>{predicate:Microhabitat}</span>
+        <span>{predicate:Reassessment}</span>
+      </div>
+    </div>
+    <div class="ba-model__box ba-model__box--core ba-model__box--subject">
       <strong class="ba-model__title">Subject (Weevil)</strong>
-      <span class="ba-model__hint">one of:</span>
+      <span class="ba-model__hint">exactly one of:</span>
       <span class="ba-model__item">OTU</span>
       <span class="ba-model__item">CollectionObject</span>
       <span class="ba-model__item">FieldOccurrence</span>
       <span class="ba-model__item">AnatomicalPart</span>
-      <span class="ba-model__link ba-model__link--arrow">exactly 1</span>
     </div>
-    <div class="ba-model__box ba-model__box--note">
-      <strong class="ba-model__title">{radial-annotator} Data attributes</strong>
-      <span class="ba-model__item">{predicate:Activity pattern}</span>
-      <span class="ba-model__item">{predicate:Microhabitat}</span>
-      <span class="ba-model__item">{predicate:Reassessment}</span>
-      <span class="ba-model__link">0 to many</span>
-    </div>
-  </div>
-  <div class="ba-model__core">
     <div class="ba-model__hex">
       <div class="ba-model__hex-in">
         <strong class="ba-model__title">Biological Relationship</strong>
-        <span class="ba-model__hint">one of:</span>
-        <span class="ba-model__item">see <a href="#list-of-biological-relationships">List of Biological Relationships</a></span>
+        <span class="ba-model__hint">exactly one, e.g.:</span>
+        <span class="ba-model__item">collected from</span>
+        <span class="ba-model__item">reared from</span>
+        <span class="ba-model__item">present within gall on</span>
       </div>
     </div>
-  </div>
-  <div class="ba-model__side ba-model__side--out">
-    <div class="ba-model__box ba-model__box--pill">
-      <strong class="ba-model__title">Citation</strong>
-      <span class="ba-model__item">source, ideally with page number</span>
-      <span class="ba-model__link">0 to many</span>
-    </div>
-    <div class="ba-model__box ba-model__box--pill">
-      <strong class="ba-model__title">Asserted distribution</strong>
-      <span class="ba-model__item">where the association was observed</span>
-      <span class="ba-model__link">0 to many</span>
-    </div>
-    <div class="ba-model__box ba-model__box--object">
+    <div class="ba-model__box ba-model__box--core ba-model__box--object">
       <strong class="ba-model__title">Object (Plant)</strong>
-      <span class="ba-model__hint">one of:</span>
+      <span class="ba-model__hint">exactly one of:</span>
       <span class="ba-model__item">OTU</span>
       <span class="ba-model__item">CollectionObject</span>
       <span class="ba-model__item">FieldOccurrence</span>
       <span class="ba-model__item">AnatomicalPart</span>
-      <span class="ba-model__link ba-model__link--arrow">exactly 1</span>
     </div>
-    <div class="ba-model__box ba-model__box--pill">
+    <div class="ba-model__box ba-model__box--pill ba-model__box--citation">
+      <strong class="ba-model__title">Citation</strong>
+      <span class="ba-model__item">source, ideally with page number</span>
+    </div>
+    <div class="ba-model__box ba-model__box--pill ba-model__box--distribution">
+      <strong class="ba-model__title">Asserted distribution</strong>
+      <span class="ba-model__item">where the association was observed</span>
+    </div>
+    <div class="ba-model__box ba-model__box--pill ba-model__box--depiction">
       <strong class="ba-model__title">{radial-annotator} Depiction</strong>
       <span class="ba-model__item">image, e.g. of feeding marks</span>
-      <span class="ba-model__link">0 to many</span>
     </div>
+    <span class="ba-model__link ba-model__link--tags">0 to many</span>
+    <span class="ba-model__link ba-model__link--attributes">0 to many</span>
+    <span class="ba-model__link ba-model__link--citation">0 to many</span>
+    <span class="ba-model__link ba-model__link--distribution">0 to many</span>
+    <span class="ba-model__link ba-model__link--depiction">0 to many</span>
+    <div class="ba-model__legend">{radial-annotator} added with the Radial annotator</div>
   </div>
 </div>
 

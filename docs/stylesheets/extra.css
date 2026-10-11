@@ -265,12 +265,13 @@
    chips work inside it, but drawn to look like the site's Mermaid
    diagrams (same --md-mermaid-* colours, same node shapes).
 
-   Three columns: what goes in, the relationship, what hangs off
-   it. The side columns have equal-height rows, so each box centre
-   sits at a fixed fraction of the diagram; the connector curves in
-   the stretched SVG (.ba-model__edges, coordinates in %) rely on
-   that. Curves start under a box and end under the hexagon.
-   Adding or removing a box means re-spacing that column's paths.
+   Laid out on a 1920 x 1080 design canvas (16:9, the same layout
+   as the slide version in assets/figures/ba-model-slide.html):
+   annotations above, subject -> relationship -> object across the
+   middle, evidence below. The stage scales with its container:
+   --u is one design pixel, box positions are % of the canvas and
+   the connector SVG uses the canvas coordinates directly.
+   Moving a box means moving its connector path and label too.
    ============================================================ */
 
 .ba-model {
@@ -279,12 +280,17 @@
      the object side of the bio-rel tables */
   --ba-core-bg: color-mix(in srgb, var(--doc-rel-object) 40%, var(--md-default-bg-color));
   --ba-core-line: color-mix(in srgb, var(--doc-rel-object) 65%, var(--md-default-fg-color));
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1.6fr 1fr;   /* column centres: 13.9% / 50% / 86.1% */
+  container-type: inline-size;
   margin: 1.5em 0;
+}
+
+.ba-model__stage {
+  --u: calc(100cqw / 1920);
+  position: relative;
+  aspect-ratio: 16 / 9;
   text-align: center;
-  line-height: 1.5;
+  font-size: calc(38 * var(--u));
+  line-height: 1.35;
   color: var(--md-mermaid-label-fg-color);
   font-family: var(--md-mermaid-font-family);
 }
@@ -301,93 +307,121 @@
 .ba-model__edges path {
   fill: none;
   stroke: var(--md-mermaid-edge-color);
-  stroke-width: 1.5px;
-  stroke-dasharray: 2 3;
-  vector-effect: non-scaling-stroke;
+  stroke-width: 3;
+  stroke-dasharray: 4 7;
+  stroke-linecap: round;
 }
 .ba-model__edges path.ba-model__edge--main {
-  stroke-width: 3px;
+  stroke-width: 6;
   stroke-dasharray: none;
+  stroke-linecap: butt;
 }
-
-.ba-model__side {
-  display: grid;
-  grid-auto-rows: 1fr;
-}
+.ba-model__edges marker path { fill: var(--md-mermaid-edge-color); stroke: none; }
 
 .ba-model__box {
-  position: relative;
-  align-self: center;
-  justify-self: center;
-  margin: 0.5rem 0;
-  padding: 0.6rem 0.9rem;
-  border: 1px solid var(--md-mermaid-node-fg-color);
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: max(1px, calc(2 * var(--u))) solid var(--md-mermaid-node-fg-color);
   background: var(--ba-node-bg);
 }
-.ba-model__box--note { border-radius: 5px; }
-.ba-model__box--subject,
-.ba-model__box--object { border-color: var(--ba-core-line); background: var(--ba-core-bg); }
-.ba-model__box--pill { border-radius: 999px; padding-inline: 1.4rem; max-width: 13rem; }
+.ba-model__box--note { border-radius: calc(10 * var(--u)); }
+.ba-model__box--pill { border-radius: 999px; padding: 0 calc(36 * var(--u)); }
+.ba-model__box--core { border-color: var(--ba-core-line); background: var(--ba-core-bg); }
 
 /* hexagon: a clipped border-coloured layer with a clipped fill inside it */
-.ba-model__core {
-  position: relative;
-  align-self: center;
-  justify-self: center;
-  width: 62%;
-}
 .ba-model__hex,
 .ba-model__hex-in {
+  box-sizing: border-box;
   clip-path: polygon(13% 0, 87% 0, 100% 50%, 87% 100%, 13% 100%, 0 50%);
 }
-.ba-model__hex { padding: 1.5px; background: var(--ba-core-line); }
-.ba-model__hex-in { padding: 1rem 15%; background: var(--ba-core-bg); }
-
-.ba-model__title { display: block; }
-.ba-model__item  { display: block; }
-/* "one of:" above a list where exactly one entry is picked */
-.ba-model__hint  { display: block; font-size: 0.85em; font-style: italic; color: var(--md-default-fg-color--light); }
-.ba-model__item .tw-chip { margin: 0.12rem 0; }
-
-/* arrowheads: subject -> relationship -> object */
-.ba-model__core::before,
-.ba-model__box--object::before {
-  content: "";
-  position: absolute;
-  right: calc(100% - 1px);
-  top: 50%;
-  transform: translateY(-50%);
-  border: 5px solid transparent;
-  border-right: 0;
-  border-left: 9px solid var(--md-mermaid-edge-color);
+.ba-model__hex { position: absolute; padding: max(1px, calc(2 * var(--u))); background: var(--ba-core-line); }
+.ba-model__hex-in {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--ba-core-bg);
 }
 
-/* cardinality label, sitting on the connector where it leaves the box */
+/* positions on the canvas (px / 1920 horizontally, px / 1080 vertically) */
+.ba-model__box--tags,
+.ba-model__box--attributes   { top: 1.852%;  width: 46.875%; height: 19.444%; }
+.ba-model__box--tags         { left: 2.344%; }
+.ba-model__box--attributes   { left: 50.781%; }
+.ba-model__box--subject,
+.ba-model__box--object       { top: 32.870%; width: 22.917%; height: 32.407%; }
+.ba-model__box--subject      { left: 1.5625%; }
+.ba-model__box--object       { left: 75.521%; }
+.ba-model__hex               { left: 31.25%; top: 34.259%; width: 37.5%; height: 29.630%; }
+.ba-model__box--pill         { top: 76.852%; width: 31.25%; height: 18.519%; }
+.ba-model__box--citation     { left: 1.5625%; }
+.ba-model__box--distribution { left: 34.375%; }
+.ba-model__box--depiction    { left: 67.1875%; }
+
+.ba-model__title { display: block; font-size: 1.21em; }
+.ba-model__item  { display: block; text-wrap: balance; }
+/* "exactly one of:" above a list where one entry is picked */
+.ba-model__hint  { display: block; font-size: 0.79em; font-style: italic; color: var(--md-default-fg-color--light); }
+.ba-model__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.26em 0.32em; margin-top: 0.16em; }
+
+/* cardinality label, sitting on its connector */
 .ba-model__link {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   padding: 0 0.25em;
   background: var(--md-mermaid-label-bg-color);
-  font-size: 0.85em;
+  font-size: 0.79em;
   line-height: 1.3;
   white-space: nowrap;
 }
-.ba-model__side--in  .ba-model__link { left: calc(100% + 0.5rem); }
-.ba-model__side--out .ba-model__link { right: calc(100% + 0.5rem); }
-.ba-model__box--object .ba-model__link { right: calc(100% + 1.1rem); }   /* clear the arrowhead */
+.ba-model__link--tags,
+.ba-model__link--attributes   { top: 27.778%; }
+.ba-model__link--tags         { left: 42.1875%; }
+.ba-model__link--attributes   { left: 57.8125%; }
+.ba-model__link--citation,
+.ba-model__link--distribution,
+.ba-model__link--depiction    { top: 70.370%; }
+.ba-model__link--citation     { left: 34.375%; }
+.ba-model__link--distribution { left: 50%; }
+.ba-model__link--depiction    { left: 65.625%; }
 
-/* narrow screens: stack the boxes, connectors become a small count */
+.ba-model__legend {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 96.1%;
+  font-size: 0.68em;
+  line-height: 1.3;
+  color: var(--md-default-fg-color--light);
+}
+
+/* narrow screens: the canvas would shrink the text too far, so stack the
+   boxes; connectors become a small count under each annotation */
 @media screen and (max-width: 46rem) {
-  .ba-model { display: block; }
+  .ba-model__stage { aspect-ratio: auto; font-size: inherit; line-height: 1.5; }
   .ba-model__edges,
-  .ba-model__core::before,
-  .ba-model__box--object::before { display: none; }
-  .ba-model__side { display: block; }
+  .ba-model__link { display: none; }
   .ba-model__box,
-  .ba-model__core { margin: 0.6rem auto; width: fit-content; max-width: 100%; }
-  .ba-model__link { position: static; display: block; transform: none; background: none; }
-  .ba-model__link::before { content: "\00d7\00a0"; }
+  .ba-model__hex,
+  .ba-model__legend {
+    position: static;
+    width: fit-content;
+    max-width: 100%;
+    height: auto;
+    margin: 0.6rem auto;
+  }
+  .ba-model__box { padding: 0.6rem 0.9rem; border-width: 1px; }
+  .ba-model__box--note { border-radius: 5px; }
+  .ba-model__box--pill { padding-inline: 1.4rem; }
+  .ba-model__hex { width: min(100%, 20rem); padding: 1.5px; }
+  .ba-model__hex-in { padding: 1rem 12%; }
+  .ba-model__box--note::after,
+  .ba-model__box--pill::after { content: "\00d7\00a0 0 to many"; font-size: 0.85em; }
 }
 
 /* ============================================================
