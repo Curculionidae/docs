@@ -67,7 +67,11 @@ When converting data into a structured format, some information is inevitably lo
       <div class="ba-model__chips">
         <span>{predicate:Activity pattern}</span>
         <span>{predicate:Microhabitat}</span>
-        <span>{predicate:Reassessment}</span>
+        <span class="ba-model__pair">
+          <span>{predicate:Reassessment}</span>
+          <span class="ba-model__join"></span>
+          <span class="ba-model__sub">Citation</span>
+        </span>
       </div>
     </div>
     <div class="ba-model__box ba-model__box--core ba-model__box--subject">

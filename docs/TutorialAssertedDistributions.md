@@ -6,6 +6,69 @@ icon: material/earth
 !!! info "Conventions"
     - **We avoid adding asserted distributions to anything other than species/subspecies**. Asserted distributions on higher-level taxa are difficult to curate in case the taxon gets split.
 
+## Data Model
+An asserted distribution states that a taxon is present in (or absent from) an area, according to at least one source. In TaxonWorks, the area is called the **shape**: either a GeographicArea (countries, states, TDWG regions...) or a custom [Gazetteer](TutorialGazetteers.md).
+
+<div class="ba-model">
+  <div class="ba-model__stage">
+    <svg class="ba-model__edges" viewBox="0 0 1920 1080" aria-hidden="true">
+      <defs>
+        <marker id="ad-model-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z"/>
+        </marker>
+      </defs>
+      <path d="M760 230 C760 300 860 300 860 370"/>
+      <path d="M1160 230 C1160 300 1060 300 1060 370"/>
+      <path d="M960 830 L960 690"/>
+      <path class="ba-model__edge--main" d="M470 530 L597 530" marker-end="url(#ad-model-arrow)"/>
+      <path class="ba-model__edge--main" d="M1320 530 L1447 530" marker-end="url(#ad-model-arrow)"/>
+    </svg>
+    <div class="ba-model__box ba-model__box--note ba-model__box--tags">
+      <strong class="ba-model__title">{radial-annotator} Tags</strong>
+      <div class="ba-model__chips">
+        <span>{keyword:Adventive}</span>
+        <span>{keyword:Endemic}</span>
+      </div>
+    </div>
+    <div class="ba-model__box ba-model__box--note ba-model__box--attributes">
+      <strong class="ba-model__title">{radial-annotator} Data attributes</strong>
+      <div class="ba-model__chips">
+        <span>{predicate:Reassessment}</span>
+        <span class="ba-model__join"></span>
+        <span class="ba-model__sub">Citation</span>
+      </div>
+    </div>
+    <div class="ba-model__box ba-model__box--core ba-model__box--subject">
+      <strong class="ba-model__title">OTU</strong>
+      <span class="ba-model__hint">by convention only:</span>
+      <span class="ba-model__item">species</span>
+      <span class="ba-model__item">subspecies</span>
+    </div>
+    <div class="ba-model__hex">
+      <div class="ba-model__hex-in">
+        <strong class="ba-model__title">Asserted Distribution</strong>
+        <span class="ba-model__hint">exactly one of:</span>
+        <span class="ba-model__item">is present in</span>
+        <span class="ba-model__item">is absent from</span>
+      </div>
+    </div>
+    <div class="ba-model__box ba-model__box--core ba-model__box--object">
+      <strong class="ba-model__title">Shape</strong>
+      <span class="ba-model__hint">exactly one of:</span>
+      <span class="ba-model__item">GeographicArea</span>
+      <span class="ba-model__item">Gazetteer</span>
+    </div>
+    <div class="ba-model__box ba-model__box--pill ba-model__box--evidence">
+      <strong class="ba-model__title">Citation</strong>
+      <span class="ba-model__item">source, ideally with page number</span>
+    </div>
+    <span class="ba-model__link ba-model__link--tags">0 to many</span>
+    <span class="ba-model__link ba-model__link--attributes">0 to many</span>
+    <span class="ba-model__link ba-model__link--evidence">1 to many</span>
+    <div class="ba-model__legend">{radial-annotator} added with the Radial annotator</div>
+  </div>
+</div>
+
 ## Adventive/Introduced populations
 Tag the Asserted Distribution with {keyword:adventive}  
 We can't add tags to individual citations, but it is sufficient if at least one of the cited sources for the species-area pair is making a statement on status.  

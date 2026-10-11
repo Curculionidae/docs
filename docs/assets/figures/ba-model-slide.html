@@ -96,6 +96,18 @@
   /* what is picked, then (under a divider) how it can be narrowed down */
   .pick { margin-top: 8px; font-weight: 600; }
   .narrow { align-self: stretch; margin: 16px 40px 0; padding-top: 12px; border-top: 2px dashed var(--core-line); }
+  /* an annotation's own citation: a small pill joined to its chip */
+  .pair { display: inline-flex; align-items: center; gap: 12px; }
+  .join { align-self: center; width: 44px; margin: 0 -6px; border-top: 3px dotted var(--edge); }
+  .sub {
+    padding: 0 0.7em;
+    border: 2px solid var(--accent);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
   .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 12px; margin-top: 6px; }
 
   /* cardinality label, sitting on its connector */
@@ -185,7 +197,11 @@
     <div class="chips">
       <span class="chip" style="--mark:#254d0d"><svg><use href="#i-predicate"/></svg>Activity pattern</span>
       <span class="chip" style="--mark:#254d0d"><svg><use href="#i-predicate"/></svg>Microhabitat</span>
-      <span class="chip" style="--mark:#e01b24"><svg><use href="#i-predicate"/></svg>Reassessment</span>
+      <span class="pair">
+        <span class="chip" style="--mark:#e01b24"><svg><use href="#i-predicate"/></svg>Reassessment</span>
+        <span class="join"></span>
+        <span class="sub">Citation</span>
+      </span>
     </div>
   </div>
 

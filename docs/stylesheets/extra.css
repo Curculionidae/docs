@@ -362,12 +362,32 @@
 .ba-model__box--citation     { left: 1.5625%; }
 .ba-model__box--distribution { left: 34.375%; }
 .ba-model__box--depiction    { left: 67.1875%; }
+/* asserted distribution variant: a single, required citation centred below */
+.ba-model__box--evidence     { left: 34.375%; }
 
 .ba-model__title { display: block; font-size: 1.21em; }
 .ba-model__item  { display: block; text-wrap: balance; }
 /* "exactly one of:" above a list where one entry is picked */
 .ba-model__hint  { display: block; font-size: 0.79em; font-style: italic; color: var(--md-default-fg-color--light); }
 .ba-model__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.26em 0.32em; margin-top: 0.16em; }
+
+/* an annotation's own citation: a small pill joined to its chip */
+.ba-model__pair { display: inline-flex; align-items: center; gap: 0.32em; }
+.ba-model__join {
+  align-self: center;
+  width: 1.15em;
+  margin: 0 -0.16em;
+  border-top: max(1px, calc(3 * var(--u))) dotted var(--md-mermaid-edge-color);
+}
+.ba-model__sub {
+  padding: 0 0.7em;
+  border: max(1px, calc(2 * var(--u))) solid var(--md-mermaid-node-fg-color);
+  border-radius: 999px;
+  background: var(--md-default-bg-color);
+  font-size: 0.84em;
+  font-weight: 700;
+  line-height: 1.4;
+}
 
 /* cardinality label, sitting on its connector */
 .ba-model__link {
@@ -389,6 +409,7 @@
 .ba-model__link--citation     { left: 34.375%; }
 .ba-model__link--distribution { left: 50%; }
 .ba-model__link--depiction    { left: 65.625%; }
+.ba-model__link--evidence     { top: 70.370%; left: 50%; }
 
 .ba-model__legend {
   position: absolute;
@@ -422,6 +443,7 @@
   .ba-model__hex-in { padding: 1rem 12%; }
   .ba-model__box--note::after,
   .ba-model__box--pill::after { content: "\00d7\00a0 0 to many"; font-size: 0.85em; }
+  .ba-model__box--evidence::after { content: "\00d7\00a0 1 to many"; }
 }
 
 /* ============================================================
