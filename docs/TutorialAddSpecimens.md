@@ -10,7 +10,7 @@ Comprehensive Guide: [TaxonWorks Docs | Collection Objects](https://docs.taxonwo
 - [Learn to add sources / literature](TutorialAddSources.md): creating the Source you will cite
 - [Learn to add a new species](TutorialAddSpecies.md): its "Type" section covers type material entered from the **taxon name** side
 
-!!! warning "Taxon Determinations"
+!!! warning "Determination should be added even for types"
     Intuitively, you wouldn't add a taxon determination to a specimen that already has a type status. However, this can lead to problems on TaxonPages (specimen not showing up on the map). I tried to make the map as flexible as possible about this, but specimen without determination and geographicArea instead of geogreference are still invisible for the map. Clicking the "fix" button in soft validation is sufficient to add a determation automatically.
 
 ## When to add specimens
