@@ -289,7 +289,7 @@
   position: relative;
   aspect-ratio: 16 / 9;
   text-align: center;
-  font-size: calc(38 * var(--u));
+  font-size: calc(var(--ba-font, 38) * var(--u));
   line-height: 1.35;
   color: var(--md-mermaid-label-fg-color);
   font-family: var(--md-mermaid-font-family);
@@ -421,6 +421,59 @@
   color: var(--md-default-fg-color--light);
 }
 
+/* specimen variant (TutorialAddSpecimens.md): a hub rather than a sentence.
+   The specimen sits in the middle, the records linked to it around it, and
+   each of those lists what it carries itself, so the text is a size smaller.
+   The linked records are primary data like the specimen, so they share its
+   green; only the annotations are blue. */
+.ba-model--specimen { --ba-font: 32; }
+.ba-model--specimen .ba-model__title { font-size: 1.31em; }
+.ba-model--specimen .ba-model__box--note .ba-model__title { font-size: 1.03em; }
+/* a further annotation named next to a chip, with an example */
+.ba-model--specimen .ba-model__chips { align-items: center; }
+.ba-model__extra { font-size: 0.8em; white-space: nowrap; }
+.ba-model__extra em { font-size: 0.9em; color: var(--md-default-fg-color--light); }
+/* a two-line remark under a chip in a small annotation box */
+.ba-model__hint--tight { font-size: 0.72em; line-height: 1.15; margin-top: 0.12em; padding: 0 0.3em; text-align: center; text-wrap: balance; }
+.ba-model__box--rec { border-radius: calc(10 * var(--u)); padding: 0 calc(18 * var(--u)); }
+.ba-model__box--sp-tags,
+.ba-model__box--sp-attributes,
+.ba-model__box--sp-depictions    { top: 1.852%; width: 15.9375%; height: 15.741%; }
+.ba-model__box--sp-tags          { left: 25.3125%; }
+.ba-model__box--sp-attributes    { left: 42.03125%; }
+.ba-model__box--sp-depictions    { left: 58.75%; }
+.ba-model__box--sp-specimen      { left: 32.292%; top: 26.852%; width: 35.417%; height: 37.037%; }
+.ba-model__box--sp-determination { left: 1.042%;  top: 13.889%; width: 22.917%; height: 36.111%; }
+.ba-model__box--sp-type          { left: 1.042%;  top: 57.407%; width: 22.917%; height: 37.963%; }
+.ba-model__box--sp-event         { left: 76.042%; top: 1.852%;  width: 22.917%; height: 62.963%; }
+.ba-model__box--sp-association   { left: 32.292%; top: 73.148%; width: 35.417%; height: 22.222%; }
+.ba-model__link--sp-determination { left: 28.125%; top: 36.667%; }
+.ba-model__link--sp-type          { left: 28.125%; top: 58.426%; }
+.ba-model__link--sp-event         { left: 71.875%; top: 43.148%; }
+.ba-model__link--sp-association   { left: 50%;     top: 68.519%; }
+.ba-model--specimen .ba-model__legend { top: 96.3%; font-size: 0.75em; }
+
+/* the one thing a record points at, and a divider above its side notes */
+.ba-model__pick { display: block; margin-top: 0.25em; font-weight: 600; }
+.ba-model__aside {
+  align-self: stretch;
+  margin: 0.38em 0.94em 0;
+  padding-top: 0.31em;
+  border-top: max(1px, calc(2 * var(--u))) dashed var(--ba-core-line);
+}
+.ba-model__row { display: flex; align-items: center; justify-content: center; gap: 0.38em; margin-top: 0.31em; }
+/* a record nested in another one (georeference in its collecting event) */
+.ba-model__nest {
+  align-self: stretch;
+  margin: 0.44em 0.12em 0;
+  padding: 0.25em 0.38em 0.38em;
+  border: max(1px, calc(2 * var(--u))) solid var(--md-mermaid-node-fg-color);
+  border-radius: calc(10 * var(--u));
+  background: var(--md-default-bg-color);
+}
+.ba-model--specimen .ba-model__nest .ba-model__title { font-size: 0.97em; }
+.ba-model__box--core .ba-model__nest { border-color: var(--ba-core-line); }
+
 /* narrow screens: the canvas would shrink the text too far, so stack the
    boxes; connectors become a small count under each annotation */
 @media screen and (max-width: 46rem) {
@@ -444,6 +497,9 @@
   .ba-model__box--note::after,
   .ba-model__box--pill::after { content: "\00d7\00a0 0 to many"; font-size: 0.85em; }
   .ba-model__box--evidence::after { content: "\00d7\00a0 1 to many"; }
+  .ba-model__box--rec::after { content: "\00d7\00a0 0 to many"; font-size: 0.85em; }
+  .ba-model__box--sp-event::after { content: "\00d7\00a0 0 or 1"; }
+  .ba-model__nest { margin-inline: 0; padding: 0.4rem 0.7rem; border-width: 1px; border-radius: 5px; }
 }
 
 /* ============================================================

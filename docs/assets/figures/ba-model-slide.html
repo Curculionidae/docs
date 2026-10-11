@@ -17,10 +17,12 @@
 
   PNG for PowerPoint:
     chromium --headless=new --hide-scrollbars --force-device-scale-factor=2 \
-      --window-size=1920,1080 --screenshot=ba-model-slide.png "file://$PWD/ba-model-slide.html?terms=plain"
+      --window-size=1920,1080 --screenshot=ba-model-slide.png "file://$PWD/ba-model-slide.html?terms=plain&counts=off"
   Add ?bg=transparent to the URL for a transparent page background.
   Add ?terms=plain for everyday wording (Taxon or Specimen, optionally with
   life stage or anatomical part; bare Citation) instead of the TaxonWorks class names (the PNG next to this file is rendered that way).
+  Add ?counts=off to leave out the "0 to many" labels on the connectors (the
+  PNG is rendered that way too).
 -->
 <style>
   :root {
@@ -89,6 +91,8 @@
   .title { display: block; font-size: 46px; font-weight: 700; line-height: 1.35; }
   .item  { display: block; text-wrap: balance; }
   .hint  { display: block; font-size: 30px; font-style: italic; color: var(--ink-light); }
+  /* ?counts=off leaves out the cardinality labels */
+  .no-counts .link { display: none; }
   /* ?terms=plain swaps the TaxonWorks class names for everyday wording */
   .terms-plain, .plain-terms .terms-tw { display: none; }
   .plain-terms .terms-plain { display: block; }
@@ -266,6 +270,9 @@
   (function () {
     if (/[?&]bg=transparent\b/.test(location.search)) {
       document.documentElement.style.setProperty("--page-bg", "transparent");
+    }
+    if (/[?&]counts=off\b/.test(location.search)) {
+      document.documentElement.classList.add("no-counts");
     }
     if (/[?&]terms=plain\b/.test(location.search)) {
       document.documentElement.classList.add("plain-terms");
