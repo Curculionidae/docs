@@ -21,12 +21,13 @@ If someone allows you to upload their images to TaxonWorks, make sure to ask wha
 ## Depiction metadata
 - The depiction can get a "Label" and a "Caption". They get merged into one string, so the idea is that label is something like "Figure 1:" and caption something like "*Curculio glandium*, tergite VIII, dorsal". Of course on TaxonWorks there is no need to number figures, so it is sufficient to fill out caption in most cases.
 
-**What you do _not_ put into the label/caption:** the taxon name, authorship and **type status** shown next to a photo are read from the **OTU** or the **Collection Object's identification and type-material record**, not from the image. Keep names/type status on the specimen and OTU, not typed into the caption.
+!!! info "Label or Caption?"
+    If in doubt, only fill out caption.
 
 If in doubt: save the record and check TaxonPages to see if everything is looking good.
 
-!!! info "Label or Caption?"
-    If in doubt, only fill out caption.
+!!! info "Keep it minimal"
+    If a depiction is sitting on a type specimen, there is no need to write the type status into the caption, that is already stored in the specimen itself. An image on an OTU does not need the species name, but could carry a caption such as "Reliably identified, non-type specimens in the Museum of Zoology Senckenberg Dresden (MTD)"
 
 ### Dealing with label images for specimens: "is data depiction"
 Images of collection objects are used on TaxonPages to illustrate the taxon. A label image shouldnt illustrate a taxon. If an image shows **information about** the object rather than the object itself, mark it as "is data depiction". The depiction will be displayed on TaxonPages for the collection object, but not in the OTU gallery:  
