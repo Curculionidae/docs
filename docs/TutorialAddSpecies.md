@@ -68,9 +68,12 @@ In **Repository**, don't enter a museum based on assumptions that type material 
 Otherwise, you can enter a type from secondary literature (cite it in the **Type** block) or from a museum specimen (make sure to enter the Museum as **Repository**).
 
 Amazon between Manaus and Itacoatiara, 14.05.1895, 
+
+## Special Situations
+### Homonymy
+On the junior homonym, create the suitable homonym relationship (there are several) to the senior homonym. Create a suitable relationship from junior homonym to the replacement name: If it is just a subjective synonym, add that relationship, or in case of objective synonym add "replaced by". Test on TaxonPages if the relationships resolve correctly, resulting in the correct valid name.
+
 **To be continued soon!**
-
-
 
 ## Do I have to fill in everything?
 No. You can leave fields empty. The following blocks should never stay empty:
