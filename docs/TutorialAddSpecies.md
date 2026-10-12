@@ -71,7 +71,8 @@ Amazon between Manaus and Itacoatiara, 14.05.1895,
 
 ## Special Situations
 ### Homonymy
-On the junior homonym, create the suitable homonym relationship (there are several) to the senior homonym. Create a suitable relationship from junior homonym to the replacement name: If it is just a subjective synonym, add that relationship, or in case of objective synonym add "replaced by". Test on TaxonPages if the relationships resolve correctly, resulting in the correct valid name.
+On the junior homonym, create the suitable homonym relationship (there are several) to the senior homonym. Create a suitable relationship from junior homonym to the replacement name: If it is just a subjective synonym, add that relationship, or in case of objective synonym add "replaced by". Test on TaxonPages if the relationships resolve correctly, resulting in the correct valid name.  
+**Example:** [*Lixus punctiventris* Boheman, 1835](https://catalog.curculionoidea.org/#/otus/733362/overview)
 
 **To be continued soon!**
 
