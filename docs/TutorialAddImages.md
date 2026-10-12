@@ -8,15 +8,15 @@ icon: material/image-plus
 **Where you attach the image decides where it shows up on [TaxonPages](https://catalog.curculionoidea.org/#/)**, and some attachment points are never shown there at all (see table below).
 
 ## Image metadata
-It is extremely important that all images are correctly licensed or cited. Use the radial annotator {radial-annotator} to **add at least one of these two**:  
+It is extremely important that all images are correctly licensed or cited. Make sure to comply with copyright law. Use the radial annotator {radial-annotator} to **add at least one of these two**:  
 
 - Attribution (needs to carry a license, year and either Creator, Editor, Owner or Copyright holder)
 - Citation (add a source)
 
-If someone allows you to upload their images on TaxonWorks, make sure to ask what license to use. Ideally, document the decision somewhere.
+If someone allows you to upload their images to TaxonWorks, make sure to ask what license to use. Ideally, document the decision somewhere.
 
 !!! warning "Attribution is important"
-    Publishing images without attribution/license is highly problematic. For legal safety, the API may no longer ship images without attribution in the future, making them invisible for TaxonPages!
+    Publishing images without attribution/license can cause legal problems. For legal safety, the API may stop serving images without attribution in the future, making them invisible to TaxonPages!
 
 ## Depiction metadata
 - The depiction can get a "Label" and a "Caption". They get merged into one string, so the idea is that label is something like "Figure 1:" and caption something like "*Curculio glandium*, tergite VIII, dorsal". Of course on TaxonWorks there is no need to number figures, so it is sufficient to fill out caption in most cases.
