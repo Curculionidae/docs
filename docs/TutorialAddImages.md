@@ -27,7 +27,8 @@ If someone allows you to upload their images to TaxonWorks, make sure to ask wha
 If in doubt: save the record and check TaxonPages to see if everything is looking good.
 
 !!! info "Keep it minimal"
-    If a depiction is sitting on a type specimen, there is no need to write the type status into the caption, that is already stored in the specimen itself. An image on an OTU does not need the species name, but could carry a caption such as "Reliably identified, non-type specimens in the Museum of Zoology Senckenberg Dresden (MTD)". **That is important context that is not provided by the OTU.**
+    - If a depiction is sitting on a type specimen, there is no need to write the type status into the caption, that is already stored in the specimen itself. 
+    - An image on an OTU does not need the species name, but could carry a caption such as "Reliably identified, non-type specimens in the Museum of Zoology Senckenberg Dresden (MTD)". **That is important context that is not provided by the OTU.**
 
 ### Dealing with label images for specimens: "is data depiction"
 Images of collection objects are used on TaxonPages to illustrate the taxon. A label image shouldnt illustrate a taxon. If an image shows **information about** the object rather than the object itself, mark it as "is data depiction". The depiction will be displayed on TaxonPages for the collection object, but not in the OTU gallery:  
