@@ -34,7 +34,7 @@ If in doubt: save the record and check TaxonPages to see if everything is lookin
 Images of collection objects are used on TaxonPages to illustrate the taxon. A label image shouldnt illustrate a taxon. If an image shows **information about** the object rather than the object itself, mark it as "is data depiction". The depiction will be displayed on TaxonPages for the collection object, but not in the OTU gallery:  
 In the depiction editor (radial annotator {radial-annotator} → **Depiction**, or the image task) there is a checkbox **"Is data depiction"** (`is_metadata_depiction`). Use it for:  
 
-- photographs of **specimen labels**, determination labels, unit trays
+- photographs of **specimen labels**
 - a photo of the **collection site** (alternatively, add those depictions to the event of the specimen. In that case DONT mark them as "is data depiction", as the event itself is depicted)
 
 ---
