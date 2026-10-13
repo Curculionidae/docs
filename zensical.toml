@@ -49,7 +49,7 @@ Species catalog at <a href="https://catalog.curculionoidea.org">catalog.curculio
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   {"Home" = "index.md"},
-  {"Project Onboarding" = "onboarding.md"},
+  {"Get Involved" = "onboarding.md"},
   {"TaxonWorks Tutorial" = [
   "TutorialAbout.md",
   "TutorialTaxonWorks.md",
