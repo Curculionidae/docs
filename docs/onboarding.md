@@ -1,6 +1,5 @@
 ---
-title: Joining the Project
-#description: Nullam urna elit, malesuada eget finibus ut, ac tortor.
+title: Get Involved
 icon: lucide/rocket
 ---
 ## Introduction
