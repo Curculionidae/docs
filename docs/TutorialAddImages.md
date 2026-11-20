@@ -59,7 +59,7 @@ In theory, you can add depictions to many more data objects. Usually, we haven't
 ## Find your images without attribution
 Everyone forgets to add attributions every now and then. This is how you can find all images added by you that lack attribution:
 
-1. Go to the task **[Filter Images](https://sfg.taxonworks.org/tasks/images)**.
+1. Go to the task **[Filter Images](https://sfg.taxonworks.org/tasks/images/filter)**.
 2. Scroll down to **Housekeeping** and select yourself from the dropdown. Don't change anything else.
 3. Scroll down to **Venn**. This lets you combine "created/edited by you" with "no attribution".
 4. Paste this URL into the Venn field:
