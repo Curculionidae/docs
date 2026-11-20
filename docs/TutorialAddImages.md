@@ -56,6 +56,18 @@ In theory, you can add depictions to many more data objects. Usually, we haven't
 
 ---
 
+## Find your images without attribution
+- go to Task "[Filter Images](https://sfg.taxonworks.org/tasks/images)"
+- Scroll down to Housekeeping, select yourself from the dropdown, don't change the rest
+- Scroll down to "Venn". This allows to combine "created/edited by you" with "no attribution".
+- Here, enter this URL: https://sfg.taxonworks.org/tasks/images/filter?per=50&license%255B%255D=CC0%25201.0%2520Universal%2520%2528CC0%25201.0%2529%2520Public%2520Domain%2520Dedication&license%255B%255D=Attribution&license%255B%255D=Attribution-ShareAlike&license%255B%255D=Attribution-NoDerivs&license%255B%255D=Attribution-NonCommercial&license%255B%255D=Attribution-NonCommercial-ShareAlike&license%255B%255D=Attribution-NonCommercial-NoDerivs&page=1&paginate=true
+- select "Exclude (A not B)"
+- select "ignore pagination"
+<img width="420" height="292" alt="grafik" src="https://github.com/user-attachments/assets/e0acfcdc-cd91-4ade-87dc-604ed6ef975e" />
+- hit the blue "Filter" button on top
+- A list of images appears. Click one of them, select the radial annotator {radial-annotator} and add attributions and/or citations
+
+
 ## Quick checklist for a specimen photo
 
 - [ ] Attach the depiction to the most specific object (ideally a collection object or an event)
